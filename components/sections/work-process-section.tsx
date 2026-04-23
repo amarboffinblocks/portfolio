@@ -37,7 +37,7 @@ export function WorkProcessSection() {
   return (
     <section
       id="work-process"
-      className="relative border-t border-border/60 py-24 lg:py-28"
+      className="relative  py-24 lg:py-28"
       aria-labelledby="work-process-heading"
     >
       <Container>
@@ -62,13 +62,13 @@ export function WorkProcessSection() {
             return (
               <article
                 key={item.step}
-                className="card-shadow group relative rounded-xl border border-border/60 bg-primary/20 backdrop-blur-md p-6 transition-all duration-300 hover:-translate-y-0.5  hover:border-primary/50"
+                className=" group relative rounded-xl  p-6  bg-[#f9fafb] "
               >
                 <div className="mb-5 flex items-center justify-between">
-                  <span className="font-mono text-xs tracking-[0.2em] text-primary/80">
+                  <span className="font-mono text-xs tracking-[0.2em] ">
                     STEP {item.step}
                   </span>
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-accent/45 bg-primary/12 text-primary">
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-md ">
                     <Icon className="h-4 w-4" />
                   </span>
                 </div>
@@ -78,11 +78,7 @@ export function WorkProcessSection() {
                   {item.description}
                 </p>
 
-                {!isLast && (
-                  <div className="pointer-events-none absolute -right-2 top-1/2 hidden -translate-y-1/2 text-primary/60 lg:block">
-                    <ArrowRight className="h-4 w-4" />
-                  </div>
-                )}
+             
               </article>
             );
           })}

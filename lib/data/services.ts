@@ -7,8 +7,8 @@ export const HOME_SERVICES: Service[] = [
     description:
       "We craft logos and brand systems that leave a lasting impression.",
     iconName: "palette",
-    gradient:
-      "from-purple-100 to-purple-200 dark:from-purple-900/50 dark:to-purple-800/50",
+    cardColor: "bg-[#eaf6ee]",
+    iconBackground: "bg-[#45c76b]",
   },
   {
     number: "002",
@@ -16,8 +16,8 @@ export const HOME_SERVICES: Service[] = [
     description:
       "Beautiful and functional websites built with purpose and precision.",
     iconName: "code",
-    gradient:
-      "from-green-100 to-green-200 dark:from-green-900/50 dark:to-green-800/50",
+    cardColor: "bg-[#fbefed]",
+    iconBackground: "bg-[#f98a67]",
   },
   {
     number: "003",
@@ -25,8 +25,9 @@ export const HOME_SERVICES: Service[] = [
     description:
       "Get found faster with tailored SEO strategies backed by real data.",
     iconName: "search",
-    gradient:
-      "from-red-100 to-red-200 dark:from-red-900/50 dark:to-red-800/50",
+    cardColor: "bg-[#eaf1fb]",
+    iconBackground: "bg-[#5aa6f5]",
+
   },
   {
     number: "004",
@@ -34,8 +35,8 @@ export const HOME_SERVICES: Service[] = [
     description:
       "Intuitive and engaging user interfaces designed for seamless user experiences.",
     iconName: "palette",
-    gradient:
-      "from-blue-100 to-blue-200 dark:from-blue-900/50 dark:to-blue-800/50",
+    cardColor: "bg-[#faecf3]",
+    iconBackground: "bg-[#f665a4]",
   },
   {
     number: "005",
@@ -43,16 +44,16 @@ export const HOME_SERVICES: Service[] = [
     description:
       "We build AI-powered products that are intelligent and efficient.",
     iconName: "ai-agent",
-    gradient:
-      "from-indigo-100 to-indigo-200 dark:from-indigo-900/50 dark:to-indigo-800/50",
+    cardColor: "bg-[#eaf6ee]",
+    iconBackground: "bg-[#45c76b]",
   },
   {
     number: "006",
     title: "Data Engineering",
     description: "We build data pipelines that are efficient and scalable.",
     iconName: "data-engineering",
-    gradient:
-      "from-amber-100 to-amber-200 dark:from-amber-900/50 dark:to-amber-800/50",
+    cardColor: "bg-[#fbefed]",
+    iconBackground: "bg-[#f98a67]",
   },
   {
     number: "007",
@@ -60,15 +61,15 @@ export const HOME_SERVICES: Service[] = [
     description:
       "We build cloud infrastructure that is efficient and scalable.",
     iconName: "cloud-infrastructure",
-    gradient:
-      "from-sky-100 to-sky-200 dark:from-sky-900/50 dark:to-sky-800/50",
+    cardColor: "bg-[#eaf1fb]",
+    iconBackground: "bg-[#5aa6f5]",
   },
   {
     number: "008",
     title: "DevOps",
     description: "We build devops pipelines that are efficient and scalable.",
     iconName: "devops",
-    gradient:
-      "from-emerald-100 to-emerald-200 dark:from-emerald-900/50 dark:to-emerald-800/50",
+    cardColor: "bg-[#faecf3]",
+    iconBackground: "bg-[#f665a4]",
   },
 ];

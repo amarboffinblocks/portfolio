@@ -128,7 +128,7 @@ export function ServicesSnapshotSection({
     <section
       id="gallery"
       ref={galleryRef}
-      className="relative border-t border-border/60 py-24 lg:py-28"
+      className="relative  py-24 lg:py-28"
       style={{ height: sectionHeight }}
     >
       <div

@@ -42,7 +42,7 @@ export function FeaturedCaseStudiesSection() {
   return (
     <section
       id="case-studies"
-      className="relative border-t border-border/60 py-24 lg:py-28"
+      className="relative py-24 lg:py-28"
       aria-labelledby="case-studies-heading"
     >
       <Container>
@@ -73,7 +73,7 @@ export function FeaturedCaseStudiesSection() {
             return (
               <article
                 key={study.company}
-                className="card-shadow group overflow-hidden rounded-2xl border border-border/60 bg-card/55 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/50"
+                className=" group overflow-hidden rounded-2xl hover:scale-105  transition-all duration-300 bg-[#f9fafb]  "
               >
                 <div className="relative aspect-16/10 overflow-hidden border-b border-border/60">
                   <Image
@@ -83,7 +83,7 @@ export function FeaturedCaseStudiesSection() {
                     sizes="(max-width: 1024px) 100vw, 33vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-background/75 via-background/20 to-transparent" />
+                 
                   <div className="absolute left-4 top-4 flex items-center gap-2">
                     <span className="inline-flex items-center rounded-full border border-accent/45 bg-primary/18 px-3 py-1 text-xs font-medium tracking-wide text-primary-foreground">
                       {study.company}

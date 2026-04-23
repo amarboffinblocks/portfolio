@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 
-import { BackgroundAnimation } from "@/components/elements/background-animation";
 import { Container } from "@/components/common/container";
 import { SectionHeading } from "@/components/common/section-heading";
 
@@ -25,7 +24,6 @@ export function PageHeroSection({
     <section
       className={`relative overflow-hidden border-b border-border/60 pt-28 pb-20 lg:min-h-[30vh] lg:pt-32 lg:pb-24 ${className ?? ""}`}
     >
-      <BackgroundAnimation />
 
       <Container className="relative z-10 flex min-h-[inherit] items-center justify-center">
         <div className="mx-auto max-w-4xl">

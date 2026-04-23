@@ -9,7 +9,9 @@ export interface Service {
   title: string;
   description: string;
   iconName: "palette" | "code" | "search" | "ai-agent" | "data-engineering" | "cloud-infrastructure" | "devops";
-  gradient: string;
+  cardColor: string;
+  iconBackground: string;
+  iconColor?: string;
 }
 
 const ICON_MAP = {
@@ -33,28 +35,31 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
   return (
     <article
       className={cn(
-        "relative flex h-[420px] w-full flex-col justify-between overflow-hidden rounded-3xl border border-border/60 bg-linear-to-r p-8 card-shadow",
-        service.gradient,
+        "relative flex h-[420px] w-full min-w-[360px] flex-col justify-between overflow-hidden rounded-3xl border border-border/40 p-8",
+        service.cardColor,
         className
       )}
     >
       <div className="z-10 flex flex-col items-start text-left">
-        <span className="mb-8 text-sm font-mono text-foreground/50">
+        <span className="mb-8 text-sm font-mono text-foreground/55">
           ({service.number})
         </span>
-        <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-border/60 bg-background/40 backdrop-blur-xs">
-          <Icon className="h-6 w-6 text-foreground" />
+        <span
+          className={cn(
+            "inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/55 shadow-sm",
+            service.iconBackground
+          )}
+        >
+          <Icon className={cn("h-6 w-6", service.iconColor ?? "text-white")} />
         </span>
       </div>
 
       <div className="z-10">
-        <h3 className="mb-2 text-lg font-semibold uppercase tracking-wider">
+        <h3 className="mb-2 text-lg font-semibold uppercase tracking-wider text-foreground/95">
           {service.title}
         </h3>
-        <p className="text-sm text-foreground/75">{service.description}</p>
+        <p className="text-sm text-foreground/72">{service.description}</p>
       </div>
-
-      <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-background/35 via-transparent to-transparent" />
     </article>
   );
 }

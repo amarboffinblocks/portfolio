@@ -2,88 +2,92 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { buttonVariants } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Services", href: "/#services" },
+  { name: "Services", href: "/services" },
   { name: "Case Studies", href: "/case-studies" },
   { name: "Contact", href: "/contact" },
 ];
 
-function ThemeToggleButton() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const initialTheme = savedTheme === "dark" || savedTheme === "light"
-      ? savedTheme
-      : prefersDark
-        ? "dark"
-        : "light";
-
-    setTheme(initialTheme);
-    document.documentElement.classList.toggle("dark", initialTheme === "dark");
-  }, []);
-
-  const toggleTheme = () => {
-    const nextTheme = theme === "dark" ? "light" : "dark";
-    setTheme(nextTheme);
-    localStorage.setItem("theme", nextTheme);
-    document.documentElement.classList.toggle("dark", nextTheme === "dark");
-  };
-
-  return (
-    <button
-      onClick={toggleTheme}
-      className="p-2 rounded-lg hover:bg-secondary/50 transition-colors"
-      aria-label="Toggle theme"
-      title="Toggle theme"
-    >
-      {theme === "dark" ? (
-        <Sun className="w-5 h-5" />
-      ) : (
-        <Moon className="w-5 h-5" />
-      )}
-    </button>
-  );
-}
-
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isElevated = isScrolled || isMobileMenuOpen;
+
+  const isActiveLink = (href: string) => {
+    if (href.startsWith("/#")) {
+      return pathname === "/";
+    }
+    if (href === "/") {
+      return pathname === "/";
+    }
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   useEffect(() => {
+    let previous = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const next = window.scrollY > 20;
+      if (next !== previous) {
+        previous = next;
+        setIsScrolled(next);
+      }
     };
-    window.addEventListener("scroll", handleScroll);
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled || isMobileMenuOpen
-        ? "bg-background/95 backdrop-blur-xl border-b border-border/50"
-        : "bg-transparent"
-        }`}
+      className={cn(
+        "fixed left-0 right-0 z-50 transition-all duration-500",
+        isElevated ? "top-4" : "bg-transparent top-10",
+      )}
     >
-      <nav className="max-w-7xl mx-auto px-6 lg:px-8">
+      <nav
+        className={cn(
+          "max-w-7xl mx-auto px-6 lg:px-8",
+          isElevated && "border border-border rounded-full bg-background/95 shadow-soft backdrop-blur-xl top-0",
+        )}
+      >
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <span className="text-xl font-bold tracking-tight">Boffinblocks</span>
+            <span className={cn("text-2xl font-bold tracking-tight", isElevated ? "text-primary" : "text-white")}>
+              Boffinblocks
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
+          <div
+            className={cn(
+              "hidden md:flex items-center gap-2 px-2 py-1",
+              !isElevated && "rounded-full border border-border bg-card",
+            )}
+          >
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 rounded-lg hover:bg-secondary/50"
+                className={cn(
+                  "rounded-full px-4 py-2 text-sm transition-colors duration-200",
+                  isActiveLink(link.href)
+                    ? "bg-primary text-primary-foreground shadow-soft"
+                    : "text-muted-foreground hover:bg-secondary hover:text-foreground",
+                )}
               >
                 {link.name}
               </Link>
@@ -92,17 +96,16 @@ export function Navigation() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <ThemeToggleButton />
-            <Button asChild>
-              <Link href="/contact">Contact Us</Link>
-            </Button>
+
+            <Link href="/contact" className={buttonVariants({ variant: "secondary" })}>Contact Us</Link>
           </div>
- 
+
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-secondary/50 transition-colors"
+            className="rounded-lg border border-border bg-card p-2 text-foreground transition-colors hover:bg-secondary md:hidden"
             aria-label="Toggle menu"
+            type="button"
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -114,30 +117,32 @@ export function Navigation() {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ${isMobileMenuOpen ? "max-h-[500px] pb-6" : "max-h-0"
-            }`}
+          className={cn(
+            "md:hidden overflow-hidden transition-all duration-300",
+            isMobileMenuOpen ? "max-h-[500px] pb-6" : "max-h-0",
+          )}
         >
-          <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
+          <div className="mt-2 flex flex-col gap-2 rounded-2xl border border-border bg-card p-4 shadow-soft">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-secondary/50 rounded-lg transition-colors"
+                className={cn(
+                  "rounded-xl px-4 py-3 transition-colors",
+                  isActiveLink(link.href)
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:bg-secondary hover:text-foreground",
+                )}
               >
                 {link.name}
               </Link>
             ))}
-            <div className="flex flex-col gap-2 pt-4 mt-2 border-t border-border/50">
-              <div className="flex items-center justify-between px-1 pb-2">
-                <span className="text-sm text-muted-foreground">Theme</span>
-                <ThemeToggleButton />
-              </div>
-              <Button asChild>
-                <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  Contact Us
-                </Link>
-              </Button>
+            <div className="mt-2 flex flex-col gap-2 border-t border-border pt-4">
+
+              <Link href="/contact" className={buttonVariants({ variant: "secondary" })} onClick={() => setIsMobileMenuOpen(false)}>
+                Contact Us
+              </Link>
             </div>
           </div>
         </div>
