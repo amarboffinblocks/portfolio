@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/common/container";
 import { SectionHeading } from "@/components/common/section-heading";
+import { buttonVariants } from "../ui/button";
 
 const CASE_STUDIES = [
   {
@@ -45,22 +46,24 @@ export function FeaturedCaseStudiesSection() {
       aria-labelledby="case-studies-heading"
     >
       <Container>
-        <div className="mx-auto mb-12 max-w-3xl text-center lg:mb-14">
+        <div className=" mb-12 w-full   flex justify-between items-end">
+          <div>
+
           <SectionHeading
             id="case-studies-heading"
             title="Featured Case"
             highlight="Studies"
             description="Selected work showing how focused product strategy and practical AI engineering deliver measurable business outcomes."
+            className="text-start "
           />
-          <div className="mt-6">
+          </div>
             <Link
               href="/case-studies"
-              className="inline-flex items-center gap-2 rounded-md border border-accent/45 bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+             className={buttonVariants({ variant: "default" })}
             >
               Explore Case Studies
               <ArrowUpRight className="h-4 w-4" />
             </Link>
-          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
