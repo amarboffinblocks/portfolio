@@ -30,8 +30,8 @@ const HeroGridCell = memo(function HeroGridCell({ active }: { active: boolean })
             className={cn(
                 "aspect-square rounded-sm border transition-[transform,opacity,box-shadow,border-color,background-color] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
                 active
-                    ? "scale-[1.03] border-accent/45 bg-primary shadow-lg shadow-accent/30"
-                    : "border-border/55 opacity-[0.28]",
+                    ? "scale-[1.03] border-primary/55 bg-primary/85 shadow-lg shadow-primary/40"
+                    : "border-border/70 opacity-[0.42]",
             )}
         />
     )
@@ -56,7 +56,7 @@ function AmbientOrbs({ reducedMotion, staticRest }: { reducedMotion: boolean; st
                 <div
                     aria-hidden
                     style={{ opacity: ORB_REST.orbB.opacity, transform: `translate(${ORB_REST.orbB.x}px, ${ORB_REST.orbB.y}px)` }}
-                    className="pointer-events-none absolute -right-[18%] bottom-[-5%] h-[min(55vh,440px)] w-[min(70vw,560px)] rounded-full bg-keppel-600/18 blur-[95px]"
+                    className="pointer-events-none absolute -right-[18%] bottom-[-5%] h-[min(55vh,440px)] w-[min(70vw,560px)] rounded-full bg-accent/18 blur-[95px]"
                 />
             </>
         )
@@ -72,7 +72,7 @@ function AmbientOrbs({ reducedMotion, staticRest }: { reducedMotion: boolean; st
             />
             <motion.div
                 aria-hidden
-                className="pointer-events-none absolute -right-[18%] bottom-[-5%] h-[min(55vh,440px)] w-[min(70vw,560px)] rounded-full bg-keppel-600/18 blur-[95px]"
+                className="pointer-events-none absolute -right-[18%] bottom-[-5%] h-[min(55vh,440px)] w-[min(70vw,560px)] rounded-full bg-accent/18 blur-[95px]"
                 animate={{ x: [0, -28, 0], y: [0, -16, 0], opacity: [0.28, 0.44, 0.28] }}
                 transition={{
                     duration: 24,
@@ -90,9 +90,17 @@ function GradientVeils({ reducedMotion, staticRest }: { reducedMotion: boolean; 
 
     return (
         <>
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 backdrop-blur-[1.5px] mask-[linear-gradient(to_top,black_0%,black_45%,transparent_100%)]"
+            />
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-linear-to-t from-white/88 via-white/38 to-transparent dark:from-black/82 dark:via-black/32"
+            />
             <motion.div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 bg-linear-to-t from-background via-background/60 to-transparent"
+                className="pointer-events-none absolute inset-0 bg-linear-to-t from-background/82 via-background/40 to-transparent"
                 initial={false}
                 animate={
                     reducedMotion || staticRest
@@ -105,8 +113,8 @@ function GradientVeils({ reducedMotion, staticRest }: { reducedMotion: boolean; 
                         : { duration: 14, repeat: 0, ease: "easeInOut" }
                 }
             />
-            <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-background/80 via-transparent to-transparent" />
-            <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-background via-transparent to-background" />
+            <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-background/48 via-transparent to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-background/68 via-transparent to-background/68" />
         </>
     )
 }
@@ -212,9 +220,9 @@ export function BackgroundAnimation({ className }: HeroAnimatedBackgroundProps) 
             <AmbientOrbs reducedMotion={reducedMotion} staticRest={staticRest} />
 
             <motion.div
-                className="absolute inset-0 grid grid-cols-10 gap-3 p-4 opacity-[0.38] sm:grid-cols-15 sm:gap-4 lg:grid-cols-20 lg:gap-5"
+                className="absolute inset-0 grid grid-cols-10 gap-3 p-4 opacity-[0.52] sm:grid-cols-15 sm:gap-4 lg:grid-cols-20 lg:gap-5"
                 initial={reducedMotion || staticRest ? false : { opacity: 0.22 }}
-                animate={{ opacity: 0.38 }}
+                animate={{ opacity: 0.52 }}
                 transition={
                     reducedMotion || staticRest
                         ? { duration: 0 }

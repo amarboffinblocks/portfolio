@@ -29,7 +29,7 @@ export function CtaSection() {
                 <Button
                   asChild
                   size="lg"
-                  className="h-11 border border-accent/45 bg-primary px-6 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+                  // className="h-11 border border-accent/45 bg-primary px-6 text-sm font-medium text-primary-foreground hover:bg-primary/90"
                 >
                   <Link href="/contact" className="inline-flex items-center gap-2">
                     Discuss Your Project
@@ -41,7 +41,7 @@ export function CtaSection() {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="h-11 border-border bg-transparent px-6 text-sm font-medium hover:bg-secondary/40"
+                  // className="h-11 border-border bg-transparent px-6 text-sm font-medium hover:bg-secondary/40"
                 >
                   <Link href="/contact" className="inline-flex items-center gap-2">
                     Contact Us

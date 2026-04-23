@@ -7,13 +7,13 @@ import { WorkProcessSection } from "@/components/sections/work-process-section";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden">
+    <main className="relative min-h-screen">
       <HeroSection />
-      {/* <ServicesSnapshotSection />
+      <ServicesSnapshotSection />
       <WhyBoffinBlocksSection />
       <FeaturedCaseStudiesSection />
       <WorkProcessSection />
-      <CtaSection /> */}
+      <CtaSection />
     </main>
   );
 }
