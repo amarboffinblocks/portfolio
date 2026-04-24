@@ -15,31 +15,32 @@ type PageHeroSectionProps = {
 export function PageHeroSection({
   title,
   description,
-  textPrimarytitle,
   eyebrow = "// PAGE",
   actions,
   className,
 }: PageHeroSectionProps) {
   return (
     <section
-      className={`relative overflow-hidden border-b border-border/60 pt-28 pb-20 lg:min-h-[30vh] lg:pt-32 lg:pb-24 ${className ?? ""}`}
+      className={"p-2 md:p-4"}
     >
-
-      <Container className="relative z-10 flex min-h-[inherit] items-center justify-center">
-        <div className="mx-auto max-w-4xl">
-          <SectionHeading
-            as="h1"
-            eyebrow={eyebrow}
-            title={title}
-            highlight={textPrimarytitle}
-            description={description}
-            headingClassName="text-4xl md:text-6xl"
-          />
-          {actions ? (
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">{actions}</div>
-          ) : null}
-        </div>
-      </Container>
+      <div className="relative  bg-primary rounded-3xl min-h-[70vh]">
+        <Container className="relative z-10 flex min-h-[inherit] items-center justify-center ">
+          <div className="">
+            <SectionHeading
+              as="h1"
+              align="center"
+              eyebrow={eyebrow}
+              title={title}
+              description={description}
+              headingClassName="text-4xl md:text-6xl  text-white"
+              descriptionClassName="text-white"
+            />
+            {actions ? (
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-3">{actions}</div>
+            ) : null}
+          </div>
+        </Container>
+      </div>
     </section>
   );
 }

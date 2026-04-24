@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, type MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { buttonVariants } from "@/components/ui/button";
@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Services", href: "/services" },
+  { name: "Services", href: "/#services" },
   { name: "Case Studies", href: "/case-studies" },
   { name: "Contact", href: "/contact" },
 ];
@@ -50,6 +50,25 @@ export function Navigation() {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
+  const scrollToHash = (hash: string) => {
+    const id = decodeURIComponent(hash.replace(/^#/, ""));
+    if (!id) return;
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const handleHashNavClick = (
+    e: MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    if (!href.startsWith("/#")) return;
+    const hash = href.slice(1);
+    if (pathname !== "/") return;
+    e.preventDefault();
+    scrollToHash(hash);
+    window.history.replaceState(null, "", href);
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header
       className={cn(
@@ -82,6 +101,7 @@ export function Navigation() {
               <Link
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleHashNavClick(e, link.href)}
                 className={cn(
                   "rounded-full px-4 py-2 text-sm transition-colors duration-200",
                   isActiveLink(link.href)
@@ -127,7 +147,10 @@ export function Navigation() {
               <Link
                 key={link.name}
                 href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={(e) => {
+                  handleHashNavClick(e, link.href);
+                  setIsMobileMenuOpen(false);
+                }}
                 className={cn(
                   "rounded-xl px-4 py-3 transition-colors",
                   isActiveLink(link.href)

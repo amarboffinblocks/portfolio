@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import { GeistPixelLine } from 'geist/font/pixel'
 import './globals.css'
+import { HashScroll } from "@/components/hash-scroll"
 import { FooterSection } from "@/components/sections/footer-section"
 import { Navigation } from "@/components/sections/navigation"
 
@@ -48,6 +49,7 @@ export default function RootLayout({
     <html lang="en" className="light">
       <body className={`${inter.variable} ${jetbrainsMono.variable} ${GeistPixelLine.variable} font-sans antialiased bg-white `}>
         <Navigation />
+        <HashScroll />
         {children}
         <FooterSection />
       </body>

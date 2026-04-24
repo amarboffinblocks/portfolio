@@ -36,7 +36,7 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? (
-        <p className="mb-3 font-mono text-xs tracking-[0.2em] text-primary/90">{eyebrow}</p>
+        <p className="mb-3 font-mono text-sm tracking-[0.2em] text-white">{eyebrow}</p>
       ) : null}
       <HeadingTag
         id={id}

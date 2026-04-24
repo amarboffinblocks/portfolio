@@ -2,8 +2,8 @@ import Link from "next/link";
 
 const footerLinks = {
   Work: [
-    { name: "Case Studies", href: "#case-studies" },
-    { name: "Services", href: "#services" },
+    { name: "Case Studies", href: "/#case-studies" },
+    { name: "Services", href: "/#services" },
   ],
   Company: [
     { name: "Home", href: "/" },

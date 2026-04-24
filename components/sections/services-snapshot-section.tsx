@@ -126,9 +126,9 @@ export function ServicesSnapshotSection({
 
   return (
     <section
-      id="gallery"
+      id="services"
       ref={galleryRef}
-      className="relative  py-24 lg:py-28"
+      className="relative scroll-mt-32 py-24 lg:py-28 md:scroll-mt-36"
       style={{ height: sectionHeight }}
     >
       <div
