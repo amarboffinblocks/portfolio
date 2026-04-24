@@ -10,22 +10,24 @@ import { cn } from "@/lib/utils";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Services", href: "/#services" },
-  { name: "Case Studies", href: "/case-studies" },
+  { name: "Projects", href: "/projects" },
   { name: "Contact", href: "/contact" },
 ];
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeHash, setActiveHash] = useState("");
   const pathname = usePathname();
   const isElevated = isScrolled || isMobileMenuOpen;
 
   const isActiveLink = (href: string) => {
     if (href.startsWith("/#")) {
-      return pathname === "/";
+      const targetHash = href.slice(1);
+      return pathname === "/" && activeHash === targetHash;
     }
     if (href === "/") {
-      return pathname === "/";
+      return pathname === "/" && !activeHash;
     }
     return pathname === href || pathname.startsWith(`${href}/`);
   };
@@ -50,6 +52,17 @@ export function Navigation() {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    const syncHash = () => setActiveHash(window.location.hash);
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    window.addEventListener("popstate", syncHash);
+    return () => {
+      window.removeEventListener("hashchange", syncHash);
+      window.removeEventListener("popstate", syncHash);
+    };
+  }, [pathname]);
+
   const scrollToHash = (hash: string) => {
     const id = decodeURIComponent(hash.replace(/^#/, ""));
     if (!id) return;
@@ -66,6 +79,7 @@ export function Navigation() {
     e.preventDefault();
     scrollToHash(hash);
     window.history.replaceState(null, "", href);
+    setActiveHash(hash);
     setIsMobileMenuOpen(false);
   };
 

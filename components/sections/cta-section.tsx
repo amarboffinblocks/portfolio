@@ -8,8 +8,8 @@ import { SectionHeading } from "@/components/common/section-heading";
 export function CtaSection() {
   return (
     <section className="relative p-2 sm:px-4 sm:py-2 ">
-      <div className="relative overflow-hidden rounded-3xl  bg-primary p-8  sm:p-10 lg:p-14">
-        <Container>
+      {/* <div className="relative overflow-hidden rounded-3xl  bg-primary p-8  sm:p-10 lg:p-14"> */}
+        <Container className="rounded-3xl  bg-primary p-8  sm:p-10 lg:p-14">
           <div className="relative z-10 grid items-end gap-10 lg:grid-cols-[1.3fr_0.7fr] ">
             <div>
                 <SectionHeading
@@ -50,7 +50,7 @@ export function CtaSection() {
 
           </div>
         </Container>
-      </div>
+      {/* </div> */}
     </section>
   );
 }
