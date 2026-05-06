@@ -6,11 +6,14 @@ import { usePathname } from "next/navigation";
 import { buttonVariants } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Container } from "../common/container";
 
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Services", href: "/#services" },
   { name: "Projects", href: "/projects" },
+  { name:"Blog", href: "/blog" },
+  { name:"About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -53,6 +56,16 @@ export function Navigation() {
   }, [pathname]);
 
   useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
     const syncHash = () => setActiveHash(window.location.hash);
     syncHash();
     window.addEventListener("hashchange", syncHash);
@@ -86,104 +99,119 @@ export function Navigation() {
   return (
     <header
       className={cn(
-        "fixed left-0 right-0 z-50 transition-all duration-500",
-        isElevated ? "top-4" : "bg-transparent top-10",
+        "fixed left-0 right-0 z-50 transition-all duration-500  ",
+        isElevated ? "top-2  sm:top-3  md:top-4" : "top-3  sm:top-5  md:top-7",
       )}
     >
-      <nav
-        className={cn(
-          "max-w-7xl mx-auto px-6 lg:px-8",
-          isElevated && "border border-border rounded-full bg-background/95 shadow-soft backdrop-blur-xl top-0",
-        )}
-      >
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <span className={cn("text-2xl font-bold tracking-tight", isElevated ? "text-primary" : "text-white")}>
-              Boffinblocks
-            </span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div
-            className={cn(
-              "hidden md:flex items-center gap-2 px-2 py-1",
-              !isElevated && "rounded-full border border-border bg-card",
-            )}
-          >
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleHashNavClick(e, link.href)}
-                className={cn(
-                  "rounded-full px-4 py-2 text-sm transition-colors duration-200",
-                  isActiveLink(link.href)
-                    ? "bg-primary text-primary-foreground shadow-soft"
-                    : "text-muted-foreground hover:bg-secondary hover:text-foreground",
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
-
-            <Link href="/contact" className={buttonVariants({ variant: "secondary" })}>Contact Us</Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="rounded-lg border border-border bg-card p-2 text-foreground transition-colors hover:bg-secondary md:hidden"
-            aria-label="Toggle menu"
-            type="button"
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        <div
+      <Container className=" " >
+        <nav
           className={cn(
-            "md:hidden overflow-hidden transition-all duration-300",
-            isMobileMenuOpen ? "max-h-[500px] pb-6" : "max-h-0",
+            " w-full px-4 sm:px-6 lg:px-8",
+            isElevated &&
+            "rounded-2xl border  border-border bg-background/95 shadow-soft backdrop-blur-xl md:rounded-full ",
           )}
         >
-          <div className="mt-2 flex flex-col gap-2 rounded-2xl border border-border bg-card p-4 shadow-soft">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={(e) => {
-                  handleHashNavClick(e, link.href);
-                  setIsMobileMenuOpen(false);
-                }}
+          <div className="flex h-16 items-center justify-between sm:h-[72px]">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-3 group">
+              <span
                 className={cn(
-                  "rounded-xl px-4 py-3 transition-colors",
-                  isActiveLink(link.href)
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-secondary hover:text-foreground",
+                  "text-lg font-bold tracking-tight sm:text-xl lg:text-2xl",
+                  isElevated ? "text-primary" : "text-white",
                 )}
               >
-                {link.name}
-              </Link>
-            ))}
-            <div className="mt-2 flex flex-col gap-2 border-t border-border pt-4">
+                Boffinblocks
+              </span>
+            </Link>
 
-              <Link href="/contact" className={buttonVariants({ variant: "secondary" })} onClick={() => setIsMobileMenuOpen(false)}>
-                Contact Us
-              </Link>
+            {/* Desktop Navigation */}
+            <div
+              className={cn(
+                "hidden items-center gap-1 px-1 py-1 lg:flex",
+                !isElevated && "rounded-full border border-border bg-card",
+              )}
+            >
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleHashNavClick(e, link.href)}
+                  className={cn(
+                    "rounded-full px-3 py-2 text-sm transition-colors duration-200 xl:px-4",
+                    isActiveLink(link.href)
+                      ? "bg-primary text-primary-foreground shadow-soft"
+                      : "text-muted-foreground hover:bg-secondary hover:text-foreground",
+                  )}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+
+            {/* Desktop CTA */}
+            <div className="hidden items-center gap-3 lg:flex">
+
+              <Link href="/contact" className={buttonVariants({ variant: "secondary" })}>Contact Us</Link>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="rounded-lg border border-border bg-card p-2 text-foreground transition-colors hover:bg-secondary lg:hidden"
+              aria-label="Toggle menu"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-navigation-menu"
+              type="button"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
+
+          {/* Mobile Menu */}
+          <div
+            id="mobile-navigation-menu"
+            className={cn(
+              "overflow-hidden transition-all duration-300 lg:hidden",
+              isMobileMenuOpen ? "max-h-[520px] pb-4 sm:pb-5" : "max-h-0",
+            )}
+          >
+            <div className="mt-1 flex flex-col gap-2 rounded-2xl border border-border bg-card p-3 shadow-soft sm:mt-2 sm:p-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => {
+                    handleHashNavClick(e, link.href);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className={cn(
+                    "rounded-xl px-4 py-2.5 text-sm transition-colors sm:py-3 sm:text-base",
+                    isActiveLink(link.href)
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:bg-secondary hover:text-foreground",
+                  )}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <div className="mt-2 flex flex-col gap-2 border-t border-border pt-4">
+
+                <Link
+                  href="/contact"
+                  className={cn(buttonVariants({ variant: "secondary" }), "w-full")}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Contact Us
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </Container>
     </header>
   );
 }

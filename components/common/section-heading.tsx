@@ -12,6 +12,7 @@ type SectionHeadingProps = {
   className?: string;
   headingClassName?: string;
   descriptionClassName?: string;
+  highlightClassName?: string;
   align?: "left" | "center";
 };
 
@@ -25,6 +26,7 @@ export function SectionHeading({
   className,
   headingClassName,
   descriptionClassName,
+  highlightClassName,
   align = "center",
 }: SectionHeadingProps) {
   return (
@@ -42,7 +44,7 @@ export function SectionHeading({
         id={id}
         className={cn("text-balance text-3xl font-semibold tracking-tight md:text-5xl", headingClassName)}
       >
-        {title} {highlight ? <span className="text-primary">{highlight}</span> : null}
+        {title} {highlight ? <span className={cn("text-accent", highlightClassName)}>{highlight}</span> : null}
       </HeadingTag>
       {description ? (
         <p
