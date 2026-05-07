@@ -1,6 +1,7 @@
 import { ArrowRight, Code2, Compass, Layers3, Rocket } from "lucide-react";
 import { Container } from "@/components/common/container";
 import { SectionHeading } from "@/components/common/section-heading";
+import WorkProcessCard from "../cards/work-process-card";
 
 const WORK_PROCESS_STEPS = [
   {
@@ -36,54 +37,31 @@ const WORK_PROCESS_STEPS = [
 export function WorkProcessSection() {
   return (
     <section
-      id="work-process"
-      className="relative  py-24 lg:py-28"
+      id="work-process "
+      className="p-2 md:p-4"
       aria-labelledby="work-process-heading"
     >
+      <div className="bg-background rounded-3xl relative  py-24 lg:py-28">
+
       <Container>
         <SectionHeading
           id="work-process-heading"
-          className="mb-12 max-w-3xl lg:mb-14"
-          title="Work"
-          highlight="Process"
-          description={
-            <>
-              A structured, transparent approach that keeps momentum high and <br />
-              quality consistent from kickoff to scale.
-            </>
-          }
+          title={<>Work <span className="text-primary">Process</span></>}
+          description="A structured, transparent approach that keeps momentum high and quality consistent from kickoff to scale."
+          align="left"
         />
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid mt-12 grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {WORK_PROCESS_STEPS.map((item, index) => {
-            const Icon = item.icon;
-            const isLast = index === WORK_PROCESS_STEPS.length - 1;
+          
 
             return (
-              <article
-                key={item.step}
-                className=" group relative rounded-xl  p-6  bg-[#f9fafb] "
-              >
-                <div className="mb-5 flex items-center justify-between">
-                  <span className="font-mono text-xs tracking-[0.2em] ">
-                    STEP {item.step}
-                  </span>
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-md ">
-                    <Icon className="h-4 w-4" />
-                  </span>
-                </div>
-
-                <h3 className="text-lg font-semibold">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {item.description}
-                </p>
-
-             
-              </article>
+              <WorkProcessCard key={item.step} item={item}  />
             );
           })}
         </div>
       </Container>
+      </div>
     </section>
   );
 }

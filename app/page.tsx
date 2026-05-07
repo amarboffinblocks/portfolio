@@ -4,6 +4,7 @@ import { ServicesSnapshotSection } from "@/components/sections/services-snapshot
 import { CtaSection } from "@/components/sections/cta-section";
 import { WhyBoffinBlocksSection } from "@/components/sections/why-boffinblocks-section";
 import { WorkProcessSection } from "@/components/sections/work-process-section";
+import { FaqSection } from "@/components/sections/faq-section";
 import { HOME_SERVICES } from "@/lib/data/services";
 
 export default function Home() {
@@ -14,7 +15,8 @@ export default function Home() {
       <WhyBoffinBlocksSection />
       <FeaturedCaseStudiesSection />
       <WorkProcessSection />
-      <CtaSection />
+      <FaqSection />
+      {/* <CtaSection /> */}
     </main>
   );
 }

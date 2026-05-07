@@ -5,7 +5,7 @@ import { GeistPixelLine } from 'geist/font/pixel'
 import './globals.css'
 import { HashScroll } from "@/components/hash-scroll"
 import { FooterSection } from "@/components/sections/footer-section"
-import { Navigation } from "@/components/sections/navigation"
+import { Header } from "@/components/sections/header"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -48,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="light">
       <body className={`${inter.variable} ${jetbrainsMono.variable} ${GeistPixelLine.variable} font-sans antialiased bg-white `}>
-        <Navigation />
+        <Header />
         <HashScroll />
         {children}
         <FooterSection />

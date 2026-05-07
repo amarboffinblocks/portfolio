@@ -1,4 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
+import BackgroundPattern from "../common/background-pattern";
+import { Container } from "../common/container";
+import { SectionHeading } from "../common/section-heading";
+import TestimonialsCard from "../cards/testimonials-card";
+import { InfiniteCarousel } from "../common/InfiniteCarousel";
+import CtaSection from "./cta-section";
 
 const footerLinks = {
   Work: [
@@ -15,60 +24,120 @@ const footerLinks = {
   ],
 };
 
+type CardT = {
+  image: string;
+  name: string;
+  handle: string;
+  date?: string;
+};
+
+const DEFAULT_DATA: CardT[] = [
+  {
+    image:
+      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
+    name: "Briar Martin",
+    handle: "@neilstellar",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
+    name: "Avery Johnson",
+    handle: "@averywrites",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60",
+    name: "Jordan Lee",
+    handle: "@jordantalks",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60",
+    name: "Avery Johnson",
+    handle: "@averywrites",
+  },
+];
 export function FooterSection() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative p-2 sm:p-4">
-      <div className="rounded-3xl bg-[#384357] py-6">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="py-16">
-          <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
-            <div className="max-w-md shrink-0">
-              <Link href="/" className="mb-6 inline-flex items-center gap-2">
-                <span className="text-lg font-semibold tracking-tight text-white">BoffinBlocks</span>
-              </Link>
+    <>
 
-              <p className="text-sm leading-relaxed text-slate-300">
-                The complete platform to build, deploy, and scale AI-powered applications.
-              </p>
-            </div>
+{/* <section className="py-32">
 
-            <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:flex lg:flex-nowrap lg:justify-end lg:gap-x-12 xl:gap-x-16">
-              {Object.entries(footerLinks).map(([title, links]) => (
-                <nav key={title} aria-label={`${title} footer links`}>
-                  <h3 className="mb-4 text-xs font-semibold uppercase tracking-wide text-slate-400">{title}</h3>
-                  <ul className="space-y-3">
-                    {links.map((link) => (
-                      <li key={link.name}>
-                        <Link
-                          href={link.href}
-                          className="text-sm text-slate-200/90 transition-colors hover:text-white"
-                        >
-                          {link.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              ))}
+            <CtaSection />
+</section> */}
+
+    <footer className=" p-2 md:p-4 mt-64">
+      <div className="relative overflow-visible rounded-3xl bg-primary">
+        <BackgroundPattern blockCount={82} minDistance={6.6} />
+        <div className="relative z-10 ">
+
+          <div className="absolute inset-x-0 top-0 z-20 -translate-y-1/2 px-2 md:px-6">
+            <CtaSection />
+          </div>
+
+          <div className="relative z-10  py-32 pt-72">
+            <SectionHeading
+              title={<>Hear what our <span className="text-accent"> clients say</span></>}
+              eyebrow="client Stories"
+              background="primary"
+              align="center"
+            />
+            <div className="mt-10 overflow-hidden">
+              <InfiniteCarousel items={DEFAULT_DATA} />
+
             </div>
           </div>
-        </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-6 md:flex-row">
-          <p className="text-xs tracking-wide text-slate-300/90">
-            © {year} BOFFINBLOCKS. ALL RIGHTS RESERVED.
-          </p>
+          <Container className="relative z-10 h-full ">
+            <div className="rounded-t-3xl bg-background  text-foreground   ">
+              <div className="grid gap-10 md:grid-cols-[1.2fr_1fr] px-8 py-14">
+                <div className="max-w-lg">
+                  <Link href="/" className="inline-flex items-center">
+                    <span className="text-2xl font-semibold tracking-tight">BoffinBlocks</span>
+                  </Link>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    We design, build, and scale modern digital products with speed and quality.
+                  </p>
 
-          <div className="flex items-center gap-4 text-sm text-slate-200/90">
-            <span className="flex items-center gap-2">
-              boffinblocks@gmail.com
-            </span>
-          </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+                  {Object.entries(footerLinks).map(([title, links]) => (
+                    <nav key={title} aria-label={`${title} footer links`}>
+                      <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                        {title}
+                      </h3>
+                      <ul className="space-y-2">
+                        {links.map((link) => (
+                          <li key={link.name}>
+                            <Link
+                              href={link.href}
+                              className="text-sm text-foreground/90 transition-colors hover:text-primary"
+                            >
+                              {link.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </nav>
+                  ))}
+                </div>
+              </div>
+
+              <div className=" flex flex-col items-start justify-between gap-3 border-t border-border  px-8 py-6  text-sm text-foreground sm:flex-row sm:items-center ">
+                <p>© {year} BoffinBlocks. All rights reserved.</p>
+                <p className="font-semibold font-mono">Built in Mohali, Punjab</p>
+              </div>
+            </div>
+          </Container>
         </div>
-      </div>
       </div>
     </footer>
+
+    </>
   );
 }
+
+

@@ -1,56 +1,128 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+
+"use client";
 
 import { Button } from "@/components/ui/button";
-import { Container } from "@/components/common/container";
-import { SectionHeading } from "@/components/common/section-heading";
+import Link from "next/link";
+import {
+  FaReact, FaAws, FaDocker, FaNodeJs, FaGithub,
+  FaTwitter, FaLinkedin, FaInstagram, FaGoogle, FaApple
+} from "react-icons/fa";
+import {
+  SiNextdotjs, SiVercel, SiRedux, SiTypescript, SiFacebook
+} from "react-icons/si";
+import { SectionHeading } from "../common/section-heading";
+import { Container } from "../common/container";
 
-export function CtaSection() {
+const fallbackUrls = [
+  "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+  "https://upload.wikimedia.org/wikipedia/commons/9/96/Among_Us_icon.png"
+];
+
+const iconConfigs = [
+  { Icon: FaReact, color: "#61DAFB" },
+  { Icon: FaAws, color: "#FF9900" },
+  { Icon: FaDocker, color: "#2496ED" },
+  { Icon: FaNodeJs, color: "#339933" },
+  { Icon: SiNextdotjs, color: "#000000" },
+  { Icon: SiVercel, color: "#000000" },
+  { Icon: SiRedux, color: "#764ABC" },
+  { Icon: SiTypescript, color: "#3178C6" },
+  { Icon: FaGithub, color: "#181717" },
+  { Icon: FaTwitter, color: "#1DA1F2" },
+  { Icon: FaLinkedin, color: "#0077B5" },
+  { Icon: FaInstagram, color: "#E1306C" },
+  { Icon: FaGoogle, color: "#DB4437" },
+  { Icon: FaApple, color: "#000000" },
+  { Icon: SiFacebook, color: "#1877F2" },
+  { Icon: null, img: fallbackUrls[0] },
+  { Icon: null, img: fallbackUrls[1] },
+];
+
+export default function CtaSection() {
+  const orbitCount = 3;
+  const orbitGap = 8; // rem between orbits
+  const iconsPerOrbit = Math.ceil(iconConfigs.length / orbitCount);
+
   return (
-    <section className="relative p-2 sm:px-4 sm:py-2 ">
-      {/* <div className="relative overflow-hidden rounded-3xl  bg-primary p-8  sm:p-10 lg:p-14"> */}
-      <Container className=" ">
-        <div className="relative p-8 rounded-3xl  bg-primary z-10 grid items-end gap-10 lg:grid-cols-[1.3fr_0.7fr] ">
-          <div>
-            <SectionHeading
-              align="left"
-              title="Ready to Build"
-              highlight="with AI?"
-              description="Whether you need a custom AI product, a smart internal tool, or a workflow automation system, BoffinBlocks can help you build something useful, scalable, and aligned with your business."
-              descriptionClassName="text-white "
-              headingClassName="text-white"
-            />
+    <Container>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button
-                asChild
-                size="lg"
-                variant="secondary"
-              // className="h-11 border border-accent/45 bg-primary px-6 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-              >
-                <Link href="/contact" className="inline-flex items-center gap-2">
-                  Discuss Your Project
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </Button>
-
-              <Button
-                asChild
-                size="lg"
-                variant="secondary"
-              // className="h-11 border-border bg-transparent px-6 text-sm font-medium hover:bg-secondary/40"
-              >
-                <Link href="/contact" className="inline-flex items-center gap-2">
-                  Contact Us
-                </Link>
-              </Button>
-            </div>
-          </div>
-
+      <section className="relative  flex items-center justify-between h-96  bg-[#384357] text-foreground overflow-hidden rounded-3xl">
+        {/* Left side: Heading and Text */}
+        <div className="w-1/2 z-10">
 
         </div>
-      </Container>
-      {/* </div> */}
-    </section>
+
+        {/* Right side: Orbit animation cropped to 1/4 */}
+        <div className="relative w-1/2 h-full flex items-center justify-start overflow-hidden">
+          <div className="relative w-[50rem] h-[50rem] translate-x-[50%] flex items-center justify-center">
+            {/* Center Circle */}
+            <div className="w-24 h-24 rounded-full bg-gray-50 dark:bg-gray-800 shadow-lg flex items-center justify-center">
+              <FaReact className="w-12 h-12 text-blue-400" />
+            </div>
+
+            {/* Generate Orbits */}
+            {[...Array(orbitCount)].map((_, orbitIdx) => {
+              const size = `${12 + orbitGap * (orbitIdx + 1)}rem`; // equal spacing
+              const angleStep = (2 * Math.PI) / iconsPerOrbit;
+
+              return (
+                <div
+                  key={orbitIdx}
+                  className="absolute rounded-full border-2 border-dotted border-white/30 "
+                  style={{
+                    width: size,
+                    height: size,
+                    animation: `spin ${12 + orbitIdx * 6}s linear infinite`,
+                  }}
+                >
+                  {iconConfigs
+                    .slice(orbitIdx * iconsPerOrbit, orbitIdx * iconsPerOrbit + iconsPerOrbit)
+                    .map((cfg, iconIdx) => {
+                      const angle = iconIdx * angleStep;
+                      const x = 50 + 50 * Math.cos(angle);
+                      const y = 50 + 50 * Math.sin(angle);
+
+                      return (
+                        <div
+                          key={iconIdx}
+                          className="absolute bg-white dark:bg-gray-800 rounded-full p-2 "
+                          style={{
+                            left: `${x}%`,
+                            top: `${y}%`,
+                            transform: "translate(-50%, -50%)",
+                          }}
+                        >
+                          {cfg.Icon ? (
+                            <cfg.Icon className="w-8 h-8" style={{ color: cfg.color }} />
+                          ) : (
+                            <img
+                              src={cfg.img}
+                              alt="icon"
+                              className="w-8 h-8 object-contain"
+                            />
+                          )}
+                        </div>
+                      );
+                    })}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Animation keyframes */}
+        <style jsx>{`
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
+      </section>
+    </Container>
+
   );
 }

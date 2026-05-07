@@ -15,13 +15,7 @@ type ServicesSnapshotSectionProps = {
 
 export function ServicesSnapshotSection({
   services = HOME_SERVICES,
-  title = (
-    <>
-      Built for speed, scale, and <br /> real-world
-      
-    </>
-  ),
-  highlight = "delivery.",
+  title = <>Built for speed, scale, and  <span className="text-primary">real-world, delivery.</span></>,
   description = "End-to-end capabilities to design, ship, and grow modern AI-powered products without compromising quality.",
 }: ServicesSnapshotSectionProps) {
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -139,14 +133,15 @@ export function ServicesSnapshotSection({
       />
 
       {/* Sticky container */}
-      <div className="sticky top-42 h-fit overflow-hidden">
+      <div className="sticky top-52 h-fit overflow-hidden">
         <div className="h-full">
           <Container>
             <SectionHeading
+              align="left"
               id="services-heading"
               title={title}
-              highlight={highlight}
               description={description}
+              className="max-w-5xl"
             />
           </Container>
           {/* Horizontal scrolling container */}
@@ -168,7 +163,7 @@ export function ServicesSnapshotSection({
               }}
             >
               {services.map((service) => (
-                <ServiceCard key={service.number} service={service} className="w-[360px]" />
+                <ServiceCard key={service.number} service={service} className="w-[310px] sm:w-[330px]" />
               ))}
             </div>
           </div>

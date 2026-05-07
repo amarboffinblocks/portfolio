@@ -49,28 +49,24 @@ export function WhyBoffinBlocksSection() {
     >
       <Container>
         <SectionHeading
+          align="left"
           id="why-boffinblocks-heading"
-          className="mx-auto max-w-3xl"
-          title="Why Teams Choose"
-          highlight="BoffinBlocks"
+          title={<>Why Teams Choose <span className="text-primary">BoffinBlocks</span></>}
           description="A modern AI product partner that combines business understanding with high-quality execution."
         />
 
           <div className="mt-10">
-            <div className="divide-y divide-border rounded-2xl bg-background/70">
+            <div className="divide-y divide-border rounded-2xl bg-background">
               {WHY_POINTS.map((point, index) => {
                 const Icon = point.icon;
-
                 return (
                   <article
                     key={point.title}
-                    className="group p-5 transition-colors duration-300 hover:bg-primary/5"
+                    className="group p-5 transition-colors duration-300 "
                   >
                     <div className="mb-3 flex items-center justify-between">
-                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-primary/25 bg-primary/10 text-primary">
-                        <Icon className="h-4.5 w-4.5" />
-                      </span>
-                      <span className="font-mono text-xs tracking-[0.2em] text-primary/75">
+                        <Icon className="h-6 w-6" />
+                      <span className="font-mono text-xs  ">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                     </div>
@@ -87,8 +83,8 @@ export function WhyBoffinBlocksSection() {
             </div>
           </div>
 
-          <div className="mt-6 flex items-start gap-2 rounded-xl bg-primary/5 p-4 text-sm text-foreground/85">
-            <CheckCircle2 className="mt-0.5 h-4.5 w-4.5 shrink-0 text-primary" />
+          <div className="mt-6 flex items-start gap-2 rounded-xl bg-background p-4 text-sm text-foreground">
+            <CheckCircle2 className="mt-0.5 h-4.5 w-4.5 " />
             Need a custom engagement model? We can adapt sprint rhythm, communication style, and team ownership to match your organization.
           </div>
       </Container>
