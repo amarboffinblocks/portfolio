@@ -3,14 +3,14 @@ import React from 'react'
 import { Container } from './container'
 import { cn } from '@/lib/utils'
 
-const HeroWrapper = ({ className, children }: { className?: string, children: React.ReactNode }) => {
+const HeroWrapper = ({ className, roundedClassName, children }: { className?: string, roundedClassName?: string, children: React.ReactNode }) => {
     return (
         <section
             className="overflow-hidden p-2  md:p-4 "
             aria-labelledby="hero-heading"
         >
             <div
-                className="relative overflow-hidden rounded-2xl bg-primary  "
+                className={cn("relative overflow-hidden rounded-2xl bg-primary  ", roundedClassName)}
             >
 
                 <div

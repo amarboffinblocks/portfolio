@@ -8,11 +8,13 @@ import { HOME_SERVICES } from "@/lib/data/services";
 import ReviewAndContact from "@/components/sections/review-and-contact";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";
 import CtaSection from "@/components/sections/cta-section";
+import { TrustTechStackStripSection } from "@/components/sections/trust-tech-stack-strip-section";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen">
       <HeroSection />
+      <TrustTechStackStripSection />
       <ServicesSnapshotSection services={HOME_SERVICES} />
       <WhyBoffinBlocksSection />
       <FeaturedCaseStudiesSection />
