@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Container } from "@/components/common/container";
-import { CtaSection } from "@/components/sections/cta-section";
+import CtaSection from "@/components/sections/cta-section";
 import { PageHeroSection } from "@/components/sections/page-hero-section";
 import { buttonVariants } from "@/components/ui/button";
 

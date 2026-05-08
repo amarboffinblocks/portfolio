@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { PageHeroSection } from "@/components/sections/page-hero-section";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/common/container";
-import { CtaSection } from "@/components/sections/cta-section";
+import CtaSection from "@/components/sections/cta-section";
 
 const CASE_STUDIES = [
   {

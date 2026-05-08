@@ -2,7 +2,7 @@ import { CheckCircle2, Compass, Rocket, ShieldCheck } from "lucide-react";
 
 import { Container } from "@/components/common/container";
 import { SectionHeading } from "@/components/common/section-heading";
-import { CtaSection } from "@/components/sections/cta-section";
+import CtaSection from "@/components/sections/cta-section";
 import { PageHeroSection } from "@/components/sections/page-hero-section";
 import { WorkProcessSection } from "@/components/sections/work-process-section";
 
