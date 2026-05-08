@@ -14,12 +14,12 @@ export default function Home() {
     <main className="relative min-h-screen">
       <HeroSection />
       <ServicesSnapshotSection services={HOME_SERVICES} />
+      <WhyBoffinBlocksSection />
       <FeaturedCaseStudiesSection />
       <WorkProcessSection />
-      <WhyBoffinBlocksSection />
-      <FaqSection />
-      <CtaSection />
       <TestimonialsSection />
+      <CtaSection />
+      <FaqSection />
       {/* <ReviewAndContact/> */}
     </main>
   );

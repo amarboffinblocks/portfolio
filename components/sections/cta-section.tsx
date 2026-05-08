@@ -47,7 +47,7 @@ export default function CtaSection() {
   return (
     <Container>
 
-      <section className="relative  flex items-center justify-between h-96 bg-primary backdrop-blur-sm text-foreground overflow-hidden rounded-3xl">
+      <section className="relative   flex items-center justify-between h-96 bg-primary backdrop-blur-sm text-foreground overflow-hidden rounded-3xl">
         <GridPattern size={40}/>
         {/* Left side: Heading and Text */}
         <div className="w-1/2 z-10 flex flex-col items-start justify-center gap-10 py-10 pl-14 ">
@@ -59,7 +59,7 @@ export default function CtaSection() {
             </p>
           </div>
           <Button variant="secondary" size="lg">
-            <Link href="/contact">Contact Us</Link>
+            <Link href="/contact">Get Free Consultation</Link>
           </Button>
         </div>
 
