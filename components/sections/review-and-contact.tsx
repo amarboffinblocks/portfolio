@@ -60,16 +60,16 @@ const DEFAULT_DATA: CardT[] = [
 
 const ReviewAndContact = () => {
     return (
-        <section className=" p-2 md:p-4 mt-64">
+        <section className=" p-2 md:p-4 ">
             <div className="relative overflow-visible rounded-3xl bg-primary">
                 <BackgroundPattern blockCount={82} minDistance={6.6} />
-                <div className="relative z-10 ">
+                <div className="relative z-10 pt-4 ">
 
-                    <div className="absolute inset-x-0 top-0 z-20 -translate-y-1/2 px-2 md:px-6">
+                    {/* <div className="absolute inset-x-0 top-0 z-20 -translate-y-1/2 px-2 md:px-6"> */}
                         <CtaSection />
-                    </div>
+                    {/* </div> */}
 
-                    <div className="relative z-10  py-26 pt-72">
+                    <div className="relative z-10  py-26 ">
                         <SectionHeading
                             title={<>Hear what our <span className="text-accent"> clients say</span></>}
                             eyebrow="client Stories"

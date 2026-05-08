@@ -45,6 +45,8 @@ export function FeaturedCaseStudiesSection() {
       className="relative py-24 lg:py-28 "
       aria-labelledby="case-studies-heading"
     >
+      <div>
+
       <Container>
         <div className=" mb-12 w-full   flex justify-between items-end">
           <div>
@@ -73,6 +75,7 @@ export function FeaturedCaseStudiesSection() {
           })}
         </div>
       </Container>
+      </div>
     </section>
   );
 }

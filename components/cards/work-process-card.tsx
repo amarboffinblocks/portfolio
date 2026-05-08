@@ -1,23 +1,25 @@
 import React from 'react'
+import GridPattern from '../common/grid-pattern';
 
 const WorkProcessCard = ({ item }: { item: any }) => {
     const Icon = item.icon;
     return (
         <article
             key={item.step}
-            className=" group relative rounded-xl  p-6  bg-white "
+            className=" group relative rounded-xl  p-6  glass-radial backdrop-blur-sm  "
         >
+            <GridPattern size={40} />
             <div className="mb-5 flex items-center justify-between">
-                <span className="font-mono text-xs tracking-[0.2em]  ">
+                <span className="font-mono text-xs tracking-[0.2em] text-primary-foreground ">
                     STEP {item.step}
                 </span>
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-md ">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-md glass-radial text-primary-foreground ">
                     <Icon className="h-4 w-4" />
                 </span>
             </div>
 
-            <h3 className="text-lg font-semibold">{item.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            <h3 className="text-lg font-semibold text-primary-foreground">{item.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-primary-foreground/50">
                 {item.description}
             </p>
 

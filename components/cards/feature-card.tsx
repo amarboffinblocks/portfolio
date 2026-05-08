@@ -19,8 +19,8 @@ type FeatureStudy = {
 const FeatureCard = ({ study }: { study: FeatureStudy }) => {
     const Icon = study.icon;
     return (
-        <Card className="group gap-0 overflow-hidden rounded-3xl border-border/60 bg-background/95 py-0 ring-1 ring-inset ring-white/25 transition-all duration-300 hover:-translate-y-0.5">
-            <div className="relative aspect-16/10 overflow-hidden border-b border-border/60">
+        <Card className="group gap-0 overflow-hidden rounded-3xl bg-background py-0  transition-all duration-300 hover:-translate-y-0.5">
+            <div className="relative aspect-16/12 overflow-hidden border-b border-border/60">
                 <Image
                     src={study.image}
                     alt={`${study.company} project preview`}

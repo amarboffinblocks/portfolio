@@ -21,7 +21,7 @@ const VerifyIcon = () => (
   
 const TestimonialsCard = ({ card, index }: { card: any, index: number }) => {
     return (
-        <div className="p-4 rounded-lg mx-4 shadow hover:shadow-lg transition-all duration-200 w-72 shrink-0 bg-white">
+        <div className="p-4 rounded-lg mx-4 shadow hover:shadow-lg transition-all duration-200 w-72 shrink-0 bg-background">
             <div className="flex gap-2">
                 <img className="size-11 rounded-full" src={card.image} alt={card.name} />
                 <div className="flex flex-col">

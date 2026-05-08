@@ -1,25 +1,39 @@
 import { Container } from "@/components/common/container";
 import { SectionHeading } from "@/components/common/section-heading";
 import { Card, CardContent } from "@/components/ui/card";
+import { InfiniteCarousel } from "../common/InfiniteCarousel";
 
-const TESTIMONIALS = [
+type CardT = {
+  image: string;
+  name: string;
+  handle: string;
+  date?: string;
+};
+
+const DEFAULT_DATA: CardT[] = [
   {
-    quote:
-      "BoffinBlocks helped us move from idea to launch much faster than expected. Their team brought structure, speed, and strong product thinking from day one.",
-    name: "Aman Verma",
-    role: "Founder, FinFlow",
+      image:
+          "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
+      name: "Briar Martin",
+      handle: "@neilstellar",
   },
   {
-    quote:
-      "Communication was clear, delivery was predictable, and quality stayed high through every sprint. It felt like working with an extension of our own team.",
-    name: "Neha Sharma",
-    role: "Product Lead, OpsGrid",
+      image:
+          "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
+      name: "Avery Johnson",
+      handle: "@averywrites",
   },
   {
-    quote:
-      "They didn’t just build features, they improved our entire product workflow. The final result is cleaner, faster, and easier for our team to scale.",
-    name: "Rohit Singh",
-    role: "CTO, MetricLane",
+      image:
+          "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60",
+      name: "Jordan Lee",
+      handle: "@jordantalks",
+  },
+  {
+      image:
+          "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60",
+      name: "Avery Johnson",
+      handle: "@averywrites",
   },
 ];
 
@@ -30,35 +44,18 @@ export function TestimonialsSection() {
       className="py-24 lg:py-28"
       aria-labelledby="testimonials-heading"
     >
+      <div className="relative z-10   ">
         <SectionHeading
-          id="testimonials-heading"
-          align="left"
-          eyebrow="Testimonials"
-          className="max-w-3xl"
-          title={
-            <>
-              What Clients Say About <span className="text-primary">BoffinBlocks</span>
-            </>
-          }
-          description="Trusted by teams that value clarity, execution quality, and long-term product growth."
+          title={<>Hear what our <span className="text-primary"> clients say</span></>}
+          eyebrow="client Stories"
+          
+          align="center"
         />
+        <div className="mt-10 overflow-hidden">
+          <InfiniteCarousel items={DEFAULT_DATA} />
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {TESTIMONIALS.map((item) => (
-            <Card
-              key={item.name}
-              className="h-full rounded-2xl border-border/70 bg-background/80 py-0 shadow-sm"
-            >
-              <CardContent className="flex h-full flex-col p-6">
-                <p className="text-base leading-relaxed text-foreground/90">"{item.quote}"</p>
-                <div className="mt-auto border-t border-border/70 pt-4">
-                  <p className="text-sm font-semibold text-foreground">{item.name}</p>
-                  <p className="text-xs text-muted-foreground">{item.role}</p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
         </div>
+      </div>
     </section>
   );
 }

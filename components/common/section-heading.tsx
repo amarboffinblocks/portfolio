@@ -75,14 +75,14 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? (
-        <p className={cn("mb-3 font-mono text-sm tracking-[0.2em]", colors.eyebrow)}>
+        <span className={cn("font-mono text-sm bg-primary py-2 px-4 rounded-full text-primary-foreground ")}>
           {eyebrow}
-        </p>
+        </span>
       ) : null}
       <HeadingTag
         id={id}
         className={cn(
-          "text-balance text-3xl font-semibold tracking-tight md:text-5xl",
+          "text-balance text-3xl font-semibold tracking-tight md:text-5xl mt-4",
           colors.title
         )}
       >

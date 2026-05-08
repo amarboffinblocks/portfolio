@@ -51,12 +51,12 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
         </span>
         <span
           className={cn(
-            "inline-flex h-12 w-12 items-center justify-center   transition-transform duration-300 glass-radial rounded-md ",
+            "inline-flex p-4 items-center justify-center   transition-transform duration-300 glass-radial rounded-md ",
           )}
         >
           <Icon
             strokeWidth={2.2}
-            className={cn("h-5 w-5 drop-shadow-[0_1px_1px_rgba(0,0,0,0.35)]", service.iconColor ?? "text-white")}
+            className={cn("h-8 w-8 drop-shadow-[0_1px_1px_rgba(0,0,0,0.35)]", service.iconColor ?? "text-white")}
           />
         </span>
       </div>
