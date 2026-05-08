@@ -48,12 +48,21 @@ export default function CtaSection() {
 
       <section className="relative  flex items-center justify-between h-96  bg-[#384357] text-foreground overflow-hidden rounded-3xl">
         {/* Left side: Heading and Text */}
-        <div className="w-1/2 z-10">
-
+        <div className="w-1/2 z-10 flex flex-col items-start justify-center gap-10 py-10 pl-14 ">
+          <div>
+            <SectionHeading title={<>Learn More About How We Can Help <span className="text-accent">You Grow</span></>} background="primary" align="left" />
+            <p className="text-primary-foreground/80 max-w-lg mt-4">
+              We design, build, and operate AI-powered workflows that remove manual
+              bottlenecks so your team can focus on growth.
+            </p>
+          </div>
+          <Button variant="secondary" size="lg">
+            <Link href="/contact">Contact Us</Link>
+          </Button>
         </div>
 
         {/* Right side: Orbit animation cropped to 1/4 */}
-        <div className="relative w-1/2 h-full flex items-center justify-start overflow-hidden">
+        <div className="relative z-10 w-1/2 h-full flex items-center justify-start overflow-hidden">
           <div className="relative w-[50rem] h-[50rem] translate-x-[50%] flex items-center justify-center">
             {/* Center Circle */}
             <div className="w-24 h-24 rounded-full bg-gray-50 dark:bg-gray-800 shadow-lg flex items-center justify-center">

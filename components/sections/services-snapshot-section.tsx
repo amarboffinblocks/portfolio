@@ -137,7 +137,7 @@ export function ServicesSnapshotSection({
         <div className="h-full">
           <Container>
             <SectionHeading
-              align="left"
+              align="center"
               id="services-heading"
               title={title}
               description={description}

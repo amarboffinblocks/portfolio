@@ -10,7 +10,7 @@
   --card-foreground: #111827;
   --popover: #ffffff;
   --popover-foreground: #111827;
-  --primary: #6956ff;
+  --primary: #11338C;
   --primary-foreground: #ffffff;
   --secondary: #ebedf5;
   --secondary-foreground: #1f2937;
@@ -22,8 +22,8 @@
   --destructive-foreground: #ffffff;
   --border: #d8deeb;
   --input: #d8deeb;
-  --ring: #6956ff;
-  --chart-1: #6956ff;
+  --ring: #11338C;
+  --chart-1: #11338C;
   --chart-2: #8d7cff;
   --chart-3: #2ebf8b;
   --chart-4: #f4c84c;
@@ -31,13 +31,13 @@
   --radius: 0.75rem;
   --sidebar: #ffffff;
   --sidebar-foreground: #111827;
-  --sidebar-primary: #6956ff;
+  --sidebar-primary: #11338C;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #eff2f8;
   --sidebar-accent-foreground: #1f2937;
   --sidebar-border: #d8deeb;
-  --sidebar-ring: #6956ff;
-  --brand-start: #6956ff;
+  --sidebar-ring: #11338C;
+  --brand-start: #11338C;
   --brand-end: #8d7cff;
   --brand-soft: #c0b7ff;
   --surface-brand-soft: #f2f0ff;
@@ -53,7 +53,7 @@
   --card-foreground: #111827;
   --popover: #ffffff;
   --popover-foreground: #111827;
-  --primary: #6956ff;
+  --primary: #11338C;
   --primary-foreground: #ffffff;
   --secondary: #ebedf5;
   --secondary-foreground: #1f2937;
@@ -65,23 +65,23 @@
   --destructive-foreground: #ffffff;
   --border: #d8deeb;
   --input: #d8deeb;
-  --ring: #6956ff;
-  --chart-1: #6956ff;
+  --ring: #11338C;
+  --chart-1: #11338C;
   --chart-2: #8d7cff;
   --chart-3: #2ebf8b;
   --chart-4: #f4c84c;
   --chart-5: #1f2937;
   --sidebar: #ffffff;
   --sidebar-foreground: #111827;
-  --sidebar-primary: #6956ff;
+  --sidebar-primary: #11338C;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #eff2f8;
   --sidebar-accent-foreground: #1f2937;
   --sidebar-border: #d8deeb;
-  --sidebar-ring: #6956ff;
-  --brand-start: #6956ff;
-  --brand-end: #8d7cff;
-  --brand-soft: #c0b7ff;
+  --sidebar-ring: #11338C;
+  --brand-start: #11338C;
+  --brand-end: #11338C;
+  --brand-soft: #11338C;
   --surface-brand-soft: #f2f0ff;
   --shadow-soft: 0 10px 30px rgb(17 24 39 / 0.06);
   --shadow-brand: 0 12px 24px rgb(108 99 255 / 0.25);
@@ -238,6 +238,17 @@
 
   .hero-light-orb {
     animation: heroOrbFloat 14s ease-in-out infinite;
+  }
+  
+  .glass-radial {
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.1) 100%
+    );
+  
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
 }
 
