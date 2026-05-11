@@ -30,7 +30,7 @@ const HERO_STATS = [
 
 export function HeroSection() {
   return (
-    <HeroWrapper  >
+    <HeroWrapper className="h-[96vh]" >
       <div className="relative">
         <div className="flex flex-col   items-center text-start md:text-center gap-4">
           <h1
