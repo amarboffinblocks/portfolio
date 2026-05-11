@@ -5,6 +5,7 @@ import { Container } from "../common/container";
 import { SectionHeading } from "../common/section-heading";
 import { Service, ServiceCard } from "../cards/service-card";
 import { HOME_SERVICES } from "@/lib/data/services";
+import MobileSerivceSection from "./mobile-serivces-seciton";
 
 type ServicesSnapshotSectionProps = {
   services?: Service[];
@@ -120,54 +121,60 @@ export function ServicesSnapshotSection({
   }, [updateTransform]);
 
   return (
-    <section
-      id="services"
-      ref={galleryRef}
-      className="relative  py-24 lg:py-28 min-h-screen  flex flex-col  "
-      style={{ height: sectionHeight }}
-    >
-      <div
-        ref={layoutProbeRef}
-        aria-hidden
-        className="pointer-events-none invisible mx-auto h-0 w-full max-w-7xl px-6 lg:px-8"
-      />
+    <>
+      <section
+        id="services"
+        ref={galleryRef}
+        className="relative  py-24 lg:py-28 min-h-screen  md:flex flex-col hidden   "
+        style={{ height: sectionHeight }}
+      >
+        <div
+          ref={layoutProbeRef}
+          aria-hidden
+          className="pointer-events-none invisible mx-auto h-0 w-full max-w-7xl px-6 lg:px-8"
+        />
 
-      {/* Sticky container */}
-      <div className="sticky top-32 h-fit overflow-hidden">
-        <div className="h-full">
-          <Container>
-            <SectionHeading
-              align="center"
-              id="services-heading"
-              title={title}
-              description={description}
-            />
-          </Container>
-          {/* Horizontal scrolling container */}
-          <div className="flex-1 flex items-center mt-12">
-            <div
-              ref={containerRef}
-              className="flex gap-6"
-              style={{
-                paddingLeft: trackInset.left,
-                paddingRight: trackInset.right,
-                transform: "translate3d(0, 0, 0)",
-                WebkitTransform: "translate3d(0, 0, 0)",
-                backfaceVisibility: "hidden",
-                WebkitBackfaceVisibility: "hidden",
-                perspective: 1000,
-                WebkitPerspective: 1000,
-                touchAction: "pan-y",
-                willChange: "transform",
-              }}
-            >
-              {services.map((service) => (
-                <ServiceCard key={service.number} service={service} className="w-[310px] sm:w-[330px]" />
-              ))}
+        {/* Sticky container */}
+        <div className="sticky top-32 h-fit overflow-hidden">
+          <div className="h-full">
+            <Container>
+              <SectionHeading
+                align="center"
+                id="services-heading"
+                title={title}
+                description={description}
+              />
+            </Container>
+            {/* Horizontal scrolling container */}
+            <div className="flex-1 flex items-center mt-12">
+              <div
+                ref={containerRef}
+                className="flex gap-6"
+                style={{
+                  paddingLeft: trackInset.left,
+                  paddingRight: trackInset.right,
+                  transform: "translate3d(0, 0, 0)",
+                  WebkitTransform: "translate3d(0, 0, 0)",
+                  backfaceVisibility: "hidden",
+                  WebkitBackfaceVisibility: "hidden",
+                  perspective: 1000,
+                  WebkitPerspective: 1000,
+                  touchAction: "pan-y",
+                  willChange: "transform",
+                }}
+              >
+                {services.map((service) => (
+                  <ServiceCard key={service.number} service={service} className="w-[310px] sm:w-[330px]" />
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+<MobileSerivceSection/>
+
+
+    </>
+
   );
 }
