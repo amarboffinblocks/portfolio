@@ -48,7 +48,7 @@ export function FeaturedCaseStudiesSection() {
       <div>
 
       <Container>
-        <div className=" mb-12 w-full   flex justify-between items-end">
+        <div className=" mb-12 w-full   flex flex-col md:flex-row gap-y-6 justify-between md:items-end">
           <div>
           <SectionHeading
             id="case-studies-heading"

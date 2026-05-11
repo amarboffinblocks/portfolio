@@ -32,11 +32,10 @@ export function HeroSection() {
   return (
     <HeroWrapper  >
       <div className="relative">
-
-        <div className="flex flex-col  items-center text-center gap-4">
+        <div className="flex flex-col   items-center text-start md:text-center gap-4">
           <h1
             id="hero-heading"
-            className="text-balance text-3xl leading-tight font-semibold md:text-5xl text-primary-foreground "
+            className="text-balance text-3xl  leading-tight font-semibold md:text-5xl text-primary-foreground "
           >
             We systemize and automate <br />  businesses for highly profitable scale,
             <br />
@@ -46,7 +45,7 @@ export function HeroSection() {
             We design, build, and operate AI-powered workflows that remove manual
             bottlenecks so your team can focus on growth.
           </p>
-          <Button variant="secondary" className="group mt-6" size="lg" >
+          <Button variant="secondary" className="group mt-6 w-full md:w-auto" size="lg" >
             <Link href="/" className="flex items-center gap-2">
               Explore Our Work
               <ArrowRight className="size-4 group-hover:translate-x-1 transition-all duration-500" />

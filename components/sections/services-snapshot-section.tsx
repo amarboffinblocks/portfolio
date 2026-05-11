@@ -133,7 +133,7 @@ export function ServicesSnapshotSection({
       />
 
       {/* Sticky container */}
-      <div className="sticky top-50 h-fit overflow-hidden">
+      <div className="sticky  top-28 md:top-42 h-fit overflow-hidden">
         <div className="h-full">
           <Container>
             <SectionHeading
@@ -141,7 +141,6 @@ export function ServicesSnapshotSection({
               id="services-heading"
               title={title}
               description={description}
-              className="max-w-5xl"
             />
           </Container>
           {/* Horizontal scrolling container */}

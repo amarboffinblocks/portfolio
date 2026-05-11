@@ -142,7 +142,7 @@ export function WhyBoffinBlocksSection() {
                   <p className="mt-3 text-sm leading-relaxed text-primary-foreground/85">
                     {featuredPoint.description}
                   </p>
-                  <Button variant="secondary" className="mt-6 bg-accent">
+                  <Button variant="secondary" className="mt-6 bg-accent w-full md:w-auto">
                     Start your next sprint
                     <ArrowRight className="h-4 w-4" />
                   </Button>

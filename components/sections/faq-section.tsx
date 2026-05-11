@@ -51,7 +51,7 @@ export function FaqSection() {
           description="Everything you need to know before starting your product journey with BoffinBlocks."
         />
 
-        <div className="mt-10  p-2 sm:p-3">
+        <div className="mt-10">
           <Accordion type="single" collapsible className="w-full bg-background rounded-xl">
             {FAQ_ITEMS.map((item, index) => (
               <AccordionItem

@@ -21,8 +21,8 @@ const alignClasses: Record<
   { container: string; text: string; description: string }
 > = {
   center: {
-    container: "mx-auto",
-    text: "text-center",
+    container: "text-left md:mx-auto",
+    text: "text-left md:text-center",
     description: "mx-auto",
   },
   left: {

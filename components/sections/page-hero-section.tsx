@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/breadcrumb"
 import { usePathname } from 'next/navigation'
 import StatsCard from '../cards/stats-card'
+import { cn } from '@/lib/utils'
 const HERO_STATS = [
   {
     id: 1,
@@ -48,7 +49,7 @@ export const PageHeroSection = ({ title, eyebrow, breadcrumb = false, stash = fa
       ?.replace(/\b\w/g, (c) => c.toUpperCase()) ?? 'Home'
 
   return (
-    <HeroWrapper className={!stash ? "pb-52" : ""}>
+    <HeroWrapper className={cn(!stash ? "pb-40" : "")}>
       <div className="flex flex-col items-center text-center gap-4 ">
         {eyebrow && <span className='text-2xl text-accent uppercase font-semibold'>{eyebrow}</span>}
         <h1 className="text-3xl  font-semibold md:text-6xl text-primary-foreground">
