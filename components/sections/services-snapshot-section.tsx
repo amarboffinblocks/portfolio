@@ -123,7 +123,7 @@ export function ServicesSnapshotSection({
     <section
       id="services"
       ref={galleryRef}
-      className="relative scroll-mt-32 py-24 lg:py-28 md:scroll-mt-36"
+      className="relative  py-24 lg:py-28 "
       style={{ height: sectionHeight }}
     >
       <div
@@ -133,7 +133,7 @@ export function ServicesSnapshotSection({
       />
 
       {/* Sticky container */}
-      <div className="sticky top-52 h-fit overflow-hidden">
+      <div className="sticky top-50 h-fit overflow-hidden">
         <div className="h-full">
           <Container>
             <SectionHeading

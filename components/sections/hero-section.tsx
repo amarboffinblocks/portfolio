@@ -30,11 +30,10 @@ const HERO_STATS = [
 
 export function HeroSection() {
   return (
-    <HeroWrapper roundedClassName="rounded-b-none" >
+    <HeroWrapper  >
       <div className="relative">
 
         <div className="flex flex-col  items-center text-center gap-4">
-          <Eyebrow text="AI Automation Agency" />
           <h1
             id="hero-heading"
             className="text-balance text-3xl leading-tight font-semibold md:text-5xl text-primary-foreground "

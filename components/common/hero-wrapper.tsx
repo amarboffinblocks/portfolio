@@ -33,7 +33,7 @@ const HeroWrapper = ({ className, roundedClassName, children }: { className?: st
                 <div className="pointer-events-none absolute left-1/2 top-[-18%] h-[420px] w-[680px] hero-light-orb rounded-full bg-white/15 blur-3xl" />
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(0,0,0,0.18)_100%)]" />
                 <Container>
-                    <div className={cn("relative z-10 flex flex-col gap-20 pt-52 pb-14 ", className)}>
+                    <div className={cn("relative z-10 flex flex-col gap-20 pt-52 pb-14 h-full", className)}>
                         {children}
                     </div>
                 </Container>

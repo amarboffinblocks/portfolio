@@ -46,7 +46,6 @@ export default function ProjectsPage() {
       <PageHeroSection
         eyebrow="PROJECTS"
         title="Our work speaks for itself."
-        description="See how we've helped companies like FinFlow, OpsGrid, and MetricLane transform their operations with AI."
       />
 
       <section className="relative  py-16 lg:py-20">
