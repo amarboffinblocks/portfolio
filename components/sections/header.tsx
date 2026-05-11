@@ -201,7 +201,7 @@ export function Header() {
               ))}
             </div>
 
-            <Button variant={isScrolled ? "default" : "secondary"} className="relative hidden md:block z-10 rounded-full" size={"lg"}>
+            <Button variant={isScrolled ? "default" : "secondary"} className="relative hidden md:block z-10 bg-accent rounded-full" size={"lg"}>
               <Link href="/contact" >Contact Us</Link>
             </Button>
 

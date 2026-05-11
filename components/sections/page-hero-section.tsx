@@ -12,6 +12,7 @@ import {
 import { usePathname } from 'next/navigation'
 import StatsCard from '../cards/stats-card'
 import { cn } from '@/lib/utils'
+import { Container } from '../common/container'
 const HERO_STATS = [
   {
     id: 1,
@@ -49,39 +50,42 @@ export const PageHeroSection = ({ title, eyebrow, breadcrumb = false, stash = fa
       ?.replace(/\b\w/g, (c) => c.toUpperCase()) ?? 'Home'
 
   return (
-    <HeroWrapper className={cn(!stash ? "pb-40" : "")}>
-      <div className="flex flex-col items-center text-center gap-4 ">
-        {eyebrow && <span className='text-2xl text-accent uppercase font-semibold'>{eyebrow}</span>}
-        <h1 className="text-3xl  font-semibold md:text-6xl text-primary-foreground">
-          {title}
-        </h1>
-        {breadcrumb && <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem className='text-primary-foreground/60 '>
-              <BreadcrumbLink href="#">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator className='text-primary-foreground' />
-            <BreadcrumbItem >
-              <BreadcrumbPage className='text-primary-foreground'>{currentPageLabel}</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>}
+    <HeroWrapper className='min-h-[600px]' >
+      <Container className={cn(" flex-1 flex  items-center justify-center flex-col gap-y-12 md:pt-20 ", stash && "pt-36 ")}>
+        <div className="flex flex-col items-center text-center gap-4 ">
+          {eyebrow && <span className='text-2xl text-accent uppercase font-semibold'>{eyebrow}</span>}
+          <h1 className="text-3xl  font-semibold md:text-6xl text-primary-foreground">
+            {title}
+          </h1>
+          {breadcrumb && <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem className='text-primary-foreground/60 '>
+                <BreadcrumbLink href="#">Home</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator className='text-primary-foreground' />
+              <BreadcrumbItem >
+                <BreadcrumbPage className='text-primary-foreground'>{currentPageLabel}</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>}
 
 
 
-      </div>
-
-      {
-        stash && <div
-          className="grid grid-cols-1 gap-3  sm:grid-cols-2 lg:grid-cols-4"
-          role="list"
-          aria-label="Impact highlights"
-        >
-          {HERO_STATS.map((stat) => (
-            <StatsCard key={stat.id} {...stat} />
-          ))}
         </div>
-      }
+
+        {
+          stash && <div
+            className=" w-full grid grid-cols-2 gap-3  sm:grid-cols-2 lg:grid-cols-4 pb-4"
+            role="list"
+            aria-label="Impact highlights"
+          >
+            {HERO_STATS.map((stat) => (
+              <StatsCard key={stat.id} {...stat} />
+            ))}
+          </div>
+        }
+
+      </Container>
     </HeroWrapper>
   )
 }

@@ -3,14 +3,14 @@ import React from 'react'
 import { Container } from './container'
 import { cn } from '@/lib/utils'
 
-const HeroWrapper = ({ className, roundedClassName, children }: { className?: string, roundedClassName?: string, children: React.ReactNode }) => {
+const HeroWrapper = ({ className, children }: { className?: string,  children: React.ReactNode }) => {
     return (
         <section
-            className="overflow-hidden p-2  md:p-4 "
+            className={cn("overflow-hidden p-2  md:p-4 flex flex-col ", className)}
             aria-labelledby="hero-heading"
         >
             <div
-                className={cn("relative overflow-hidden rounded-2xl bg-primary  ", roundedClassName)}
+                className={cn("relative overflow-hidden rounded-2xl bg-primary flex-1 flex flex-col    ")}
             >
 
                 <div
@@ -32,11 +32,7 @@ const HeroWrapper = ({ className, roundedClassName, children }: { className?: st
                 <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-white/6 via-transparent to-black/24" />
                 <div className="pointer-events-none absolute left-1/2 top-[-18%] h-[420px] w-[680px] hero-light-orb rounded-full bg-white/15 blur-3xl" />
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(0,0,0,0.18)_100%)]" />
-                <Container>
-                    <div className={cn("relative z-10 flex flex-col gap-20 pt-32 md:pt-48 pb-14 h-full", className)}>
                         {children}
-                    </div>
-                </Container>
             </div>
         </section>
     )

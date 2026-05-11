@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen">
       <HeroSection />
-      {/* <TrustTechStackStripSection /> */}
+      <TrustTechStackStripSection />
       <ServicesSnapshotSection services={HOME_SERVICES} />
       <WhyBoffinBlocksSection />
       <FeaturedCaseStudiesSection />
