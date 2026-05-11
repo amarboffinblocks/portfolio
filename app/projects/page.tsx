@@ -6,6 +6,7 @@ import { Container } from "@/components/common/container";
 import { PageHeroSection } from "@/components/sections/page-hero-section";
 import { buttonVariants } from "@/components/ui/button";
 import CtaSection from "@/components/sections/cta-section";
+import { TestimonialsSection } from "@/components/sections/testimonials-section";
 
 const PROJECTS = [
   {
@@ -100,6 +101,7 @@ export default function ProjectsPage() {
         </Container>
       </section>
       <CtaSection/>
+      <TestimonialsSection/>
     </main>
   );
 }

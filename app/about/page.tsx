@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/common/section-heading";
 import CtaSection from "@/components/sections/cta-section";
 import { PageHeroSection } from "@/components/sections/page-hero-section";
 import { WorkProcessSection } from "@/components/sections/work-process-section";
+import { TestimonialsSection } from "@/components/sections/testimonials-section";
 
 const CORE_VALUES = [
   {
@@ -39,8 +40,6 @@ export default function AboutPage() {
       <PageHeroSection
         eyebrow="ABOUT US"
         title={`Helping Businesses`}
-        highlight="Grow"
-        description="Xtract helps businesses streamline operations and grow faster with AI-powered automation."
         stash={true}
       />
 
@@ -51,7 +50,6 @@ export default function AboutPage() {
             align="center"
             eyebrow="WHO WE ARE"
             title="A delivery-first team"
-            highlight="built for momentum"
             description="We partner with ambitious teams to design, build, and ship software that moves the needle. Strategy, speed, and craft — with clear communication at every step."
           />
           <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-10">
@@ -116,15 +114,14 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
+      <WorkProcessSection />
+
       <section className="relative py-14 lg:py-20">
         <Container>
           <SectionHeading
-          headingClassName="text-center"
             className="items-center"
             align="center"
-            eyebrow="VALUES"
-            title="Our Core"
-            highlight="Values"
+            title="Our Core Values"
             description="Principles that shape how we build, communicate, and deliver."
           />
 
@@ -155,11 +152,8 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
-      <WorkProcessSection />
-
-
-
       <CtaSection />
+      <TestimonialsSection/>
     </main>
   );
 }

@@ -6,6 +6,7 @@ import { Container } from "@/components/common/container";
 import CtaSection from "@/components/sections/cta-section";
 import { PageHeroSection } from "@/components/sections/page-hero-section";
 import { buttonVariants } from "@/components/ui/button";
+import { TestimonialsSection } from "@/components/sections/testimonials-section";
 
 const BLOG_POSTS = [
   {
@@ -46,8 +47,6 @@ export default function BlogPage() {
       <PageHeroSection
         eyebrow="BLOG"
         title="Insights that help teams"
-        highlight="build better"
-        description="Practical writing on product strategy, automation, and engineering systems from our client delivery experience."
       />
 
       <section className="relative py-16 lg:py-20">
@@ -102,6 +101,7 @@ export default function BlogPage() {
       </section>
 
       <CtaSection />
+      <TestimonialsSection/>
     </main>
   );
 }
