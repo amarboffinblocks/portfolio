@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { Container } from "../common/container";
 import { SectionHeading } from "../common/section-heading";
 import { Service, ServiceCard } from "../cards/service-card";
@@ -13,6 +14,13 @@ type ServicesSnapshotSectionProps = {
   highlight?: string;
   description?: string;
 };
+
+const toSlug = (value: string) =>
+  value
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-");
 
 export function ServicesSnapshotSection({
   services = HOME_SERVICES,
@@ -164,7 +172,9 @@ export function ServicesSnapshotSection({
                 }}
               >
                 {services.map((service) => (
-                  <ServiceCard key={service.number} service={service} className="w-[310px] sm:w-[330px]" />
+                  <Link key={service.number} href={`/services/${toSlug(service.title)}`} className="block">
+                    <ServiceCard service={service} className="w-[310px] sm:w-[330px]" />
+                  </Link>
                 ))}
               </div>
             </div>

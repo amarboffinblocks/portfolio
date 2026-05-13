@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode, useRef } from "react";
+import Link from "next/link";
 import { Container } from "../common/container";
 import { SectionHeading } from "../common/section-heading";
 import { Service, ServiceCard } from "../cards/service-card";
@@ -16,6 +17,13 @@ type StickyCardProps = {
     targetScale: number;
 };
 
+const toSlug = (value: string) =>
+    value
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, "")
+        .replace(/\s+/g, "-");
+
 function StickyCard({ index, total, service, progress, range, targetScale }: StickyCardProps) {
     const scale = useTransform(progress, range, [1, targetScale]);
 
@@ -30,7 +38,9 @@ function StickyCard({ index, total, service, progress, range, targetScale }: Sti
                 }}
                 className="origin-top w-full "
             >
-                <ServiceCard service={service} className="w-full" />
+                <Link href={`/services/${toSlug(service.title)}`} className="block">
+                    <ServiceCard service={service} className="w-full" />
+                </Link>
             </motion.div>
         </div>
     );

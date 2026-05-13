@@ -144,7 +144,7 @@
   }
 
   html {
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
   }
 
   h1,

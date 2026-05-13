@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import { Card, CardContent, CardFooter } from "../ui/card";
 
 type FeatureStudy = {
@@ -48,21 +48,19 @@ const FeatureCard = ({ study }: { study: FeatureStudy }) => {
                     <h3 className="text-xl font-semibold leading-snug tracking-tight text-primary-foreground">
                         {study.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-primary-foreground line-clamp-3">
+                    <p className="mt-3 text-sm leading-relaxed text-primary-foreground line-clamp-2">
                         {study.summary}
                     </p>
                 </div>
-                <div className=" mt-4 flex gap-2 ">
-                <p className="text-sm font-medium text-primary-foreground/70">{study.impact}</p>
-                <Button asChild variant="outline" size="lg" className="rounded-full bg-accent">
+                <div className=" mt-4 flex gap-2 justify-end">
+                {/* <p className="text-sm font-medium text-primary-foreground/70">{study.impact}</p> */}
                     <Link
-                        href={`/case-studies/${study.slug}`}
+                        href={`/projects/${study.slug}`}
                         aria-label={`Read ${study.company} case study`}
-                    >
+                        className={buttonVariants({ variant: "link" })}                   >
                         Read more
                         <ArrowUpRight className="h-4 w-4" />
                     </Link>
-                </Button>
                 </div>
             </CardContent>
         </Card>

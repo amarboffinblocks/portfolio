@@ -55,53 +55,45 @@ export default function BlogPage() {
             {BLOG_POSTS.map((post) => {
               const Icon = post.icon;
               return (
-              <article
-                key={post.slug}
-                className="group overflow-hidden rounded-2xl border border-border/60 bg-card card-shadow"
-              >
-                <div className="relative aspect-16/10 overflow-hidden border-b border-border/60">
-                  <Image
-                    src={post.image}
-                    alt={`${post.category} article preview`}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
-                  <div className="absolute left-4 top-4 flex items-center gap-2">
-                    <span className="inline-flex items-center rounded-full border border-accent/45 bg-primary/20 px-3 py-1 text-xs font-medium tracking-wide text-primary-foreground">
-                      {post.category}
-                    </span>
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-accent/45 bg-primary/20 text-primary-foreground">
-                      <Icon className="h-4 w-4" />
-                    </span>
+                <article
+                  key={post.slug}
+                  className="group overflow-hidden rounded-2xl bg-primary p-2"
+                >
+                  <div className="relative aspect-16/10 overflow-hidden rounded-2xl">
+                    <Image
+                      src={post.image}
+                      alt={`${post.category} article preview`}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
                   </div>
-                </div>
 
-                <div className="p-6">
-                  <h2 className="text-lg font-semibold leading-snug">{post.title}</h2>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{post.summary}</p>
+                  <div className=" p-4 glass-radial mt-2  rounded-2xl">
+                    <h2 className="text-lg font-semibold leading-snug line-clamp-2 text-primary-foreground">{post.title}</h2>
+                    <p className="mt-3 text-sm leading-relaxed text-muted/50 line-clamp-3">{post.summary}</p>
 
-                  <div className="mt-6 flex items-center justify-between border-t border-border/60 pt-4">
-                    <p className="text-sm font-medium text-foreground/90">{post.meta}</p>
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className={buttonVariants({ variant: "link" })}
-                      aria-label={`Open article: ${post.title}`}
-                    >
-                      Read Article
-                      <ArrowUpRight className="h-4 w-4" />
-                    </Link>
+                    <div className="mt-6 flex items-center justify-between ">
+                      <p className="text-sm font-medium text-primary-foreground/70">{post.meta}</p>
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className={buttonVariants({ variant: "link" })}
+                        aria-label={`Open article: ${post.title}`}
+                      >
+                        Read Article
+                        <ArrowUpRight className="h-4 w-4" />
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </article>
-            );
+                </article>
+              );
             })}
           </div>
         </Container>
       </section>
 
       <CtaSection />
-      <TestimonialsSection/>
+      <TestimonialsSection />
     </main>
   );
 }
