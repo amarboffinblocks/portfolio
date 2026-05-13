@@ -136,24 +136,25 @@ export default async function CaseStudyDetailPage({ params }: CaseStudyPageProps
   return (
     <main className="relative min-h-screen ">
       <PageHeroSection
-        eyebrow={`// ${study.company.toUpperCase()}`}
+      className="min-h-[700px]"
+        eyebrow={`case studies`}
         title={study.title}
         breadcrumb={true}
-        breadcrumbCurrent={study.company}
+        stash
 
       />
 
-      <section className="relative z-30 -mt-40 ">
+      {/* <section className="relative z-30 -mt-50 ">
         <Container>
-          <div className="grid w-full grid-cols-1 overflow-hidden rounded-2xl border border-border/70 bg-card/95 shadow-soft backdrop-blur-sm sm:grid-cols-3 sm:divide-x sm:divide-border/60">
+          <div className="grid w-full grid-cols-1 overflow-hidden rounded-2xl  glass-radial sm:grid-cols-3 sm:divide-x sm:divide-border/20 text-primary-foreground">
 
             <div className="px-5 py-4">
-              <span className="text-[11px] tracking-[0.14em] text-muted-foreground">CLIENT</span>
-              <p className="mt-1 text-sm font-semibold text-foreground">{study.company}</p>
+              <span className="text-[11px] tracking-[0.14em] text-primary-foreground">CLIENT</span>
+              <p className="mt-1 text-sm font-semibold text-primary-foreground">{study.company}</p>
             </div>
             <div className="px-5 py-4">
-              <span className="text-[11px] tracking-[0.14em] text-muted-foreground">YEAR BUILT</span>
-              <p className="mt-1 text-sm font-semibold text-foreground">{study.yearBuilt}</p>
+              <span className="text-[11px] tracking-[0.14em] text-primary-foreground">YEAR BUILT</span>
+              <p className="mt-1 text-sm font-semibold text-primary-foreground">{study.yearBuilt}</p>
             </div>
             <div className="px-5 py-4">
               <Link href="/contact" className={buttonVariants({ variant: "ghost", className: "mt-2 h-10 w-full rounded-xl cursor-pointer" })}>
@@ -166,12 +167,15 @@ export default async function CaseStudyDetailPage({ params }: CaseStudyPageProps
             <Image src={study.image} alt={`${study.company} case study cover`} fill className="object-cover rounded-2xl" />
           </div>
         </Container>
-      </section>
+      </section> */}
 
       {/* images sections */}
       <section className=" py-10">
         <Container>
-          <div>
+        <div className="relative aspect-16/7 ">
+            <Image src={study.image} alt={`${study.company} case study cover`} fill className="object-cover rounded-2xl" />
+          </div>
+          <div  className="mt-4">
             <h2 className="mt-2 text-2xl font-semibold tracking-tight">{study.title}</h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.challenge}</p>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.solution}</p>

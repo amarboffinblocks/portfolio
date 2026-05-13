@@ -121,7 +121,7 @@ export default function AboutPage() {
           <SectionHeading
             className="items-center"
             align="center"
-            title="Our Core Values"
+            title={<>Our Core <span className="text-primary">Values </span></>}
             description="Principles that shape how we build, communicate, and deliver."
           />
 
@@ -131,15 +131,12 @@ export default function AboutPage() {
               return (
                 <article
                   key={value.title}
-                  className="group relative overflow-hidden rounded-3xl  bg-[#f9fafb] p-6  transition-colors  sm:p-7"
+                  className="group relative overflow-hidden rounded-3xl bg-background p-6  transition-colors  sm:p-7"
                 >
-                  <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100">
-                    <div className="absolute -left-24 -top-24 h-64 w-64 rounded-full bg-primary/10 blur-2xl" />
-                    <div className="absolute -bottom-28 -right-28 h-64 w-64 rounded-full bg-accent/10 blur-2xl" />
+                
+                  <div className="relative inline-flex  rounded-2xl bg-primary text-primary-foreground p-3 w-fit">
+                    <Icon className="h-5 w-5 text-primary-foreground" />
                   </div>
-                  <span className="relative inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary">
-                    <Icon className="h-5 w-5" />
-                  </span>
                   <h3 className="relative mt-5 text-base font-semibold tracking-tight sm:text-lg">
                     {value.title}
                   </h3>

@@ -19,8 +19,8 @@ type FeatureStudy = {
 const FeatureCard = ({ study }: { study: FeatureStudy }) => {
     const Icon = study.icon;
     return (
-        <Card className="group gap-0 overflow-hidden rounded-3xl bg-background py-0  transition-all duration-300 hover:-translate-y-0.5">
-            <div className="relative aspect-16/12 overflow-hidden border-b border-border/60">
+        <Card className="group gap-0 overflow-hidden rounded-3xl   transition-all duration-300 hover:-translate-y-0.5 bg-primary p-2">
+            <div className="relative aspect-16/12 overflow-hidden  rounded-2xl">
                 <Image
                     src={study.image}
                     alt={`${study.company} project preview`}
@@ -43,30 +43,28 @@ const FeatureCard = ({ study }: { study: FeatureStudy }) => {
                 </div>
             </div>
 
-            <CardContent className="flex flex-1 flex-col p-6">
+            <CardContent className="flex flex-1 flex-col p-4 glass-radial mt-2 rounded-2xl justify-between">
                 <div>
-                    <h3 className="text-xl font-semibold leading-snug tracking-tight text-foreground">
+                    <h3 className="text-xl font-semibold leading-snug tracking-tight text-primary-foreground">
                         {study.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    <p className="mt-3 text-sm leading-relaxed text-primary-foreground line-clamp-3">
                         {study.summary}
                     </p>
                 </div>
-            </CardContent>
-
-            <CardFooter className="mt-auto justify-between border-t border-border/60 px-6 py-4">
-                <p className="text-sm font-medium text-foreground/85">{study.impact}</p>
-                <Button asChild variant="ghost" size="sm" className="h-8 rounded-full px-4">
+                <div className=" mt-4 flex gap-2 ">
+                <p className="text-sm font-medium text-primary-foreground/70">{study.impact}</p>
+                <Button asChild variant="outline" size="lg" className="rounded-full bg-accent">
                     <Link
                         href={`/case-studies/${study.slug}`}
                         aria-label={`Read ${study.company} case study`}
-                        className="inline-flex items-center gap-1.5"
                     >
-                        Read
+                        Read more
                         <ArrowUpRight className="h-4 w-4" />
                     </Link>
                 </Button>
-            </CardFooter>
+                </div>
+            </CardContent>
         </Card>
     );
 };

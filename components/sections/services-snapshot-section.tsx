@@ -171,7 +171,7 @@ export function ServicesSnapshotSection({
           </div>
         </div>
       </section>
-<MobileSerivceSection/>
+      <MobileSerivceSection />
 
 
     </>

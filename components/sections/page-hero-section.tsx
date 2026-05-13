@@ -36,7 +36,7 @@ const HERO_STATS = [
   },
 ] as const;
 
-export const PageHeroSection = ({ title, eyebrow, breadcrumb = false, stash = false }: { title: string, eyebrow?: string, breadcrumb?: boolean, stash?: boolean }) => {
+export const PageHeroSection = ({ title, eyebrow, breadcrumb = false, stash = false, className }: { title: string, eyebrow?: string, breadcrumb?: boolean, stash?: boolean, className?:string }) => {
   const pathname = usePathname()
 
   const currentPageLabel =
@@ -50,8 +50,8 @@ export const PageHeroSection = ({ title, eyebrow, breadcrumb = false, stash = fa
       ?.replace(/\b\w/g, (c) => c.toUpperCase()) ?? 'Home'
 
   return (
-    <HeroWrapper className='min-h-[600px]' >
-      <Container className={cn(" flex-1 flex  items-center justify-center flex-col gap-y-12 md:pt-20 ", stash && "pt-36 ")}>
+    <HeroWrapper className={cn('min-h-[600px]', className)} >
+      <Container className={cn(" flex-1 flex  items-center justify-center flex-col gap-y-12  ", stash ? "pt-36 " : "md:pt-10")}>
         <div className="flex flex-col items-center text-center gap-4 ">
           {eyebrow && <span className='text-2xl text-accent uppercase font-semibold'>{eyebrow}</span>}
           <h1 className="text-3xl  font-semibold md:text-6xl text-primary-foreground">
