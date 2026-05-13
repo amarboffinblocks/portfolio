@@ -6,6 +6,7 @@ import './globals.css'
 import { HashScroll } from "@/components/hash-scroll"
 import { FooterSection } from "@/components/sections/footer-section"
 import { Header } from "@/components/sections/header"
+import LenisScrollProvider from "@/providers/lenis-scroll-provider"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -48,10 +49,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="light">
       <body className={`${inter.variable} ${jetbrainsMono.variable} ${GeistPixelLine.variable} font-sans antialiased bg-white `}>
-        <Header />
-        <HashScroll />
-        {children}
-        <FooterSection />
+        <LenisScrollProvider>
+          <Header />
+          <HashScroll />
+          {children}
+          <FooterSection />
+        </LenisScrollProvider>
       </body>
     </html>
   )
