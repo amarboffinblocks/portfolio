@@ -19,7 +19,7 @@ const StatsCard = ({ number, label, className }: StatsCardProps) => {
       <GridPattern/>
 
       <div className="text-start">
-        <span className=" text-3xl md:text-5xl font-semibold font-mono  text-primary-foreground  ">
+        <span className=" text-3xl font-semibold font-mono  text-primary-foreground  ">
           {number}
         </span>
       </div>

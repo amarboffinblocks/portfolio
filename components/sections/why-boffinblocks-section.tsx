@@ -57,7 +57,7 @@ export function WhyBoffinBlocksSection() {
   return (
     <section
       id="why-boffinblocks"
-      className="p-2 md:p-4"
+      className=" py-10 "
       aria-labelledby="why-boffinblocks-heading"
     >
       {/* <div className="bg-primary relative py-24 lg:py-28 rounded-3xl  "> */}

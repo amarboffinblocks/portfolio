@@ -133,7 +133,7 @@ export function ServicesSnapshotSection({
       <section
         id="services"
         ref={galleryRef}
-        className="relative  py-24 lg:py-28 min-h-screen  md:flex flex-col hidden   "
+        className="relative  py-10  min-h-screen  md:flex flex-col hidden  pb-20  "
         style={{ height: sectionHeight }}
       >
         <div

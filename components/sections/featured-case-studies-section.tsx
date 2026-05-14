@@ -42,7 +42,7 @@ export function FeaturedCaseStudiesSection() {
   return (
     <section
       id="case-studies"
-      className="relative py-24 lg:py-28 "
+      className="relative py-10  "
       aria-labelledby="case-studies-heading"
     >
       <div>
