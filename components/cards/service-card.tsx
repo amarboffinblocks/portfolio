@@ -52,7 +52,7 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
       <div
         className={cn(
           "relative z-10 flex min-h-0 flex-1 flex-col justify-between transition-[filter,opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-          "group-hover:scale-[0.98] group-hover:blur-[3px] group-hover:opacity-35"
+          
         )}
       >
         <GridPattern size={40} />
@@ -80,17 +80,13 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
         </div>
       </div>
 
-      <div
-        className="pointer-events-none absolute inset-0  z-20 flex items-center justify-center bg-black/5 opacity-0 backdrop-blur-xs transition-opacity duration-300 ease-out group-hover:opacity-100"
-        aria-hidden
-      >
+  
         <ArrowRight
           className="absolute right-10 top-10 h-14 w-14 -rotate-45 text-white transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-3 group-hover:-translate-y-3"
           aria-hidden
         />
 
 
-      </div>
     </article>
   );
 }
