@@ -1,6 +1,15 @@
 "use client";
 
-import { Code, Palette, Search, Brain, Database, Cloud, Terminal } from "lucide-react";
+import {
+  ArrowRight,
+  Brain,
+  Cloud,
+  Code,
+  Database,
+  Palette,
+  Search,
+  Terminal,
+} from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import GridPattern from "../common/grid-pattern";
@@ -34,40 +43,54 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
   const Icon = ICON_MAP[service.iconName];
 
   return (
-
     <article
       className={cn(
-        "group relative flex h-[460px] w-full min-w-[360px] flex-col justify-between overflow-hidden rounded-3xl   p-8 text-white transition-all duration-300 will-change-transform hover:-translate-y-1 bg-primary ",
-        // service.cardColor,
+        "group relative flex h-[460px] w-full min-w-[360px] flex-col justify-between overflow-hidden rounded-3xl bg-primary p-8 text-white transition-transform duration-300 ease-out will-change-transform hover:-translate-y-1",
         className
       )}
     >
-      <GridPattern size={40} />
+      <div
+        className={cn(
+          "relative z-10 flex min-h-0 flex-1 flex-col justify-between transition-[filter,opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+          "group-hover:scale-[0.98] group-hover:blur-[3px] group-hover:opacity-35"
+        )}
+      >
+        <GridPattern size={40} />
+        <div className="relative z-10 flex flex-col items-start text-left">
+          <span className="mb-8 inline-flex rounded-full glass-radial px-2.5 py-1 text-[11px] font-mono tracking-[0.16em] text-white/75">
+            ({service.number})
+          </span>
+          <span
+            className={cn(
+              "inline-flex items-center justify-center rounded-md p-4 transition-transform duration-300 glass-radial",
+            )}
+          >
+            <Icon
+              strokeWidth={2.2}
+              className={cn("h-8 w-8 drop-shadow-[0_1px_1px_rgba(0,0,0,0.35)]", service.iconColor ?? "text-white")}
+            />
+          </span>
+        </div>
 
-
-      <div className="z-10 flex flex-col items-start text-left">
-        <span className="mb-8 inline-flex rounded-full glass-radial  px-2.5 py-1 text-[11px] font-mono tracking-[0.16em] text-white/75">
-          ({service.number})
-        </span>
-        <span
-          className={cn(
-            "inline-flex p-4 items-center justify-center   transition-transform duration-300 glass-radial rounded-md ",
-          )}
-        >
-          <Icon
-            strokeWidth={2.2}
-            className={cn("h-8 w-8 drop-shadow-[0_1px_1px_rgba(0,0,0,0.35)]", service.iconColor ?? "text-white")}
-          />
-        </span>
+        <div className="relative z-10 space-y-2.5">
+          <h3 className="text-[21px] font-semibold uppercase leading-tight tracking-[0.045em] text-white">
+            {service.title}
+          </h3>
+          <p className="max-w-[31ch] text-[15px] leading-relaxed text-white/82">{service.description}</p>
+        </div>
       </div>
 
-      <div className="z-10 space-y-2.5">
-        <h3 className="text-[21px] font-semibold uppercase leading-tight tracking-[0.045em] text-white">
-          {service.title}
-        </h3>
-        <p className="max-w-[31ch] text-[15px] leading-relaxed text-white/82">{service.description}</p>
+      <div
+        className="pointer-events-none absolute inset-0  z-20 flex items-center justify-center bg-black/5 opacity-0 backdrop-blur-xs transition-opacity duration-300 ease-out group-hover:opacity-100"
+        aria-hidden
+      >
+        <ArrowRight
+          className="absolute right-10 top-10 h-14 w-14 -rotate-45 text-white transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-3 group-hover:-translate-y-3"
+          aria-hidden
+        />
+
+
       </div>
     </article>
-
   );
 }
