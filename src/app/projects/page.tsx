@@ -1,10 +1,7 @@
-import { ArrowUpRight, ChartNoAxesCombined, Clock3, Rocket } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { ChartNoAxesCombined, Clock3, Rocket } from "lucide-react";
 
 import { Container } from "@/components/common/container";
 import { SubHero } from "@/components/common/sub-hero";
-import { buttonVariants } from "@/components/ui/button";
 import CtaSection from "@/components/sections/cta";
 import { TestimonialsSection } from "@/components/sections/testimonials";
 import FeatureCard from "@/components/cards/feature-card";

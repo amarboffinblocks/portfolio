@@ -1,10 +1,6 @@
-import { ArrowLeft, ArrowUpRight, CalendarDays, CheckCircle2, Layers, Target, TrendingUp } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-
 import { SubHero } from "@/components/common/sub-hero";
-import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/common/container";
 import CtaSection from "@/components/sections/cta";
 import { TestimonialsSection } from "@/components/sections/testimonials";
@@ -143,31 +139,6 @@ export default async function CaseStudyDetailPage({ params }: CaseStudyPageProps
         stash
 
       />
-
-      {/* <section className="relative z-30 -mt-50 ">
-        <Container>
-          <div className="grid w-full grid-cols-1 overflow-hidden rounded-2xl  glass-radial sm:grid-cols-3 sm:divide-x sm:divide-border/20 text-primary-foreground">
-
-            <div className="px-5 py-4">
-              <span className="text-[11px] tracking-[0.14em] text-primary-foreground">CLIENT</span>
-              <p className="mt-1 text-sm font-semibold text-primary-foreground">{study.company}</p>
-            </div>
-            <div className="px-5 py-4">
-              <span className="text-[11px] tracking-[0.14em] text-primary-foreground">YEAR BUILT</span>
-              <p className="mt-1 text-sm font-semibold text-primary-foreground">{study.yearBuilt}</p>
-            </div>
-            <div className="px-5 py-4">
-              <Link href="/contact" className={buttonVariants({ variant: "ghost", className: "mt-2 h-10 w-full rounded-xl cursor-pointer" })}>
-                Visit Website
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-          <div className="relative aspect-16/7 mt-6">
-            <Image src={study.image} alt={`${study.company} case study cover`} fill className="object-cover rounded-2xl" />
-          </div>
-        </Container>
-      </section> */}
 
       {/* images sections */}
       <section className=" py-10">

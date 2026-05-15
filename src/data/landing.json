@@ -1,0 +1,458 @@
+{
+    "meta": {
+        "title": "BoffinBlocks",
+        "description": "We are a team of developers and designers who are passionate about building products that help businesses grow.",
+        "keywords": [
+            "BoffinBlocks",
+            "Development",
+            "Design",
+            "SEO",
+            "UI/UX",
+            "AI",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineering",
+            "Data Engineeri",
+            "DevOps"
+        ]
+    },
+    "sections": [
+        {
+            "id": "hero",
+            "name": "Hero",
+            "content": {
+                "title": "We systemize and automate businesses for highly profitable scale, custom done-for-you systems",
+                "description": "We design, build, and operate AI-powered workflows that remove manual bottlenecks so your team can focus on growth.",
+                "buttons": [
+                    {
+                        "label": "Explore Our Work",
+                        "href": "/projects",
+                        "variant": "secondary"
+                    }
+                ],
+                "stats": [
+                    {
+                        "number": "150+",
+                        "label": "Projects Delivered"
+                    },
+                    {
+                        "number": "98%",
+                        "label": "Client Satisfaction"
+                    },
+                    {
+                        "number": "24/7",
+                        "label": "AI Automation"
+                    },
+                    {
+                        "number": "10x",
+                        "label": "Business Efficiency"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "trust",
+            "name": "Trust"
+        },
+        {
+            "id": "services",
+            "name": "Services",
+            "content": {
+                "title": "Our Services",
+                "description": "We offer a range of services to help businesses grow.",
+                "cards": [
+                    {
+                        "name": "Web Development",
+                        "icon": "code",
+                        "description": "We build websites and web applications."
+                    },
+                    {
+                        "name": "Mobile Development",
+                        "icon": "mobile",
+                        "description": "We build mobile applications."
+                    },
+                    {
+                        "name": "AI Development",
+                        "icon": "ai",
+                        "description": "We build AI applications."
+                    },
+                    {
+                        "name": "Data Engineering",
+                        "icon": "data-engineering",
+                        "description": "We build data pipelines and data warehouses."
+                    },
+                    {
+                        "name": "DevOps",
+                        "icon": "devops",
+                        "description": "We build CI/CD pipelines and infrastructure as code."
+                    },
+                    {
+                        "name": "SEO Optimization",
+                        "icon": "search",
+                        "description": "We optimize websites for search engines."
+                    },
+                    {
+                        "name": "UI/UX Design",
+                        "icon": "palette",
+                        "description": "We design user interfaces and user experiences."
+                    },
+                    {
+                        "name": "Branding",
+                        "icon": "branding",
+                        "description": "We build brand systems and brand identities."
+                    },
+                    {
+                        "name": "Marketing",
+                        "icon": "marketing",
+                        "description": "We build marketing campaigns and marketing strategies."
+                    },
+                    {
+                        "name": "Content Creation",
+                        "icon": "content",
+                        "description": "We create content for websites and social media."
+                    }
+                ]
+            }
+        },
+        {
+            "id": "choose",
+            "Name": "Why choose boffinblocks",
+            "content": {
+                "title": "Why Teams Choose BoffinBlocks",
+                "description": "A modern AI product partner that combines business understanding with high-quality execution.",
+                "points": [
+                    {
+                        "title": "Business-first strategy",
+                        "description": "Every sprint is aligned to clear business outcomes, so progress stays measurable and meaningful."
+                    },
+                    {
+                        "title": "Scalable technical foundation",
+                        "description": "Solutions are built for maintainability, handover clarity, and long-term product growth."
+                    },
+                    {
+                        "title": "Transparent collaboration",
+                        "description": "Clear communication and proactive risk management keep your team confident at every phase."
+                    },
+                    {
+                        "title": "Fast, reliable execution",
+                        "description": "We move quickly with strong engineering standards, testing discipline, and predictable delivery."
+                    }
+                ]
+            }
+        },
+        {
+            "id": "featured",
+            "name": "Featured",
+            "content": {
+                "title": "Featured Case Studies",
+                "description": "Selected work showing how focused product strategy and practical AI engineering deliver measurable business outcomes.",
+                "studies": [
+                    {
+                        "title": "Automated customer onboarding with AI workflows",
+                        "category": "Product",
+                        "description": "Replaced manual verification steps with AI-assisted flows to speed approvals and reduce operational overhead.",
+                        "impact": "42% faster onboarding cycle",
+                        "image": "/case-studies/finflow.svg",
+                        "link": "/case-studies/finflow"
+                    },
+                    {
+                        "title": "Internal copilots for support and operations",
+                        "category": "Product",
+                        "description": "Built role-specific assistants that handled repetitive internal requests and improved team response consistency.",
+                        "impact": "3.1x increase in weekly throughput",
+                        "image": "/case-studies/opsgrid.svg",
+                        "link": "/case-studies/opsgrid"
+                    },
+                    {
+                        "title": "Realtime analytics platform modernization",
+                        "category": "Product",
+                        "description": "Migrated dashboards and APIs to a scalable architecture with clearer insights and lower latency.",
+                        "impact": "58% reduction in dashboard load time",
+                        "image": "/case-studies/metriclane.svg",
+                        "link": "/case-studies/metriclane"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "process",
+            "name": "Work Process",
+            "content": {
+                "title": "Our Work Process",
+                "description": "A structured, transparent approach that keeps momentum high and quality consistent from kickoff to scale.",
+                "steps": [
+                    {
+                        "title": "Discover",
+                        "icon": "compass",
+                        "description": "We align on product goals, user needs, and technical constraints to define the right execution path."
+                    },
+                    {
+                        "title": "Design & Plan",
+                        "icon": "layers",
+                        "description": "We map architecture, UX flows, and delivery milestones so implementation stays fast and predictable."
+                    },
+                    {
+                        "title": "Build & Iterate",
+                        "icon": "code",
+                        "description": "We ship in focused cycles, validate quickly, and refine continuously based on feedback and performance."
+                    },
+                    {
+                        "title": "Launch & Scale",
+                        "icon": "rocket",
+                        "description": "We deploy with confidence, monitor outcomes, and evolve the product for long-term growth."
+                    }
+                ]
+            }
+        },
+        {
+            "id": "testimonials",
+            "name": "Testimonials",
+            "content": {
+                "title": "Hear what our clients say",
+                "testimonials": []
+            }
+        },
+        {
+            "id": "cta",
+            "name": "CTA",
+            "content": {
+                "title": "Ready to build something great?",
+                "description": "Let's talk about your project and see how we can help you.",
+                "button": {
+                    "label": "Get in touch",
+                    "href": "/contact"
+                }
+            }
+        },
+        {
+            "id": "faq",
+            "name": "FAQ",
+            "content": {
+                "title": "Frequently asked questions",
+                "description": "Everything you need to know before starting your product journey with BoffinBlocks.",
+                "questions": [
+                    {
+                        "title": "How quickly can we start a project with BoffinBlocks?",
+                        "answer": "Most projects can begin within 3-7 business days after a short discovery call. We finalize scope, timelines, and priorities first so execution starts with full clarity."
+                    },
+                    {
+                        "title": "Do you work as an external agency or an embedded team?",
+                        "answer": "We can do both. Depending on your needs, we either operate as a standalone delivery squad or integrate directly with your product, design, and engineering teams."
+                    },
+                    {
+                        "title": "Can you support us after launch?",
+                        "answer": "Yes. We provide post-launch support for performance, feature iterations, and reliability improvements so your product keeps evolving without losing quality."
+                    },
+                    {
+                        "title": "What industries do you usually work with?",
+                        "answer": "We work across SaaS, AI products, internal tools, and service businesses. Our process is flexible enough to adapt to both early-stage startups and growing teams."
+                    },
+                    {
+                        "title": "How do you handle communication and progress updates?",
+                        "answer": "You get a clear delivery rhythm with weekly progress updates, async checkpoints, and transparent task tracking. Risks and blockers are shared early, not late."
+                    },
+                    {
+                        "title": "How do you handle communication and progress updates?",
+                        "answer": "You get a clear delivery rhythm with weekly progress updates, async checkpoints, and transparent task tracking. Risks and blockers are shared early, not late."
+                    },
+                    {
+                        "title": "How do you handle communication and progress updates?",
+                        "answer": "You get a clear delivery rhythm with weekly progress updates, async checkpoints, and transparent task tracking. Risks and blockers are shared early, not late."
+                    },
+                    {
+                        "title": "How do you handle communication and progress updates?",
+                        "answer": "You get a clear delivery rhythm with weekly progress updates, async checkpoints, and transparent task tracking. Risks and blockers are shared early, not late."
+                    },
+                    {
+                        "title": "How do you handle communication and progress updates?",
+                        "answer": "You get a clear delivery rhythm with weekly progress updates, async checkpoints, and transparent task tracking. Risks and blockers are shared early, not late."
+                    }
+                ]
+            }
+        }
+    ]
+}
