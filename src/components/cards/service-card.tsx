@@ -1,14 +1,18 @@
 "use client";
 
 import {
-  ArrowRight,
-  Brain,
-  Cloud,
-  Code,
+  Code2,
+  Smartphone,
+  BrainCircuit,
   Database,
-  Palette,
+  ServerCog,
   Search,
-  Terminal,
+  Palette,
+  BadgeCheck,
+  Megaphone,
+  FileText,
+  type LucideIcon,
+  ArrowRight,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -18,29 +22,30 @@ export interface Service {
   number: string;
   title: string;
   description: string;
-  iconName: "palette" | "code" | "search" | "ai-agent" | "data-engineering" | "cloud-infrastructure" | "devops";
-  cardColor: string;
-  iconBackground: string;
-  iconColor?: string;
+  icon: string;
 }
 
-const ICON_MAP = {
-  palette: Palette,
-  code: Code,
-  search: Search,
-  "ai-agent": Brain,
-  "data-engineering": Terminal,
-  "cloud-infrastructure": Cloud,
-  devops: Database,
-} as const;
 
 type ServiceCardProps = {
   service: Service;
   className?: string;
 };
 
+export const SERVICE_ICONS = {
+  code: Code2,
+  mobile: Smartphone,
+  ai: BrainCircuit,
+  "data-engineering": Database,
+  devops: ServerCog,
+  search: Search,
+  palette: Palette,
+  branding: BadgeCheck,
+  marketing: Megaphone,
+  content: FileText,
+} satisfies Record<string, LucideIcon>;
+
 export function ServiceCard({ service, className }: ServiceCardProps) {
-  const Icon = ICON_MAP[service.iconName];
+  const Icon = SERVICE_ICONS[service.icon];
 
   return (
     <article
@@ -52,7 +57,7 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
       <div
         className={cn(
           "relative z-10 flex min-h-0 flex-1 flex-col justify-between transition-[filter,opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-          
+
         )}
       >
         <GridPattern size={40} />
@@ -67,7 +72,7 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
           >
             <Icon
               strokeWidth={2.2}
-              className={cn("h-8 w-8 drop-shadow-[0_1px_1px_rgba(0,0,0,0.35)]", service.iconColor ?? "text-white")}
+              className="h-8 w-8 drop-shadow-[0_1px_1px_rgba(0,0,0,0.35)] text-white"
             />
           </span>
         </div>
@@ -80,11 +85,11 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
         </div>
       </div>
 
-  
-        <ArrowRight
-          className="absolute right-10 top-10 h-14 w-14 -rotate-45 text-white transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-3 group-hover:-translate-y-3"
-          aria-hidden
-        />
+
+      <ArrowRight
+        className="absolute right-10 top-10 h-14 w-14 -rotate-45 text-white transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-3 group-hover:-translate-y-3"
+        aria-hidden
+      />
 
 
     </article>

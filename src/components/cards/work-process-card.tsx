@@ -1,8 +1,16 @@
 import React from 'react'
 import GridPattern from '../common/grid-pattern';
+import { ProcessStep } from '@/types/sections';
+import { Code2, Compass, Layers3, Rocket } from 'lucide-react';
 
-const WorkProcessCard = ({ item }: { item: any }) => {
-    const Icon = item.icon;
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+    Compass,
+    Layers3,
+    Code2,
+    Rocket,
+};
+const WorkProcessCard = ({ item }: { item: ProcessStep }) => {
+    const Icon = iconMap[item.icon];
     return (
         <article
             key={item.step}

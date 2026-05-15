@@ -3,6 +3,7 @@ import { Container } from "@/components/common/container";
 import { SectionHeading } from "@/components/common/section-heading";
 import WorkProcessCard from "../cards/work-process-card";
 import { SectionWrapper } from "../common/section-wrapper";
+import { WorkProcessSectionContent } from "@/types/sections";
 
 const WORK_PROCESS_STEPS = [
   {
@@ -35,7 +36,7 @@ const WORK_PROCESS_STEPS = [
   },
 ] as const;
 
-export function WorkProcessSection() {
+export function WorkProcessSection({ title, description, steps }: WorkProcessSectionContent) {
   return (
     <SectionWrapper
       background
@@ -71,11 +72,10 @@ export function WorkProcessSection() {
         />
 
         <div className="grid mt-12 grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {WORK_PROCESS_STEPS.map((item, index) => {
-
-
+          {steps?.map((item, index) => {
+            const step = `step-${index + 1}`
             return (
-              <WorkProcessCard key={item.step} item={item} />
+              <WorkProcessCard key={index} item={{ step, ...item }} />
             );
           })}
         </div>

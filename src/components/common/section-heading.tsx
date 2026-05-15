@@ -69,6 +69,7 @@ export function SectionHeading({
   return (
     <div
       className={cn(
+        "max-w-6xl",
         alignment.container,
         alignment.text,
         className

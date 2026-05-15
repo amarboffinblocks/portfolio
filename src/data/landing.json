@@ -205,7 +205,7 @@
             "id": "hero",
             "name": "Hero",
             "content": {
-                "title": "We systemize and automate businesses for highly profitable scale, custom done-for-you systems",
+                "title": "",
                 "description": "We design, build, and operate AI-powered workflows that remove manual bottlenecks so your team can focus on growth.",
                 "buttons": [
                     {
@@ -242,56 +242,76 @@
             "id": "services",
             "name": "Services",
             "content": {
-                "title": "Our Services",
-                "description": "We offer a range of services to help businesses grow.",
+                "title": "Digital Services Designed for Business Growth",
+                "description": "We partner with startups, growing brands, and enterprises to deliver high-impact digital solutions that combine technology, design, and strategy. From product development and AI integration to branding and marketing, our services are crafted to accelerate innovation, optimize performance, and drive measurable business results.",
                 "cards": [
                     {
-                        "name": "Web Development",
+                        "number": "001",
+                        "title": "Web Development",
+                        "slug": "web-development",
                         "icon": "code",
                         "description": "We build websites and web applications."
                     },
                     {
-                        "name": "Mobile Development",
+                        "number": "002",
+                        "title": "Mobile Development",
+                        "slug": "mobile-development",
                         "icon": "mobile",
                         "description": "We build mobile applications."
                     },
                     {
-                        "name": "AI Development",
+                        "number": "003",
+                        "title": "AI Development",
+                        "slug": "ai-development",
                         "icon": "ai",
                         "description": "We build AI applications."
                     },
                     {
-                        "name": "Data Engineering",
+                        "number": "004",
+                        "title": "Data Engineering",
                         "icon": "data-engineering",
+                        "slug": "data-engineering",
                         "description": "We build data pipelines and data warehouses."
                     },
                     {
-                        "name": "DevOps",
+                        "number": "005",
+                        "title": "DevOps",
                         "icon": "devops",
+                        "slug": "devops",
                         "description": "We build CI/CD pipelines and infrastructure as code."
                     },
                     {
-                        "name": "SEO Optimization",
+                        "number": "006",
+                        "title": "SEO Optimization",
+                        "slug": "seo-optimization",
                         "icon": "search",
                         "description": "We optimize websites for search engines."
                     },
                     {
-                        "name": "UI/UX Design",
+                        "number": "007",
+                        "title": "UI/UX Design",
+                        "slug": "ui-ux-design",
                         "icon": "palette",
                         "description": "We design user interfaces and user experiences."
                     },
                     {
-                        "name": "Branding",
+                        "number": "008",
+                        "title": "Branding",
+                        "slug": "branding",
                         "icon": "branding",
                         "description": "We build brand systems and brand identities."
                     },
                     {
-                        "name": "Marketing",
+                        "number": "009",
+                        "title": "Marketing",
                         "icon": "marketing",
+                        "slug": "marketing",
                         "description": "We build marketing campaigns and marketing strategies."
                     },
                     {
-                        "name": "Content Creation",
+                        "number": "010",
+                        "title": "Content Creation",
+                        "slug": "content-creation",
                         "icon": "content",
                         "description": "We create content for websites and social media."
                     }
@@ -307,18 +327,22 @@
                 "points": [
                     {
                         "title": "Business-first strategy",
+                        "icon": "BriefcaseBusiness",
                         "description": "Every sprint is aligned to clear business outcomes, so progress stays measurable and meaningful."
                     },
                     {
                         "title": "Scalable technical foundation",
+                        "icon": "Gauge",
                         "description": "Solutions are built for maintainability, handover clarity, and long-term product growth."
                     },
                     {
                         "title": "Transparent collaboration",
+                        "icon": "Workflow",
                         "description": "Clear communication and proactive risk management keep your team confident at every phase."
                     },
                     {
                         "title": "Fast, reliable execution",
+                        "icon": "ShieldCheck",
                         "description": "We move quickly with strong engineering standards, testing discipline, and predictable delivery."
                     }
                 ]
@@ -333,27 +357,30 @@
                 "studies": [
                     {
                         "title": "Automated customer onboarding with AI workflows",
+                        "company": "FinFlow",
                         "category": "Product",
-                        "description": "Replaced manual verification steps with AI-assisted flows to speed approvals and reduce operational overhead.",
+                        "summary": "Replaced manual verification steps with AI-assisted flows to speed approvals and reduce operational overhead.",
                         "impact": "42% faster onboarding cycle",
                         "image": "/case-studies/finflow.svg",
-                        "link": "/case-studies/finflow"
+                        "slug": "/case-studies/finflow"
                     },
                     {
                         "title": "Internal copilots for support and operations",
+                        "company": "OpsGrid",
                         "category": "Product",
-                        "description": "Built role-specific assistants that handled repetitive internal requests and improved team response consistency.",
+                        "summary": "Built role-specific assistants that handled repetitive internal requests and improved team response consistency.",
                         "impact": "3.1x increase in weekly throughput",
                         "image": "/case-studies/opsgrid.svg",
-                        "link": "/case-studies/opsgrid"
+                        "slug": "/case-studies/opsgrid"
                     },
                     {
                         "title": "Realtime analytics platform modernization",
+                        "company": "MetricLane",
                         "category": "Product",
-                        "description": "Migrated dashboards and APIs to a scalable architecture with clearer insights and lower latency.",
+                        "summary": "Migrated dashboards and APIs to a scalable architecture with clearer insights and lower latency.",
                         "impact": "58% reduction in dashboard load time",
                         "image": "/case-studies/metriclane.svg",
-                        "link": "/case-studies/metriclane"
+                        "slug": "/case-studies/metriclane"
                     }
                 ]
             }
@@ -367,22 +394,22 @@
                 "steps": [
                     {
                         "title": "Discover",
-                        "icon": "compass",
+                        "icon": "Compass",
                         "description": "We align on product goals, user needs, and technical constraints to define the right execution path."
                     },
                     {
                         "title": "Design & Plan",
-                        "icon": "layers",
+                        "icon": "Layers3",
                         "description": "We map architecture, UX flows, and delivery milestones so implementation stays fast and predictable."
                     },
                     {
                         "title": "Build & Iterate",
-                        "icon": "code",
+                        "icon": "Code2",
                         "description": "We ship in focused cycles, validate quickly, and refine continuously based on feedback and performance."
                     },
                     {
                         "title": "Launch & Scale",
-                        "icon": "rocket",
+                        "icon": "Rocket",
                         "description": "We deploy with confidence, monitor outcomes, and evolve the product for long-term growth."
                     }
                 ]
@@ -393,7 +420,29 @@
             "name": "Testimonials",
             "content": {
                 "title": "Hear what our clients say",
-                "testimonials": []
+                "description": "",
+                "testimonials": [
+                    {
+                        "image": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
+                        "name": "Briar Martin",
+                        "handle": "@neilstellar"
+                    },
+                    {
+                        "image": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
+                        "name": "Avery Johnson",
+                        "handle": "@averywrites"
+                    },
+                    {
+                        "image": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60",
+                        "name": "Jordan Lee",
+                        "handle": "@jordantalks"
+                    },
+                    {
+                        "image": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60",
+                        "name": "Avery Johnson",
+                        "handle": "@averywrites"
+                    }
+                ]
             }
         },
         {
@@ -416,39 +465,39 @@
                 "description": "Everything you need to know before starting your product journey with BoffinBlocks.",
                 "questions": [
                     {
-                        "title": "How quickly can we start a project with BoffinBlocks?",
+                        "question": "How quickly can we start a project with BoffinBlocks?",
                         "answer": "Most projects can begin within 3-7 business days after a short discovery call. We finalize scope, timelines, and priorities first so execution starts with full clarity."
                     },
                     {
-                        "title": "Do you work as an external agency or an embedded team?",
+                        "question": "Do you work as an external agency or an embedded team?",
                         "answer": "We can do both. Depending on your needs, we either operate as a standalone delivery squad or integrate directly with your product, design, and engineering teams."
                     },
                     {
-                        "title": "Can you support us after launch?",
+                        "question": "Can you support us after launch?",
                         "answer": "Yes. We provide post-launch support for performance, feature iterations, and reliability improvements so your product keeps evolving without losing quality."
                     },
                     {
-                        "title": "What industries do you usually work with?",
+                        "question": "What industries do you usually work with?",
                         "answer": "We work across SaaS, AI products, internal tools, and service businesses. Our process is flexible enough to adapt to both early-stage startups and growing teams."
                     },
                     {
-                        "title": "How do you handle communication and progress updates?",
+                        "question": "How do you handle communication and progress updates?",
                         "answer": "You get a clear delivery rhythm with weekly progress updates, async checkpoints, and transparent task tracking. Risks and blockers are shared early, not late."
                     },
                     {
-                        "title": "How do you handle communication and progress updates?",
+                        "question": "How do you handle communication and progress updates?",
                         "answer": "You get a clear delivery rhythm with weekly progress updates, async checkpoints, and transparent task tracking. Risks and blockers are shared early, not late."
                     },
                     {
-                        "title": "How do you handle communication and progress updates?",
+                        "question": "How do you handle communication and progress updates?",
                         "answer": "You get a clear delivery rhythm with weekly progress updates, async checkpoints, and transparent task tracking. Risks and blockers are shared early, not late."
                     },
                     {
-                        "title": "How do you handle communication and progress updates?",
+                        "question": "How do you handle communication and progress updates?",
                         "answer": "You get a clear delivery rhythm with weekly progress updates, async checkpoints, and transparent task tracking. Risks and blockers are shared early, not late."
                     },
                     {
-                        "title": "How do you handle communication and progress updates?",
+                        "question": "How do you handle communication and progress updates?",
                         "answer": "You get a clear delivery rhythm with weekly progress updates, async checkpoints, and transparent task tracking. Risks and blockers are shared early, not late."
                     }
                 ]

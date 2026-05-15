@@ -7,36 +7,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { SectionWrapper } from "../common/section-wrapper";
+import { FaqSectionContent } from "@/types/sections";
 
-const FAQ_ITEMS = [
-  {
-    question: "How quickly can we start a project with BoffinBlocks?",
-    answer:
-      "Most projects can begin within 3-7 business days after a short discovery call. We finalize scope, timelines, and priorities first so execution starts with full clarity.",
-  },
-  {
-    question: "Do you work as an external agency or an embedded team?",
-    answer:
-      "We can do both. Depending on your needs, we either operate as a standalone delivery squad or integrate directly with your product, design, and engineering teams.",
-  },
-  {
-    question: "Can you support us after launch?",
-    answer:
-      "Yes. We provide post-launch support for performance, feature iterations, and reliability improvements so your product keeps evolving without losing quality.",
-  },
-  {
-    question: "What industries do you usually work with?",
-    answer:
-      "We work across SaaS, AI products, internal tools, and service businesses. Our process is flexible enough to adapt to both early-stage startups and growing teams.",
-  },
-  {
-    question: "How do you handle communication and progress updates?",
-    answer:
-      "You get a clear delivery rhythm with weekly progress updates, async checkpoints, and transparent task tracking. Risks and blockers are shared early, not late.",
-  },
-];
 
-export function FaqSection() {
+export function FaqSection({ title, description, questions }: FaqSectionContent) {
   return (
     <SectionWrapper id="faq" aria-labelledby="faq-heading">
       <Container>
@@ -54,7 +28,7 @@ export function FaqSection() {
 
         <div className="mt-10">
           <Accordion type="single" collapsible className="w-full bg-background rounded-xl">
-            {FAQ_ITEMS.map((item, index) => (
+            {questions?.map((item, index) => (
               <AccordionItem
                 key={item.question}
                 value={`faq-${index + 1}`}

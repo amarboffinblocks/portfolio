@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/common/section-heading";
 import { buttonVariants } from "../ui/button";
 import FeatureCard from "../cards/feature-card";
 import { SectionWrapper } from "../common/section-wrapper";
+import { FeaturedSectionContent } from "@/types/sections";
 
 const CASE_STUDIES = [
   {
@@ -39,7 +40,7 @@ const CASE_STUDIES = [
   },
 ] as const;
 
-export function FeaturedSection() {
+export function FeaturedSection({ title, description, studies }: FeaturedSectionContent) {
   return (
     <SectionWrapper
       id="featured"
@@ -66,7 +67,7 @@ export function FeaturedSection() {
         </div>
 
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-          {CASE_STUDIES.map((study, index: number) => {
+          {studies?.map((study, index: number) => {
             const key = `${study.slug}-${index}`;
             return (
               <FeatureCard key={key} study={study} />

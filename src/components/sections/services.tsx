@@ -4,16 +4,11 @@ import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Container } from "../common/container";
 import { SectionHeading } from "../common/section-heading";
-import { Service, ServiceCard } from "../cards/service-card";
-import { HOME_SERVICES } from "@/lib/data/services";
+import { ServiceCard } from "../cards/service-card";
 import MobileSerivceSection from "./mobile-serivces-seciton";
+import { ServicesSectionContent } from "@/types/sections";
 
-type ServicesSectionProps = {
-  services?: Service[];
-  title?: ReactNode;
-  highlight?: string;
-  description?: string;
-};
+
 
 const toSlug = (value: string) =>
   value
@@ -23,10 +18,8 @@ const toSlug = (value: string) =>
     .replace(/\s+/g, "-");
 
 export function ServicesSection({
-  services = HOME_SERVICES,
-  title = <>Built for speed, scale, and  <span className="text-primary">real-world, delivery.</span></>,
-  description = "End-to-end capabilities to design, ship, and grow modern AI-powered products without compromising quality.",
-}: ServicesSectionProps) {
+  title, description, cards
+}: ServicesSectionContent) {
   const galleryRef = useRef<HTMLDivElement>(null);
   const layoutProbeRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -171,7 +164,7 @@ export function ServicesSection({
                   willChange: "transform",
                 }}
               >
-                {services.map((service) => (
+                {cards?.map((service) => (
                   <Link key={service.number} href={`/services/${toSlug(service.title)}`} className="block">
                     <ServiceCard service={service} className="w-[310px] sm:w-[330px]" />
                   </Link>
@@ -181,8 +174,7 @@ export function ServicesSection({
           </div>
         </div>
       </section>
-      <MobileSerivceSection />
-
+      <MobileSerivceSection services={cards} title={title} description={description} />
     </>
 
   );

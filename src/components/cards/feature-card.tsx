@@ -5,21 +5,13 @@ import type { LucideIcon } from "lucide-react";
 
 import { Button, buttonVariants } from "../ui/button";
 import { Card, CardContent, CardFooter } from "../ui/card";
+import { CaseStudy } from "@/types/sections";
 
-type FeatureStudy = {
-    company: string;
-    image: string;
-    title: string;
-    summary: string;
-    impact: string;
-    slug: string;
-    icon: LucideIcon;
-};
 
-const FeatureCard = ({ study, key }: { study: FeatureStudy, key: string }) => {
-    const Icon = study.icon;
+
+const FeatureCard = ({ study }: { study: CaseStudy }) => {
     return (
-        <Card key={key} className="group gap-0 overflow-hidden rounded-3xl   transition-all duration-300 hover:-translate-y-0.5 bg-primary p-2">
+        <Card className="group gap-0 overflow-hidden rounded-3xl   transition-all duration-300 hover:-translate-y-0.5 bg-primary p-2">
             <div className="relative aspect-16/12 overflow-hidden  rounded-2xl">
                 <Image
                     src={study.image}
@@ -36,9 +28,6 @@ const FeatureCard = ({ study, key }: { study: FeatureStudy, key: string }) => {
                 <div className="absolute left-4 top-4 flex items-center gap-2">
                     <span className="inline-flex items-center rounded-full border border-white/35 bg-white/15 px-3 py-1 text-xs font-medium tracking-wide text-white backdrop-blur-sm">
                         {study.company}
-                    </span>
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/35 bg-white/15 text-white backdrop-blur-sm">
-                        <Icon className="h-4 w-4" />
                     </span>
                 </div>
             </div>

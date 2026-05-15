@@ -1,26 +1,17 @@
-import { HeroSection } from "@/components/sections/hero";
-import { TrustSection } from "@/components/sections/trust";
-import { ServicesSection } from "@/components/sections/services";
-import { WhyBoffinBlocksSection } from "@/components/sections/why-boffinblocks";
-import { FeaturedSection } from "@/components/sections/featured";
-import { WorkProcessSection } from "@/components/sections/work-process";
-import { FaqSection } from "@/components/sections/faq-section";
-import { HOME_SERVICES } from "@/lib/data/services";
-import { TestimonialsSection } from "@/components/sections/testimonials";
-import CtaSection from "@/components/sections/cta";
+import landingData from "@/data/landing.json";
+import { SectionRenderer } from "@/components/common/section-renderer";
+import type { LandingPage } from "@/types/sections";
+
+const landing = landingData as LandingPage;
 
 export default function Home() {
+  const { sections } = landing;
+
   return (
     <main className="relative min-h-screen">
-      <HeroSection />
-      <TrustSection />
-      <ServicesSection services={HOME_SERVICES} />
-      <WhyBoffinBlocksSection />
-      <FeaturedSection />
-      <WorkProcessSection />
-      <TestimonialsSection />
-      <CtaSection />
-      <FaqSection />
+      {sections.map((section) => (
+        <SectionRenderer key={section.id} section={section} />
+      ))}
     </main>
   );
 }

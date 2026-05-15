@@ -5,30 +5,9 @@ import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import StatsCard from "@/components/cards/stats-card";
 import { Container } from "@/components/common/container";
-const HERO_STATS = [
-  {
-    id: 1,
-    number: "150+",
-    label: "Projects Delivered",
-  },
-  {
-    id: 2,
-    number: "98%",
-    label: "Client Satisfaction",
-  },
-  {
-    id: 3,
-    number: "24/7",
-    label: "AI Automation",
-  },
-  {
-    id: 4,
-    number: "10x",
-    label: "Business Efficiency",
-  },
-] as const;
+import type { HeroSectionContent } from "@/types/sections";
 
-export function HeroSection() {
+export function HeroSection({ title, description, buttons, stats }: HeroSectionContent) {
   return (
     <HeroWrapper className="min-h-screen" >
       <Container className=" flex-1 flex  items-center justify-center flex-col gap-y-12 pt-28 md:pt-20 ">
@@ -43,13 +22,16 @@ export function HeroSection() {
               <span className="text-accent">custom done-for-you systems</span>
             </h1>
             <p className=" max-w-2xl text-base text-primary-foreground/80 sm:text-lg">
-              We design, build, and operate AI-powered workflows that remove manual
-              bottlenecks so your team can focus on growth.
+              {description}
             </p>
-            <Link href="/" className={buttonVariants({ variant: "secondary", size: "lg", className: "group mt-4  " })} >
-              Explore Our Work
-              <ArrowRight className="size-4 group-hover:translate-x-1 transition-all duration-500" />
-            </Link>
+            <div className="flex items-center gap-4 mt-4">
+              {buttons?.map((button, index) => (
+                <Link key={index} href={button.href} className={buttonVariants({ variant: "secondary", size: "lg", className: "group  " })} >
+                  {button.label}
+                  <ArrowRight className="size-4 group-hover:translate-x-1 transition-all duration-500" />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -58,8 +40,8 @@ export function HeroSection() {
           role="list"
           aria-label="Impact highlights"
         >
-          {HERO_STATS.map((stat) => (
-            <StatsCard key={stat.id} {...stat} />
+          {stats?.map((stat, index) => (
+            <StatsCard key={index} {...stat} />
           ))}
         </div>
 

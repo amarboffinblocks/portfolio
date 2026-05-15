@@ -1,0 +1,114 @@
+{
+    "sections": [
+        {
+            "id": "sub_hero",
+            "name": "About Hero",
+            "content": {
+                "title": "Helping Businesses",
+                "stash": [
+                    {
+                        "number": "150+",
+                        "label": "Projects Delivered"
+                    },
+                    {
+                        "number": "98%",
+                        "label": "Client Satisfaction"
+                    },
+                    {
+                        "number": "24/7",
+                        "label": "AI Automation"
+                    },
+                    {
+                        "number": "10x",
+                        "label": "Business Efficiency"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "who_we_are",
+            "name": "Who We Are",
+            "content": {}
+        },
+        {
+            "id": "process",
+            "name": "Work Process",
+            "content": {
+                "title": "Our Work Process",
+                "description": "A structured, transparent approach that keeps momentum high and quality consistent from kickoff to scale.",
+                "steps": [
+                    {
+                        "title": "Discover",
+                        "icon": "Compass",
+                        "description": "We align on product goals, user needs, and technical constraints to define the right execution path."
+                    },
+                    {
+                        "title": "Design & Plan",
+                        "icon": "Layers3",
+                        "description": "We map architecture, UX flows, and delivery milestones so implementation stays fast and predictable."
+                    },
+                    {
+                        "title": "Build & Iterate",
+                        "icon": "Code2",
+                        "description": "We ship in focused cycles, validate quickly, and refine continuously based on feedback and performance."
+                    },
+                    {
+                        "title": "Launch & Scale",
+                        "icon": "Rocket",
+                        "description": "We deploy with confidence, monitor outcomes, and evolve the product for long-term growth."
+                    }
+                ]
+            }
+        },
+        {
+            "id": "core_values",
+            "name": "Core Values",
+            "content": {
+                "title": "Our Core Values",
+                "description": "Principles that shape how we build, communicate, and deliver.",
+                "Values": [
+                    {
+                        "icon": "",
+                        "title": "Outcome-driven delivery",
+                        "description": "We connect every sprint to business goals so progress is clear and measurable."
+                    },
+                    {
+                        "icon": "",
+                        "title": "Reliable execution",
+                        "description": "From architecture to QA, we keep quality high while shipping at startup speed."
+                    },
+                    {
+                        "icon": "",
+                        "title": "Long-term maintainability",
+                        "description": "We build systems your team can scale and confidently own after launch."
+                    },
+                    {
+                        "icon": "",
+                        "title": "Radical clarity",
+                        "description": "We communicate early, document decisions, and keep stakeholders aligned end-to-end."
+                    }
+                ]
+            }
+        },
+        {
+            "id": "cta",
+            "name": "CTA",
+            "content": {
+                "title": "Ready to build something great?",
+                "description": "Let's talk about your project and see how we can help you.",
+                "button": {
+                    "label": "Get in touch",
+                    "href": "/contact"
+                }
+            }
+        },
+        {
+            "id": "testimonials",
+            "name": "Testimonials",
+            "content": {
+                "title": "Hear what our clients say",
+                "testimonials": []
+            }
+        }
+    ]
+}
