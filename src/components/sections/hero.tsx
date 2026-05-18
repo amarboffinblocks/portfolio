@@ -5,10 +5,9 @@ import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import StatsCard from "@/components/cards/stats-card";
 import { Container } from "@/components/common/container";
-import type { HeroSectionContent } from "@/types/sections";
-import { VariantProps } from "class-variance-authority";
+import { stats } from "@/data/sections";
 
-export function HeroSection({ title, description, buttons, stats }: HeroSectionContent) {
+export function HeroSection() {
   return (
     <HeroWrapper className="min-h-screen" >
       <Container className=" flex-1 flex  items-center justify-center flex-col gap-y-12 pt-28 md:pt-20 ">
@@ -17,24 +16,23 @@ export function HeroSection({ title, description, buttons, stats }: HeroSectionC
             <h1
               id="hero-heading"
               className="text-balance text-3xl  leading-tight font-semibold md:text-5xl text-primary-foreground "
-              dangerouslySetInnerHTML={{
-                __html: title,
-              }}
-            />
+            >
+              Agentic AI & Automation Company for <span className='text-accent'>Modern Businesses</span>
+            </h1>
 
             <p className=" max-w-2xl text-base text-primary-foreground/80 sm:text-lg">
-              {description}
+              We build AI agents, intelligent automations, and scalable workflow systems that streamline operations, eliminate repetitive work, and help businesses operate faster with AI-powered efficiency.
             </p>
             <div className="flex items-center gap-4 mt-4">
-              {buttons?.map((button, index) => {
-                const variant = button.variant as VariantProps<typeof buttonVariants>["variant"] || "secondary"
-                return (
-                  <Link key={index} href={button.href} className={buttonVariants({ variant: variant, size: "lg", className: "group  " })} >
-                    {button.label}
-                    <ArrowRight className="size-4 group-hover:translate-x-1 transition-all duration-500" />
-                  </Link>
-                )
-              })}
+
+              <Link href="/contact" className={buttonVariants({ variant: "secondary", size: "lg", className: "group  " })} >
+                Book a Strategy Call
+                <ArrowRight className="size-4 group-hover:translate-x-1 transition-all duration-500" />
+              </Link>
+              <Link href="/contact" className={buttonVariants({ variant: "outline", size: "lg", className: "group  " })} >
+                Explore Our Work
+                <ArrowRight className="size-4 group-hover:translate-x-1 transition-all duration-500" />
+              </Link>
             </div>
           </div>
         </div>

@@ -45,7 +45,7 @@ export const SERVICE_ICONS = {
 } satisfies Record<string, LucideIcon>;
 
 export function ServiceCard({ service, className }: ServiceCardProps) {
-  const Icon = SERVICE_ICONS[service.icon];
+  const Icon = SERVICE_ICONS[service.icon as keyof typeof SERVICE_ICONS];
 
   return (
     <article
@@ -78,10 +78,10 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
         </div>
 
         <div className="relative z-10 space-y-2.5">
-          <h3 className="text-[21px] font-semibold uppercase leading-tight tracking-[0.045em] text-white">
+          <h3 className="text-md  font-semibold  uppercase leading-tight tracking-[0.045em] text-accent">
             {service.title}
           </h3>
-          <p className="max-w-[31ch] text-[15px] leading-relaxed text-white/82">{service.description}</p>
+          <p className="text-sm leading-relaxed text-primary-foreground/70 line-clamp-2 ">{service.description}</p>
         </div>
       </div>
 

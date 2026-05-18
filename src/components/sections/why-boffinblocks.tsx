@@ -13,10 +13,12 @@ import { SectionHeading } from "@/components/common/section-heading";
 import { Button } from "../ui/button";
 import GridPattern from "../common/grid-pattern";
 import { SectionWrapper } from "../common/section-wrapper";
-import { WhyChooseSectionContent } from "@/types/sections";
+import { WhyChoosePoint } from "@/types/sections";
 
-
-export function WhyBoffinBlocksSection({ title, description, points }: WhyChooseSectionContent) {
+interface WhyBoffinBlocksSectionProps {
+  points: WhyChoosePoint[]
+}
+export function WhyBoffinBlocksSection({ points }: WhyBoffinBlocksSectionProps) {
   const featuredPoint = points[1];
   const supportingPoints = [points[0], points[2], points[3]];
   const firstPoint = supportingPoints[0];
@@ -30,8 +32,8 @@ export function WhyBoffinBlocksSection({ title, description, points }: WhyChoose
         <SectionHeading
           align="center"
           id="why-boffinblocks-heading"
-          title={title}
-          description={description}
+          title={"Why Businesses <span class='text-primary'>Choose Boffinblocks</span>"}
+          description={"We combine agentic AI, automation engineering, and scalable development to help businesses streamline operations, reduce manual work, and deploy intelligent systems with confidence."}
         />
 
         <div className="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-12">

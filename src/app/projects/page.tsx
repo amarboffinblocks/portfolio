@@ -1,14 +1,21 @@
-import { SectionRenderer } from "@/components/common/section-renderer";
-import projectData from "@/data/project.json";
-import { ProjectPage } from "@/types/sections";
+import { SubHero } from "@/components/common/sub-hero";
+import CtaSection from "@/components/sections/cta";
+import { FaqSection } from "@/components/sections/faq-section";
+import { ProjectSection } from "@/components/sections/project";
+import { TestimonialsSection } from "@/components/sections/testimonials";
+import { projects, questions, testimonials } from "@/data/sections";
 
 export default function ProjectsPage() {
-  const { sections } = projectData as ProjectPage;
   return (
     <main className="relative min-h-screen">
-      {sections.map((section) => (
-        <SectionRenderer key={section.id} section={section} />
-      ))}
+      <SubHero
+        eyebrow="Projects"
+        title="Our Projects"
+      />
+      <ProjectSection projects={projects} />
+      <CtaSection />
+      <TestimonialsSection testimonials={testimonials} />
+      {/* <FaqSection questions={questions} />   */}
     </main>
   );
 }

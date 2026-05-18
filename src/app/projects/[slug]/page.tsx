@@ -4,6 +4,7 @@ import { SubHero } from "@/components/common/sub-hero";
 import { Container } from "@/components/common/container";
 import CtaSection from "@/components/sections/cta";
 import { TestimonialsSection } from "@/components/sections/testimonials";
+import { testimonials } from "@/data/sections";
 
 const CASE_STUDIES = [
   {
@@ -202,7 +203,7 @@ export default async function CaseStudyDetailPage({ params }: CaseStudyPageProps
 
       </section>
       <CtaSection />
-      <TestimonialsSection />
+      <TestimonialsSection testimonials={testimonials} />
     </main>
   );
 }

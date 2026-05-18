@@ -1,42 +1,13 @@
-import { ArrowRight, Code2, Compass, Layers3, Rocket } from "lucide-react";
 import { Container } from "@/components/common/container";
 import { SectionHeading } from "@/components/common/section-heading";
 import WorkProcessCard from "../cards/work-process-card";
 import { SectionWrapper } from "../common/section-wrapper";
-import { WorkProcessSectionContent } from "@/types/sections";
+import { ProcessPoint } from "@/data/sections";
 
-const WORK_PROCESS_STEPS = [
-  {
-    step: "01",
-    title: "Discover",
-    description:
-      "We align on product goals, user needs, and technical constraints to define the right execution path.",
-    icon: Compass,
-  },
-  {
-    step: "02",
-    title: "Design & Plan",
-    description:
-      "We map architecture, UX flows, and delivery milestones so implementation stays fast and predictable.",
-    icon: Layers3,
-  },
-  {
-    step: "03",
-    title: "Build & Iterate",
-    description:
-      "We ship in focused cycles, validate quickly, and refine continuously based on feedback and performance.",
-    icon: Code2,
-  },
-  {
-    step: "04",
-    title: "Launch & Scale",
-    description:
-      "We deploy with confidence, monitor outcomes, and evolve the product for long-term growth.",
-    icon: Rocket,
-  },
-] as const;
-
-export function WorkProcessSection({ title, description, steps }: WorkProcessSectionContent) {
+interface WorkProcessSectionProps {
+  steps: ProcessPoint[]
+}
+export function WorkProcessSection({ steps }: WorkProcessSectionProps) {
   return (
     <SectionWrapper
       background
@@ -65,8 +36,8 @@ export function WorkProcessSection({ title, description, steps }: WorkProcessSec
         <SectionHeading
           id="work-process-heading"
           background="primary"
-          title={title}
-          description={description}
+          title={"Our AI Automation <span class='text-accent'>Process</span>"}
+          description={"A streamlined process focused on building scalable AI systems, intelligent automations, and modern business workflows."}
           align="center"
         />
 

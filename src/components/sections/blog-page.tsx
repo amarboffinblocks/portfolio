@@ -1,10 +1,12 @@
 import { SectionWrapper } from '@/components/common/section-wrapper'
 import { Container } from '@/components/common/container'
-import { BLOG_POSTS } from '@/lib/data/blog'
 import { BlogCard } from '@/components/cards/blog-card'
-import { BlogPageSectionContent } from '@/types/sections'
+import { BlogItem } from '@/data/sections'
 
-export const BlogPageSection = ({ blogs }: BlogPageSectionContent) => {
+interface BlogPageSectionProps {
+    blogs: BlogItem[]
+}
+export const BlogPageSection = ({ blogs }: BlogPageSectionProps) => {
     return (
         <SectionWrapper >
             <Container>

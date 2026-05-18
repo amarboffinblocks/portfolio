@@ -16,6 +16,7 @@ import { SubHero } from "@/components/common/sub-hero";
 import { TestimonialsSection } from "@/components/sections/testimonials";
 import { buttonVariants } from "@/components/ui/button";
 import { BLOG_POSTS, type BlogPostIconKey } from "@/lib/data/blog";
+import { testimonials } from "@/data/sections";
 
 const ICON_MAP: Record<BlogPostIconKey, typeof CalendarDays> = {
   calendar: CalendarDays,
@@ -258,7 +259,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
       </section>
 
       <CtaSection />
-      <TestimonialsSection />
+      <TestimonialsSection testimonials={testimonials} />
     </main>
   );
 }

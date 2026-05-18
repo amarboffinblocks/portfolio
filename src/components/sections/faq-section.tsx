@@ -7,18 +7,20 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { SectionWrapper } from "../common/section-wrapper";
-import { FaqSectionContent } from "@/types/sections";
+import { FaqItem } from "@/data/sections";
 
-
-export function FaqSection({ title, description, questions }: FaqSectionContent) {
+interface FaqSectionProps {
+  questions: FaqItem[]
+}
+export function FaqSection({ questions }: FaqSectionProps) {
   return (
     <SectionWrapper id="faq" aria-labelledby="faq-heading">
       <Container>
         <SectionHeading
           id="faq-heading"
           align="center"
-          title={title}
-          description={description}
+          title={"Frequently Asked <span class='text-primary'>Questions</span>"}
+          description={"Answers to common questions about our AI automation services, development process, and workflow integrations."}
         />
 
         <div className="mt-10">

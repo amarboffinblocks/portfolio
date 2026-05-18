@@ -46,7 +46,7 @@ const iconConfigs = [
   { Icon: null, img: fallbackUrls[1] },
 ];
 
-export default function CtaSection({ title, description, button }: CtaSectionContent) {
+export default function CtaSection() {
   const orbitCount = 3;
   const orbitGap = 8; // rem between orbits
   const iconsPerOrbit = Math.ceil(iconConfigs.length / orbitCount);
@@ -59,11 +59,11 @@ export default function CtaSection({ title, description, button }: CtaSectionCon
           {/* Left side: Heading and Text */}
           <div className=" lg:w-1/2 z-10 flex flex-col items-start justify-center gap-10 py-10 px-4 lg:pl-14 ">
             <div>
-              <SectionHeading title={title} background="primary" align="left" description={description} />
+              <SectionHeading title={"Ready to Automate Your <span class='text-accent'>Business with AI?</span> "} background="primary" align="left" description={"Let’s build intelligent AI systems, workflow automations, and scalable digital solutions tailored to your business operations and growth goals."} />
 
             </div>
             <Button variant="secondary" size="lg" className="w-full md:w-auto">
-              <Link href="/contact">Get Free Consultation</Link>
+              <Link href="/contact">Book a Strategy Call</Link>
             </Button>
           </div>
 

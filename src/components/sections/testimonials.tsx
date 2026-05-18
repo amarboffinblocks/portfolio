@@ -2,13 +2,15 @@ import { Container } from "@/components/common/container";
 import { SectionHeading } from "@/components/common/section-heading";
 import { InfiniteCarousel } from "../common/InfiniteCarousel";
 import { SectionWrapper } from "../common/section-wrapper";
-import { TestimonialsSectionContent } from "@/types/sections";
+import { TestimonialItem } from "@/data/sections";
 
 
 
+interface TestimonialsSectionProps {
+  testimonials: TestimonialItem[]
+}
 
-
-export function TestimonialsSection({ title, description, testimonials }: TestimonialsSectionContent) {
+export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) {
   return (
     <SectionWrapper
       id="testimonials"
@@ -16,7 +18,7 @@ export function TestimonialsSection({ title, description, testimonials }: Testim
     >
       <Container>
         <SectionHeading
-          title={title}
+          title={"Hear what our <span class='text-primary'>clients say</span>"}
           eyebrow="client Stories"
           align="center"
         />

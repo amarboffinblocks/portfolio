@@ -1,17 +1,25 @@
-import landingData from "@/data/landing.json";
-import { SectionRenderer } from "@/components/common/section-renderer";
-import type { LandingPage } from "@/types/sections";
+import CtaSection from "@/components/sections/cta";
+import { FaqSection } from "@/components/sections/faq-section";
+import { FeaturedSection } from "@/components/sections/featured";
+import { HeroSection } from "@/components/sections/hero";
+import { ServicesSection } from "@/components/sections/services";
+import { TestimonialsSection } from "@/components/sections/testimonials";
+import { WhyBoffinBlocksSection } from "@/components/sections/why-boffinblocks";
+import { WorkProcessSection } from "@/components/sections/work-process";
+import { caseStudies, choosePoints, processPoints, questions, services, testimonials } from "@/data/sections";
 
-const landing = landingData as LandingPage;
 
 export default function Home() {
-  const { sections } = landing;
-
   return (
     <main className="relative min-h-screen">
-      {sections.map((section) => (
-        <SectionRenderer key={section.id} section={section} />
-      ))}
+      <HeroSection />
+      <ServicesSection cards={services} />
+      <WhyBoffinBlocksSection points={choosePoints} />
+      <FeaturedSection studies={caseStudies} />
+      <WorkProcessSection steps={processPoints} />
+      <TestimonialsSection testimonials={testimonials} />
+      <CtaSection />
+      <FaqSection questions={questions} />
     </main>
   );
 }

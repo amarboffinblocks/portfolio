@@ -5,10 +5,12 @@ import { SectionHeading } from "@/components/common/section-heading";
 import { buttonVariants } from "../ui/button";
 import FeatureCard from "../cards/feature-card";
 import { SectionWrapper } from "../common/section-wrapper";
-import { FeaturedSectionContent } from "@/types/sections";
+import { CaseStudy } from "@/data/sections";
 
-
-export function FeaturedSection({ title, description, studies }: FeaturedSectionContent) {
+interface FeaturedSectionProps {
+  studies: CaseStudy[]
+}
+export function FeaturedSection({ studies }: FeaturedSectionProps) {
   return (
     <SectionWrapper
       id="featured"
@@ -20,8 +22,8 @@ export function FeaturedSection({ title, description, studies }: FeaturedSection
             <SectionHeading
               id="case-studies-heading"
               align="left"
-              title={title}
-              description={description}
+              title={"Featured Case <span class='text-primary'>Studies</span>"}
+              description={"Selected work showing how focused product strategy and practical AI engineering deliver measurable business outcomes."}
             />
           </div>
           <Link

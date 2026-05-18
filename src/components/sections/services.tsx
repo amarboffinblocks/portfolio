@@ -6,7 +6,7 @@ import { Container } from "../common/container";
 import { SectionHeading } from "../common/section-heading";
 import { ServiceCard } from "../cards/service-card";
 import MobileSerivceSection from "./mobile-serivces-seciton";
-import { ServicesSectionContent } from "@/types/sections";
+import { ServiceCard as ServiceCardTypes } from "@/types/sections";
 
 
 
@@ -17,9 +17,13 @@ const toSlug = (value: string) =>
     .replace(/[^\w\s-]/g, "")
     .replace(/\s+/g, "-");
 
+interface ServiceSectionProps {
+  cards: ServiceCardTypes[]
+}
+
 export function ServicesSection({
-  title, description, cards
-}: ServicesSectionContent) {
+  cards
+}: ServiceSectionProps) {
   const galleryRef = useRef<HTMLDivElement>(null);
   const layoutProbeRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -142,8 +146,8 @@ export function ServicesSection({
               <SectionHeading
                 align="center"
                 id="services-heading"
-                title={title}
-                description={description}
+                title={"Agentic AI & Automation Services for <span class='text-primary'>Modern Businesses</span>"}
+                description={"We help businesses build intelligent AI systems, automate operations, and streamline workflows through custom AI development, automation engineering, and scalable digital infrastructure. Our services are designed to reduce manual work, improve operational efficiency, and accelerate business growth using modern AI technologies."}
               />
             </Container>
             {/* Horizontal scrolling container */}
@@ -174,7 +178,8 @@ export function ServicesSection({
           </div>
         </div>
       </section>
-      <MobileSerivceSection services={cards} title={title} description={description} />
+      <MobileSerivceSection services={cards} title={"Agentic AI & Automation Services for <span class='text-primary'>Modern Businesses</span>"}
+        description={"We help businesses build intelligent AI systems, automate operations, and streamline workflows through custom AI development, automation engineering, and scalable digital infrastructure. Our services are designed to reduce manual work, improve operational efficiency, and accelerate business growth using modern AI technologies."} />
     </>
 
   );

@@ -1,13 +1,19 @@
-import { SectionRenderer } from "@/components/common/section-renderer";
-import contactData from "@/data/contact.json"
+import { SubHero } from "@/components/common/sub-hero";
+import { ContactFormSection } from "@/components/sections/contact-form";
+import CtaSection from "@/components/sections/cta";
+import { TestimonialsSection } from "@/components/sections/testimonials";
+import { testimonials } from "@/data/sections";
 import type { ContactPage } from "@/types/sections";
 export default function ContactPage() {
-  const { sections } = contactData as ContactPage;
   return (
     <main className="relative min-h-screen">
-      {sections.map((section) => (
-        <SectionRenderer key={section.id} section={section} />
-      ))}
+      <SubHero
+        eyebrow="Contact us"
+        title="Let's discuss your project."
+      />
+      <ContactFormSection />
+      <CtaSection />
+      <TestimonialsSection testimonials={testimonials} />
     </main>
   );
 }
