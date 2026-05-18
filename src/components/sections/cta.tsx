@@ -14,6 +14,7 @@ import { SectionHeading } from "../common/section-heading";
 import { Container } from "../common/container";
 import GridPattern from "../common/grid-pattern";
 import { SectionWrapper } from "../common/section-wrapper";
+import { CtaSectionContent } from "@/types/sections";
 
 const fallbackUrls = [
   "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
@@ -45,7 +46,7 @@ const iconConfigs = [
   { Icon: null, img: fallbackUrls[1] },
 ];
 
-export default function CtaSection() {
+export default function CtaSection({ title, description, button }: CtaSectionContent) {
   const orbitCount = 3;
   const orbitGap = 8; // rem between orbits
   const iconsPerOrbit = Math.ceil(iconConfigs.length / orbitCount);
@@ -58,11 +59,8 @@ export default function CtaSection() {
           {/* Left side: Heading and Text */}
           <div className=" lg:w-1/2 z-10 flex flex-col items-start justify-center gap-10 py-10 px-4 lg:pl-14 ">
             <div>
-              <SectionHeading title={<>Learn More About How We Can Help <span className="text-accent">You Grow</span></>} background="primary" align="left" />
-              <p className="text-primary-foreground/80 max-w-lg mt-4">
-                We design, build, and operate AI-powered workflows that remove manual
-                bottlenecks so your team can focus on growth.
-              </p>
+              <SectionHeading title={title} background="primary" align="left" description={description} />
+
             </div>
             <Button variant="secondary" size="lg" className="w-full md:w-auto">
               <Link href="/contact">Get Free Consultation</Link>

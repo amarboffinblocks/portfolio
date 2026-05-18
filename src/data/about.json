@@ -36,32 +36,32 @@
             "id": "process",
             "name": "Work Process",
             "content": {
-                "title": "Our Work Process",
-                "description": "A structured, transparent approach that keeps momentum high and quality consistent from kickoff to scale.",
-                "steps": [
-                    {
-                        "title": "Discover",
-                        "icon": "Compass",
-                        "description": "We align on product goals, user needs, and technical constraints to define the right execution path."
-                    },
-                    {
-                        "title": "Design & Plan",
-                        "icon": "Layers3",
-                        "description": "We map architecture, UX flows, and delivery milestones so implementation stays fast and predictable."
-                    },
-                    {
-                        "title": "Build & Iterate",
-                        "icon": "Code2",
-                        "description": "We ship in focused cycles, validate quickly, and refine continuously based on feedback and performance."
-                    },
-                    {
-                        "title": "Launch & Scale",
-                        "icon": "Rocket",
-                        "description": "We deploy with confidence, monitor outcomes, and evolve the product for long-term growth."
-                    }
-                ]
+              "title": "Our AI Automation <span class='text-accent'>Process</span>",
+              "description": "A streamlined process focused on building scalable AI systems, intelligent automations, and modern business workflows.",
+              "steps": [
+                {
+                  "title": "Discovery & Strategy",
+                  "icon": "Compass",
+                  "description": "We analyze your workflows, operational challenges, and business goals to identify high-impact AI automation opportunities."
+                },
+                {
+                  "title": "Architecture & Planning",
+                  "icon": "Layers3",
+                  "description": "We design the AI systems, integrations, workflows, and technical infrastructure required for scalable implementation."
+                },
+                {
+                  "title": "Development & Automation",
+                  "icon": "Code2",
+                  "description": "We build AI agents, automation workflows, integrations, dashboards, and intelligent systems tailored to your business."
+                },
+                {
+                  "title": "Deployment & Optimization",
+                  "icon": "Rocket",
+                  "description": "We deploy production-ready AI solutions, monitor performance, and continuously optimize workflows for long-term scalability."
+                }
+              ]
             }
-        },
+          },
         {
             "id": "core_values",
             "name": "Core Values",
@@ -96,10 +96,10 @@
             "id": "cta",
             "name": "CTA",
             "content": {
-                "title": "Ready to build something great?",
-                "description": "Let's talk about your project and see how we can help you.",
+                "title": "Ready to Automate Your <span class='text-accent'>Business with AI?</span> ",
+                "description": "Let’s build intelligent AI systems, workflow automations, and scalable digital solutions tailored to your business operations and growth goals.",
                 "button": {
-                    "label": "Get in touch",
+                    "label": "Book a Strategy Call",
                     "href": "/contact"
                 }
             }
@@ -108,8 +108,30 @@
             "id": "testimonials",
             "name": "Testimonials",
             "content": {
-                "title": "Hear what our clients say",
-                "testimonials": []
+                "title": "Hear what our <span class='text-primary'>clients say</span>",
+                "description": "",
+                "testimonials": [
+                    {
+                        "image": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
+                        "name": "Briar Martin",
+                        "handle": "@neilstellar"
+                    },
+                    {
+                        "image": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
+                        "name": "Avery Johnson",
+                        "handle": "@averywrites"
+                    },
+                    {
+                        "image": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60",
+                        "name": "Jordan Lee",
+                        "handle": "@jordantalks"
+                    },
+                    {
+                        "image": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60",
+                        "name": "Avery Johnson",
+                        "handle": "@averywrites"
+                    }
+                ]
             }
         }
     ]

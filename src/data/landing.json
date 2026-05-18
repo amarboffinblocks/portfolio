@@ -19,18 +19,18 @@
       "id": "hero",
       "name": "Hero",
       "content": {
-        "title": "Agentic AI & Automation Company for Modern Businesses",
+        "title": "Agentic AI & Automation Company for <span class='text-accent'>Modern Businesses</span>",
         "description": "We build AI agents, intelligent automations, and scalable workflow systems that streamline operations, eliminate repetitive work, and help businesses operate faster with AI-powered efficiency.",
         "buttons": [
           {
             "label": "Book a Strategy Call",
             "href": "/contact",
-            "variant": "primary"
+            "variant": "secondary"
           },
           {
             "label": "Explore Our Work",
             "href": "/projects",
-            "variant": "secondary"  
+            "variant": "outline"
           }
         ],
         "stats": [
@@ -54,14 +54,10 @@
       }
     },
     {
-      "id": "trust",
-      "name": "Trust"
-    },
-    {
       "id": "services",
       "name": "Services",
       "content": {
-        "title": "Agentic AI & Automation Services for Modern Businesses",
+        "title": "Agentic AI & Automation Services for <span class='text-primary'>Modern Businesses</span>",
         "description": "We help businesses build intelligent AI systems, automate operations, and streamline workflows through custom AI development, automation engineering, and scalable digital infrastructure. Our services are designed to reduce manual work, improve operational efficiency, and accelerate business growth using modern AI technologies.",
         "cards": [
           {
@@ -141,7 +137,7 @@
       "id": "choose",
       "name": "Why Choose Boffinblocks",
       "content": {
-        "title": "Why Businesses Choose Boffinblocks",
+        "title": "Why Businesses <span class='text-primary'>Choose Boffinblocks</span>",
         "description": "We combine agentic AI, automation engineering, and scalable development to help businesses streamline operations, reduce manual work, and deploy intelligent systems with confidence.",
         "points": [
           {
@@ -181,7 +177,7 @@
       "id": "featured",
       "name": "Featured",
       "content": {
-        "title": "Featured Case Studies",
+        "title": "Featured Case <span class='text-primary'>Studies</span>",
         "description": "Selected work showing how focused product strategy and practical AI engineering deliver measurable business outcomes.",
         "studies": [
           {
@@ -218,7 +214,7 @@
       "id": "process",
       "name": "Work Process",
       "content": {
-        "title": "Our AI Automation Process",
+        "title": "Our AI Automation <span class='text-accent'>Process</span>",
         "description": "A streamlined process focused on building scalable AI systems, intelligent automations, and modern business workflows.",
         "steps": [
           {
@@ -248,7 +244,7 @@
       "id": "testimonials",
       "name": "Testimonials",
       "content": {
-        "title": "Hear what our clients say",
+        "title": "Hear what our <span class='text-primary'>clients say</span>",
         "description": "",
         "testimonials": [
           {
@@ -278,7 +274,7 @@
       "id": "cta",
       "name": "CTA",
       "content": {
-        "title": "Ready to Automate Your Business with AI?",
+        "title": "Ready to Automate Your <span class='text-accent'>Business with AI?</span> ",
         "description": "Let’s build intelligent AI systems, workflow automations, and scalable digital solutions tailored to your business operations and growth goals.",
         "button": {
           "label": "Book a Strategy Call",
@@ -290,7 +286,7 @@
       "id": "faq",
       "name": "FAQ",
       "content": {
-        "title": "Frequently Asked Questions",
+        "title": "Frequently Asked <span class='text-primary'>Questions</span>",
         "description": "Answers to common questions about our AI automation services, development process, and workflow integrations.",
         "questions": [
           {

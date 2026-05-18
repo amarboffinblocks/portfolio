@@ -18,10 +18,10 @@ const WorkProcessCard = ({ item }: { item: ProcessStep }) => {
         >
             <GridPattern size={40} />
             <div className="mb-5 flex items-center justify-between">
-                <span className="font-mono text-xs tracking-[0.2em] text-primary-foreground ">
-                    STEP {item.step}
+                <span className="font-mono text-xs tracking-[0.2em] text-primary-foreground uppercase ">
+                    {item.step}
                 </span>
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-md glass-radial text-primary-foreground ">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-accent  ">
                     <Icon className="h-4 w-4" />
                 </span>
             </div>

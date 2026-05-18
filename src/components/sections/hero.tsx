@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import StatsCard from "@/components/cards/stats-card";
 import { Container } from "@/components/common/container";
 import type { HeroSectionContent } from "@/types/sections";
+import { VariantProps } from "class-variance-authority";
 
 export function HeroSection({ title, description, buttons, stats }: HeroSectionContent) {
   return (
@@ -16,21 +17,24 @@ export function HeroSection({ title, description, buttons, stats }: HeroSectionC
             <h1
               id="hero-heading"
               className="text-balance text-3xl  leading-tight font-semibold md:text-5xl text-primary-foreground "
-            >
-              We systemize and automate <br />  businesses for highly profitable scale,
-              <br />
-              <span className="text-accent">custom done-for-you systems</span>
-            </h1>
+              dangerouslySetInnerHTML={{
+                __html: title,
+              }}
+            />
+
             <p className=" max-w-2xl text-base text-primary-foreground/80 sm:text-lg">
               {description}
             </p>
             <div className="flex items-center gap-4 mt-4">
-              {buttons?.map((button, index) => (
-                <Link key={index} href={button.href} className={buttonVariants({ variant: "secondary", size: "lg", className: "group  " })} >
-                  {button.label}
-                  <ArrowRight className="size-4 group-hover:translate-x-1 transition-all duration-500" />
-                </Link>
-              ))}
+              {buttons?.map((button, index) => {
+                const variant = button.variant as VariantProps<typeof buttonVariants>["variant"] || "secondary"
+                return (
+                  <Link key={index} href={button.href} className={buttonVariants({ variant: variant, size: "lg", className: "group  " })} >
+                    {button.label}
+                    <ArrowRight className="size-4 group-hover:translate-x-1 transition-all duration-500" />
+                  </Link>
+                )
+              })}
             </div>
           </div>
         </div>

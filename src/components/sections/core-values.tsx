@@ -3,6 +3,7 @@ import { SectionWrapper } from '@/components/common/section-wrapper';
 import { Container } from '@/components/common/container';
 import { SectionHeading } from '@/components/common/section-heading';
 import { CheckCircle2, Compass, Rocket, ShieldCheck } from 'lucide-react';
+import { CoreValuesSectionContent } from '@/types/sections';
 const CORE_VALUES = [
     {
         title: "Outcome-driven delivery",
@@ -29,15 +30,15 @@ const CORE_VALUES = [
         icon: CheckCircle2,
     },
 ] as const;
-export const CoreValuesSection = () => {
+export const CoreValuesSection = ({ title, description }: CoreValuesSectionContent) => {
     return (
         <SectionWrapper >
             <Container>
                 <SectionHeading
                     className="items-center"
                     align="center"
-                    title={<>Our Core <span className="text-primary">Values </span></>}
-                    description="Principles that shape how we build, communicate, and deliver."
+                    title={title}
+                    description={description}
                 />
 
                 <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">

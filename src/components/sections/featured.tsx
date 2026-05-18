@@ -1,4 +1,4 @@
-import { ArrowUpRight, ChartNoAxesCombined, Clock3, Rocket } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { Container } from "@/components/common/container";
 import { SectionHeading } from "@/components/common/section-heading";
@@ -7,38 +7,6 @@ import FeatureCard from "../cards/feature-card";
 import { SectionWrapper } from "../common/section-wrapper";
 import { FeaturedSectionContent } from "@/types/sections";
 
-const CASE_STUDIES = [
-  {
-    slug: "finflow",
-    company: "FinFlow",
-    title: "Automated customer onboarding with AI workflows",
-    summary:
-      "Replaced manual verification steps with AI-assisted flows to speed approvals and reduce operational overhead.",
-    impact: "42% faster onboarding cycle",
-    icon: Clock3,
-    image: "/case-studies/finflow.svg",
-  },
-  {
-    slug: "opsgrid",
-    company: "OpsGrid",
-    title: "Internal copilots for support and operations",
-    summary:
-      "Built role-specific assistants that handled repetitive internal requests and improved team response consistency.",
-    impact: "3.1x increase in weekly throughput",
-    icon: Rocket,
-    image: "/case-studies/opsgrid.svg",
-  },
-  {
-    slug: "metriclane",
-    company: "MetricLane",
-    title: "Realtime analytics platform modernization",
-    summary:
-      "Migrated dashboards and APIs to a scalable architecture with clearer insights and lower latency.",
-    impact: "58% reduction in dashboard load time",
-    icon: ChartNoAxesCombined,
-    image: "/case-studies/metriclane.svg",
-  },
-] as const;
 
 export function FeaturedSection({ title, description, studies }: FeaturedSectionContent) {
   return (
@@ -52,9 +20,8 @@ export function FeaturedSection({ title, description, studies }: FeaturedSection
             <SectionHeading
               id="case-studies-heading"
               align="left"
-              title={<>Featured Case <span className="text-primary">Studies</span></>}
-              description="Selected work showing how focused product strategy and practical AI engineering deliver measurable business outcomes."
-              className="max-w-5xl"
+              title={title}
+              description={description}
             />
           </div>
           <Link

@@ -16,7 +16,7 @@ export function TestimonialsSection({ title, description, testimonials }: Testim
     >
       <Container>
         <SectionHeading
-          title={<>Hear what our <span className="text-primary"> clients say</span></>}
+          title={title}
           eyebrow="client Stories"
           align="center"
         />

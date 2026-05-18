@@ -17,13 +17,8 @@ export function FaqSection({ title, description, questions }: FaqSectionContent)
         <SectionHeading
           id="faq-heading"
           align="center"
-          className="max-w-3xl"
-          title={
-            <>
-              Frequently Asked <span className="text-primary">Questions</span>
-            </>
-          }
-          description="Everything you need to know before starting your product journey with BoffinBlocks."
+          title={title}
+          description={description}
         />
 
         <div className="mt-10">

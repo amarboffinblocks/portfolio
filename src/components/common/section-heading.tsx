@@ -69,7 +69,6 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "max-w-6xl",
         alignment.container,
         alignment.text,
         className
@@ -86,9 +85,11 @@ export function SectionHeading({
           "text-balance text-3xl font-semibold tracking-tight md:text-5xl mt-4",
           colors.title
         )}
-      >
-        {title}
-      </HeadingTag>
+        dangerouslySetInnerHTML={{
+          __html: title,
+        }}
+      />
+
       {description ? (
         <p
           className={cn(

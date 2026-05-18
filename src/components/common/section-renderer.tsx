@@ -32,7 +32,7 @@ export function SectionRenderer({ section }: SectionRendererProps) {
     case "who_we_are":
       return <WhoWEAreSection />;
     case "core_values":
-      return <CoreValuesSection />;
+      return <CoreValuesSection {...section.content} />;
     case "trust":
       return <TrustSection />;
     case "services":
@@ -46,7 +46,7 @@ export function SectionRenderer({ section }: SectionRendererProps) {
     case "testimonials":
       return <TestimonialsSection {...section.content} />;
     case "cta":
-      return <CtaSection />;
+      return <CtaSection {...section.content} />;
     case "faq":
       return <FaqSection {...section.content} />;
     default:

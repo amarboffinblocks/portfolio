@@ -65,10 +65,9 @@ export function WorkProcessSection({ title, description, steps }: WorkProcessSec
         <SectionHeading
           id="work-process-heading"
           background="primary"
-          title={<>Work <span className="text-accent">Process</span></>}
-          description="A structured, transparent approach that keeps momentum high and quality consistent from kickoff to scale."
+          title={title}
+          description={description}
           align="center"
-          className="max-w-5xl"
         />
 
         <div className="grid mt-12 grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
