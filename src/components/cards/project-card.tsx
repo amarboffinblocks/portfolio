@@ -1,15 +1,19 @@
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import type { LucideIcon } from "lucide-react";
 
-import { Button, buttonVariants } from "../ui/button";
-import { Card, CardContent, CardFooter } from "../ui/card";
+import { buttonVariants } from "../ui/button";
+import { Card, CardContent } from "../ui/card";
 import { CaseStudy } from "@/data/sections";
+import { normalizeProjectSlug } from "@/lib/project-content";
 
 
 
 const ProjectCard = ({ study }: { study: CaseStudy }) => {
+    const slug = study.slug.startsWith("/")
+        ? normalizeProjectSlug(study.slug)
+        : study.slug;
+
     return (
         <Card className="group gap-0 overflow-hidden rounded-3xl   transition-all duration-300 hover:-translate-y-0.5 bg-background p-3">
             <div className="relative aspect-16/12 overflow-hidden  rounded-2xl">
@@ -45,7 +49,7 @@ const ProjectCard = ({ study }: { study: CaseStudy }) => {
                 <div className=" mt-4 flex gap-2 justify-end">
                     {/* <p className="text-sm font-medium text-primary-foreground/70">{study.impact}</p> */}
                     <Link
-                        href={`/projects/${study.slug}`}
+                        href={`/projects/${slug}`}
                         aria-label={`Read ${study.company} case study`}
                         className={buttonVariants({ variant: "outline", size: "lg", className: "hover:bg-primary hover:text-primary-foreground" })}                   >
                         Read more

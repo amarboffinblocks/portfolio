@@ -85,9 +85,6 @@ export const SubHero = ({
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>}
-
-
-
         </div>
 
         {showStats && (

@@ -4,203 +4,191 @@ import { SubHero } from "@/components/common/sub-hero";
 import { Container } from "@/components/common/container";
 import CtaSection from "@/components/sections/cta";
 import { TestimonialsSection } from "@/components/sections/testimonials";
-import { testimonials } from "@/data/sections";
-
-const CASE_STUDIES = [
-  {
-    slug: "finflow",
-    company: "FinFlow",
-    title: "Automated customer onboarding with AI workflows",
-    summary:
-      "Replaced manual verification steps with AI-assisted flows to speed approvals and reduce operational overhead.",
-    impact: "42% faster onboarding cycle",
-    timeframe: "8 weeks",
-    yearBuilt: "2024",
-    stack: "Next.js, Python, OpenAI",
-    challenge:
-      "Onboarding depended on repetitive manual checks and fragmented internal steps, slowing approvals and creating inconsistent customer experience.",
-    solution:
-      "BoffinBlocks designed an AI-assisted onboarding pipeline with structured validation, guided human review, and workflow orchestration across existing tools.",
-    outcomes: [
-      "Reduced average onboarding completion time by 42%",
-      "Improved process consistency with fewer manual handoff gaps",
-      "Enabled clearer audit visibility for compliance-focused teams",
-    ],
-    image: "/case-studies/finflow.svg",
-    gallery: [
-      { src: "/case-studies/finflow.svg", caption: "AI-assisted onboarding dashboard" },
-      { src: "/case-studies/finflow-detail.svg", caption: "Verification and approval workflow map" },
-    ],
-    kpis: [
-      { label: "Manual review effort", value: "-37%" },
-      { label: "Approval consistency", value: "+29%" },
-      { label: "User drop-off reduction", value: "-21%" },
-    ],
-    deliverables: [
-      "Workflow orchestration for onboarding handoffs",
-      "AI-assisted verification decision layer",
-      "Operational dashboard with visibility controls",
-    ],
-  },
-  {
-    slug: "opsgrid",
-    company: "OpsGrid",
-    title: "Internal copilots for support and operations",
-    summary:
-      "Built role-specific assistants that handled repetitive internal requests and improved team response consistency.",
-    impact: "3.1x increase in weekly throughput",
-    timeframe: "10 weeks",
-    yearBuilt: "2025",
-    stack: "TypeScript, LangChain, Supabase",
-    challenge:
-      "Support and operations teams were spending too much time on repetitive internal requests and context retrieval.",
-    solution:
-      "We implemented tailored copilots with controlled knowledge access, role-based prompts, and reusable automation actions.",
-    outcomes: [
-      "Increased weekly team throughput by 3.1x",
-      "Reduced context switching across support workflows",
-      "Standardized response quality across multiple teams",
-    ],
-    image: "/case-studies/opsgrid.svg",
-    gallery: [
-      { src: "/case-studies/opsgrid.svg", caption: "Operations copilot workspace" },
-      { src: "/case-studies/opsgrid-detail.svg", caption: "Role-based workflow execution map" },
-    ],
-    kpis: [
-      { label: "Response turnaround", value: "2.4x faster" },
-      { label: "Workflow completion rate", value: "+33%" },
-      { label: "Internal ticket deflection", value: "48%" },
-    ],
-    deliverables: [
-      "Role-specific copilots with controlled context",
-      "Reusable action workflows for ops and support",
-      "Performance tracking across team queues",
-    ],
-  },
-  {
-    slug: "metriclane",
-    company: "MetricLane",
-    title: "Realtime analytics platform modernization",
-    summary:
-      "Migrated dashboards and APIs to a scalable architecture with clearer insights and lower latency.",
-    impact: "58% reduction in dashboard load time",
-    timeframe: "6 weeks",
-    yearBuilt: "2023",
-    stack: "React, Node.js, PostgreSQL",
-    challenge:
-      "Legacy dashboard rendering and API aggregation were creating delays and reducing confidence in real-time decision making.",
-    solution:
-      "BoffinBlocks redesigned data flows, optimized query layers, and modernized dashboard rendering for faster, clearer analytics.",
-    outcomes: [
-      "Reduced dashboard load time by 58%",
-      "Improved API response stability under peak traffic",
-      "Delivered a cleaner analytics experience for stakeholders",
-    ],
-    image: "/case-studies/metriclane.svg",
-    gallery: [
-      { src: "/case-studies/metriclane.svg", caption: "Realtime analytics overview" },
-      { src: "/case-studies/metriclane-detail.svg", caption: "Latency-optimized charting layer" },
-    ],
-    kpis: [
-      { label: "P95 dashboard latency", value: "-58%" },
-      { label: "API reliability", value: "99.9%" },
-      { label: "Stakeholder adoption", value: "+41%" },
-    ],
-    deliverables: [
-      "Optimized analytics API and query model",
-      "Modernized dashboard rendering architecture",
-      "Monitoring and alerting for data freshness",
-    ],
-  },
-] as const;
+import { projects, testimonials } from "@/data/sections";
+import {
+  getProjectMarkdownBySlug,
+  normalizeProjectSlug,
+} from "@/lib/project-content";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
 
 type CaseStudyPageProps = {
   params: Promise<{ slug: string }>;
 };
 
+type ProjectMetaItem = {
+  label: string;
+  value: string;
+};
+
+type ProjectMetaBarProps = {
+  items: ProjectMetaItem[];
+  websiteHref: string;
+};
+
+function ProjectMetaBar({ items, websiteHref }: ProjectMetaBarProps) {
+  return (
+    <div className="py-5">
+      <div className="grid grid-cols-1 divide-y divide-border/60 rounded-2xl  bg-background  sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+        {items.map((item) => (
+          <div key={item.label} className="flex flex-col items-center justify-center px-6 py-5 text-center">
+            <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+              {item.label}
+            </p>
+            <p className="mt-2 text-lg font-semibold text-foreground">{item.value}</p>
+          </div>
+        ))}
+        <div className="flex flex-col items-center justify-center px-6 py-5 text-center">
+          <Link
+            href={websiteHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonVariants({ variant: "outline" })}
+          >
+            Visit Website
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function generateStaticParams() {
-  return CASE_STUDIES.map((study) => ({ slug: study.slug }));
+  return projects.map((project) => ({
+    slug: normalizeProjectSlug(project.slug),
+  }));
 }
 
 export default async function CaseStudyDetailPage({ params }: CaseStudyPageProps) {
   const { slug } = await params;
-  const study = CASE_STUDIES.find((item) => item.slug === slug);
+  const study = projects.find(
+    (item) => normalizeProjectSlug(item.slug) === slug,
+  );
 
   if (!study) notFound();
-  const primaryVisual = study.gallery[0] ?? { src: study.image, caption: `${study.company} project snapshot` };
-  const secondaryVisual = study.gallery[1] ?? primaryVisual;
+  const content = await getProjectMarkdownBySlug(slug);
+
+  if (!content) notFound();
+
+  const gallery = content.gallery.length
+    ? content.gallery
+    : [{ src: study.image, caption: `${study.company} project snapshot` }];
+  const metaItems: ProjectMetaItem[] = [
+    { label: "Year Built", value: "2026" },
+    { label: "Client", value: study.company },
+  ];
+  const detailBlocks = [
+    content.challenge.length > 0
+      ? { title: "Challenge", paragraphs: content.challenge, bullets: [] as string[] }
+      : null,
+    content.solution.length > 0
+      ? { title: "Solution", paragraphs: content.solution, bullets: [] as string[] }
+      : null,
+    content.outcomes.length > 0
+      ? { title: "Outcomes", paragraphs: [] as string[], bullets: content.outcomes }
+      : null,
+    ...content.sections.map((section) => ({
+      title: section.title,
+      paragraphs: section.paragraphs,
+      bullets: [] as string[],
+    })),
+    content.kpis.length > 0
+      ? {
+        title: "KPIs",
+        paragraphs: [] as string[],
+        bullets: content.kpis.map((kpi) => `${kpi.label}: ${kpi.value}`),
+      }
+      : null,
+    content.deliverables.length > 0
+      ? { title: "Deliverables", paragraphs: [] as string[], bullets: content.deliverables }
+      : null,
+  ].filter((block): block is { title: string; paragraphs: string[]; bullets: string[] } => block !== null);
 
   return (
-    <main className="relative min-h-screen ">
+    <main className="relative min-h-screen">
       <SubHero
-        className="min-h-[700px]"
-        eyebrow={`case studies`}
+        className=" min-h-[500px] md:min-h-[800px]! "
+        eyebrow="case studies"
         title={study.title}
-        breadcrumb={true}
-        stash
-
+        breadcrumb
       />
 
-      {/* images sections */}
-      <section className=" py-10">
-        <Container>
+      <section className="py-10">
+        <Container className=" md:-mt-64  z-10 relative">
+          <ProjectMetaBar items={metaItems} websiteHref="https://boffinblocks.com" />
           <div className="relative aspect-16/7 ">
-            <Image src={study.image} alt={`${study.company} case study cover`} fill className="object-cover rounded-2xl" />
+            <Image
+              src={gallery[0].src}
+              alt={gallery[0].caption}
+              fill
+              className="rounded-2xl object-cover"
+            />
           </div>
-          <div className="mt-4">
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight">{study.title}</h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.challenge}</p>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.solution}</p>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.outcomes.join(", ")}</p>
 
+          <div className="mt-6 max-w-4xl">
+            <h2 className="text-2xl font-semibold tracking-tight">{study.title}</h2>
+            <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+              {study.summary}
+            </p>
+            <p className="mt-2 text-sm text-muted-foreground">{study.impact}</p>
           </div>
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 mt-10">
-            <div className="relative aspect-16/10">
-              <Image src={secondaryVisual.src} alt={secondaryVisual.caption} fill className="object-cover rounded-2xl" />
 
-            </div>
-            <div>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight">{study.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.challenge}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.solution}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.outcomes.join(", ")}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {study.kpis.map((kpi) => `${kpi.label}: ${kpi.value}`).join(" • ")}
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.deliverables.join(", ")}</p>
-            </div>
+          {detailBlocks.length > 0 && (
+            <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-2">
+              {detailBlocks.map((block, index) => {
+                const visual = gallery[(index + 1) % gallery.length] ?? gallery[0];
+                const imagePanel = (
+                  <figure className="relative aspect-16/10 overflow-hidden rounded-2xl">
+                    <Image
+                      src={visual.src}
+                      alt={visual.caption}
+                      fill
+                      className="object-cover"
+                    />
+                  </figure>
+                );
 
-            <div>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight">{study.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.challenge}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.solution}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.outcomes.join(", ")}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {study.kpis.map((kpi) => `${kpi.label}: ${kpi.value}`).join(" • ")}
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.deliverables.join(", ")}</p>
-            </div>
-            <div className="relative aspect-16/10">
-              <Image src={secondaryVisual.src} alt={secondaryVisual.caption} fill className="object-cover rounded-2xl" />
+                const textPanel = (
+                  <article>
+                    <h3 className="text-2xl font-semibold tracking-tight">{block.title}</h3>
+                    {block.paragraphs.length > 0 && (
+                      <div className="mt-3 space-y-3 text-sm leading-relaxed text-muted-foreground">
+                        {block.paragraphs.map((paragraph) => (
+                          <p key={paragraph}>{paragraph}</p>
+                        ))}
+                      </div>
+                    )}
+                    {block.bullets.length > 0 && (
+                      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground">
+                        {block.bullets.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </article>
+                );
 
+                return (
+                  <div key={`${block.title}-${index}`} className="contents">
+                    {index % 2 === 0 ? (
+                      <>
+                        {imagePanel}
+                        {textPanel}
+                      </>
+                    ) : (
+                      <>
+                        {textPanel}
+                        {imagePanel}
+                      </>
+                    )}
+                  </div>
+                );
+              })}
             </div>
-            <div className="relative aspect-16/10">
-              <Image src={secondaryVisual.src} alt={secondaryVisual.caption} fill className="object-cover rounded-2xl" />
-
-            </div>
-            <div>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight">{study.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.challenge}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.solution}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.outcomes.join(", ")}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {study.kpis.map((kpi) => `${kpi.label}: ${kpi.value}`).join(" • ")}
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.deliverables.join(", ")}</p>
-            </div>
-          </div>
+          )}
         </Container>
-
       </section>
       <CtaSection />
       <TestimonialsSection testimonials={testimonials} />
