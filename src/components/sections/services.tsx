@@ -6,7 +6,7 @@ import { Container } from "../common/container";
 import { SectionHeading } from "../common/section-heading";
 import { ServiceCard } from "../cards/service-card";
 import MobileSerivceSection from "./mobile-serivces-seciton";
-import { ServiceCard as ServiceCardTypes } from "@/types/sections";
+import { ServiceItem } from "@/data/sections";
 
 
 
@@ -18,7 +18,7 @@ const toSlug = (value: string) =>
     .replace(/\s+/g, "-");
 
 interface ServiceSectionProps {
-  cards: ServiceCardTypes[]
+  cards: ServiceItem[]
 }
 
 export function ServicesSection({

@@ -4,14 +4,14 @@ import { ReactNode, useRef } from "react";
 import Link from "next/link";
 import { Container } from "../common/container";
 import { SectionHeading } from "../common/section-heading";
-import { Service, ServiceCard } from "../cards/service-card";
-import { HOME_SERVICES } from "@/lib/data/services";
+import { ServiceCard } from "../cards/service-card";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { ServiceItem } from "@/data/sections";
 
 type StickyCardProps = {
     index: number;
     total: number;
-    service: Service;
+    service: ServiceItem;
     progress: ReturnType<typeof useScroll>["scrollYProgress"];
     range: [number, number];
     targetScale: number;
@@ -47,21 +47,16 @@ function StickyCard({ index, total, service, progress, range, targetScale }: Sti
 }
 
 type MobileServiceSectionProps = {
-    services?: Service[];
+    services?: ServiceItem[];
     title?: ReactNode;
     highlight?: string;
     description?: string;
 };
 
 const MobileServiceSection = ({
-    services = HOME_SERVICES,
-    title = (
-        <>
-            Built for speed, scale, and{" "}
-            <span className="text-primary">real-world delivery.</span>
-        </>
-    ),
-    description = "End-to-end capabilities to design, ship, and grow modern AI-powered products without compromising quality.",
+    services,
+    title,
+    description
 }: MobileServiceSectionProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
@@ -87,7 +82,7 @@ const MobileServiceSection = ({
                 </div>
 
                 <div className="relative flex flex-col gap-y-4">
-                    {services.map((service, i) => {
+                    {services?.map((service, i) => {
                         const targetScale = Math.max(0.5, 1 - (services.length - i - 1) * 0.1);
                         const range: [number, number] = [i / services.length, 1];
 

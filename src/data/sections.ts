@@ -15,7 +15,7 @@ export type CoreValueItem = {
   description: string;
   icon: LucideIcon;
 };
-export type ServiceCard = {
+export type ServiceItem = {
   number: string;
   title: string;
   slug: string;
@@ -84,8 +84,9 @@ export const caseStudies: CaseStudy[] = [
 ];
 
 export const featured = caseStudies;
+export const projects = caseStudies;
 
-export const services: ServiceCard[] = [
+export const services: ServiceItem[] = [
   {
     number: "001",
     title: "Agentic AI Development",
@@ -324,28 +325,7 @@ export const questions: FaqItem[] = [
   },
 ];
 
-export const projects: ProjectItem[] = [
-  {
-    title: "Internal copilots for support and operations",
-    company: "OpsGrid",
-    category: "Product",
-    summary:
-      "Built role-specific assistants that handled repetitive internal requests and improved team response consistency.",
-    impact: "3.1x increase in weekly throughput",
-    image: "/case-studies/opsgrid.svg",
-    slug: "/case-studies/opsgrid",
-  },
-  {
-    title: "Realtime analytics platform modernization",
-    company: "MetricLane",
-    category: "Product",
-    summary:
-      "Migrated dashboards and APIs to a scalable architecture with clearer insights and lower latency.",
-    impact: "58% reduction in dashboard load time",
-    image: "/case-studies/metriclane.svg",
-    slug: "/case-studies/metriclane",
-  },
-];
+
 
 
 

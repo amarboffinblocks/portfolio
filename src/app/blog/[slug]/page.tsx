@@ -2,9 +2,7 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
-  BookOpenText,
   CalendarDays,
-  Clock3,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,34 +13,36 @@ import CtaSection from "@/components/sections/cta";
 import { SubHero } from "@/components/common/sub-hero";
 import { TestimonialsSection } from "@/components/sections/testimonials";
 import { buttonVariants } from "@/components/ui/button";
-import { BLOG_POSTS, type BlogPostIconKey } from "@/lib/data/blog";
-import { testimonials } from "@/data/sections";
-
-const ICON_MAP: Record<BlogPostIconKey, typeof CalendarDays> = {
-  calendar: CalendarDays,
-  book: BookOpenText,
-  clock: Clock3,
-};
+import { blogs, testimonials } from "@/data/sections";
+import { getBlogMarkdownBySlug } from "@/lib/blog-content";
 
 type BlogArticlePageProps = {
   params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
-  return BLOG_POSTS.map((post) => ({ slug: post.slug }));
+  return blogs.map((post) => ({ slug: post.slug }));
 }
 
 export default async function BlogArticlePage({ params }: BlogArticlePageProps) {
   const { slug } = await params;
-  const postIndex = BLOG_POSTS.findIndex((p) => p.slug === slug);
+  const postIndex = blogs.findIndex((p) => p.slug === slug);
 
   if (postIndex === -1) {
     notFound();
   }
 
-  const post = BLOG_POSTS[postIndex];
-  const relatedPosts = BLOG_POSTS.filter((item) => item.slug !== post.slug).slice(0, 2);
-  const Icon = ICON_MAP[post.iconKey];
+  const post = blogs[postIndex];
+  const relatedPosts = blogs.filter((item) => item.slug !== post.slug).slice(0, 2);
+  const markdown = await getBlogMarkdownBySlug(post.slug);
+
+  if (!markdown) {
+    notFound();
+  }
+
+  const takeaways = markdown.takeaways;
+  const sections = markdown.sections;
+  const Icon = CalendarDays;
 
   return (
     <main className="relative min-h-screen">
@@ -67,15 +67,13 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
                   <span className="rounded-full bg-primary/10 px-3 py-1 font-medium text-primary">
                     {post.category}
                   </span>
-                  <span>{post.publishedAt}</span>
-                  <span className="h-1 w-1 rounded-full bg-border" />
-                  <span>{post.readTime}</span>
+                  <span>{post.date}</span>
                   <span className="h-1 w-1 rounded-full bg-border" />
                   <span>{post.author}</span>
                 </div>
 
                 <p className="mt-6 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
-                  {post.summary}
+                  {post.description}
                 </p>
 
                 <div className="mt-10 rounded-3xl bg-primary p-6 text-primary-foreground">
@@ -92,7 +90,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
                   </div>
 
                   <ul className="mt-5 space-y-3">
-                    {post.takeaways.map((item) => (
+                    {takeaways.map((item) => (
                       <li key={item} className="rounded-2xl bg-white/10 px-4 py-3 text-sm leading-6 sm:text-[15px]">
                         {item}
                       </li>
@@ -101,10 +99,10 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
                 </div>
 
                 <div className="mt-12 space-y-10">
-                  {post.sections.map((section, index) => (
+                  {sections.map((section, index) => (
                     <section
                       key={section.title}
-                      id={post.sections.length > 1 ? `section-${index + 1}` : undefined}
+                      id={sections.length > 1 ? `section-${index + 1}` : undefined}
                       className="border-t border-border/70 pt-8 first:border-t-0 first:pt-0"
                     >
                       <div className="flex items-start gap-4">
@@ -154,7 +152,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
               <div className="rounded-2xl bg-background p-6 border border-primary ">
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">In this article</p>
                 <div className="mt-4 space-y-2">
-                  {post.sections.map((section, index) => (
+                  {sections.map((section, index) => (
                     <a
                       key={section.title}
                       href={`#section-${index + 1}`}
@@ -193,7 +191,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
                     >
                       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">{item.category}</p>
                       <h3 className="mt-2 text-base font-semibold leading-6 text-foreground">{item.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.publishedAt}</p>
+                      <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.date}</p>
                     </Link>
                   ))}
                 </div>
@@ -240,11 +238,9 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
                   <div className="p-5">
                     <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">{item.category}</p>
                     <h3 className="mt-2 text-xl font-semibold tracking-tight text-foreground">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.summary}</p>
+                    <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.description}</p>
                     <div className="mt-5 flex items-center justify-between gap-4">
-                      <span className="text-sm text-muted-foreground">
-                        {item.publishedAt} - {item.readTime}
-                      </span>
+                      <span className="text-sm text-muted-foreground">{item.date}</span>
                       <Link href={`/blog/${item.slug}`} className={buttonVariants({ variant: "link" })}>
                         Read article
                         <ArrowUpRight className="h-4 w-4" />
