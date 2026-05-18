@@ -202,6 +202,8 @@ export type SectionById<TId extends SectionId> = Extract<
 // --- about.json ---
 
 export type AboutSubHeroContent = {
+  eyebrow?: string;
+  breadcrumb?: boolean;
   title: string;
   stash: HeroStat[];
 };
@@ -284,4 +286,156 @@ export type AboutSectionById<TId extends AboutSectionId> = Extract<
 >;
 
 /** A unified type for all sections across different pages */
-export type PageSection = LandingSection | AboutSection;
+export type ProjectSectionId = "projects" | "cta" | "testimonials";
+
+export type ProjectsSection = {
+  id: "projects";
+  name: string;
+  content: FeaturedSectionContent;
+};
+
+export type ProjectCtaSection = {
+  id: "cta";
+  name: string;
+  content: CtaSectionContent;
+};
+
+export type ProjectTestimonialsSection = {
+  id: "testimonials";
+  name: string;
+  content: TestimonialsSectionContent;
+};
+
+export type ProjectSection =
+  | ProjectsSection
+  | ProjectCtaSection
+  | ProjectTestimonialsSection;
+
+export type ProjectPage = {
+  sections: ProjectSection[];
+};
+
+/** Narrow a project section by its `id` */
+export type ProjectSectionById<TId extends ProjectSectionId> = Extract<
+  ProjectSection,
+  { id: TId }
+>;
+
+export type BlogSectionId = "blogs" | "cta" | "testimonials";
+
+export type BlogSubHeroSection = {
+  id: "sub_hero";
+  name: string;
+  content: AboutSubHeroContent;
+};
+export type BlogPost = {
+  title: string;
+  company: string;
+  category: string;
+  summary: string;
+  publishedAt: string;
+  readTime: string;
+  author: string;
+  image: string;
+  slug: string;
+}
+export type BlogPageSectionContent = {
+  title?: string,
+  descripton?: string
+  blogs: BlogPost[];
+};
+
+export type BlogPageSection = {
+  id: "blog_page_section";
+  name: string;
+  content: BlogPageSectionContent;
+};
+
+export type BlogCtaSection = {
+  id: "cta";
+  name: string;
+  content: CtaSectionContent;
+};
+
+export type BlogTestimonialsSection = {
+  id: "testimonials";
+  name: string;
+  content: TestimonialsSectionContent;
+};
+
+export type BlogSection =
+  | BlogSubHeroSection
+  | BlogPageSection
+  | BlogCtaSection
+  | BlogTestimonialsSection;
+
+export type BlogPage = {
+  sections: BlogSection[];
+};
+
+/** Narrow a blog section by its `id` */
+export type BlogSectionById<TId extends BlogSectionId> = Extract<
+  BlogSection,
+  { id: TId }
+>;
+
+export type ContactSubHeroContent = {
+  eyebrow?: string;
+  breadcrumb?: boolean;
+  title: string;
+};
+
+export type ContactFormSectionContent = {
+  title: string;
+  description: string;
+};
+
+export type ContactSectionId = "sub_hero" | "contact_form" | "cta" | "testimonials";
+
+export type ContactSubHeroSection = {
+  id: "sub_hero";
+  name: string;
+  content: ContactSubHeroContent;
+};
+
+export type ContactFormSection = {
+  id: "contact_form";
+  name: string;
+  content: ContactFormSectionContent;
+};
+
+export type ContactCtaSection = {
+  id: "cta";
+  name: string;
+  content: CtaSectionContent;
+};
+
+export type ContactTestimonialsSection = {
+  id: "testimonials";
+  name: string;
+  content: TestimonialsSectionContent;
+};
+
+export type ContactSection =
+  | ContactSubHeroSection
+  | ContactFormSection
+  | ContactCtaSection
+  | ContactTestimonialsSection;
+
+export type ContactPage = {
+  sections: ContactSection[];
+};
+
+/** Narrow a contact section by its `id` */
+export type ContactSectionById<TId extends ContactSectionId> = Extract<
+  ContactSection,
+  { id: TId }
+>;
+
+/** A unified type for all sections across different pages */
+export type PageSection =
+  | LandingSection
+  | AboutSection
+  | ProjectSection
+  | BlogSection
+  | ContactSection;

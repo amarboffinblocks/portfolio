@@ -4,6 +4,8 @@
             "id": "sub_hero",
             "name": "About Hero",
             "content": {
+                "eyebrow": "About Us",
+                "breadcrumb": false,
                 "title": "Helping Businesses",
                 "stash": [
                     {

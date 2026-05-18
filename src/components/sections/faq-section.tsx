@@ -30,7 +30,7 @@ export function FaqSection({ title, description, questions }: FaqSectionContent)
           <Accordion type="single" collapsible className="w-full bg-background rounded-xl">
             {questions?.map((item, index) => (
               <AccordionItem
-                key={item.question}
+                key={`question-${index}`}
                 value={`faq-${index + 1}`}
                 className=" border-b border-border/70 px-4 last:border-b-0 sm:px-5  "
               >

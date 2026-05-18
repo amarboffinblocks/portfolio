@@ -12,6 +12,8 @@ import type { PageSection } from "@/types/sections";
 import { SubHero } from "./sub-hero";
 import { WhoWEAreSection } from "../sections/who-we-are";
 import { CoreValuesSection } from "../sections/core-values";
+import { BlogPageSection } from "../sections/blog-page";
+import { ContactFormSection } from "../sections/contact-form";
 
 type SectionRendererProps = {
   section: PageSection;
@@ -22,11 +24,11 @@ export function SectionRenderer({ section }: SectionRendererProps) {
     case "hero":
       return <HeroSection {...section.content} />;
     case "sub_hero":
-      return <SubHero
-        eyebrow="ABOUT US"
-        title={`Helping Businesses`}
-        stash={true}
-      />
+      return <SubHero {...section.content} />
+    case "blog_page_section":
+      return <BlogPageSection {...section.content} />
+    case "contact_form":
+      return <ContactFormSection />
     case "who_we_are":
       return <WhoWEAreSection />;
     case "core_values":

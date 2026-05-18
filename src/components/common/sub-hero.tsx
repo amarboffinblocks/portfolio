@@ -13,6 +13,7 @@ import { usePathname } from 'next/navigation'
 import StatsCard from '../cards/stats-card'
 import { cn } from '@/lib/utils'
 import { Container } from './container'
+import type { HeroStat } from '@/types/sections'
 const HERO_STATS = [
   {
     id: 1,
@@ -36,8 +37,24 @@ const HERO_STATS = [
   },
 ] as const;
 
-export const SubHero = ({ title, eyebrow, breadcrumb = false, stash = false, className }: { title: string, eyebrow?: string, breadcrumb?: boolean, stash?: boolean, className?: string }) => {
+type SubHeroProps = {
+  title: string;
+  eyebrow?: string;
+  breadcrumb?: boolean;
+  stash?: boolean | HeroStat[];
+  className?: string;
+};
+
+export const SubHero = ({
+  title,
+  eyebrow,
+  breadcrumb = false,
+  stash = false,
+  className,
+}: SubHeroProps) => {
   const pathname = usePathname()
+  const stats = Array.isArray(stash) ? stash : stash ? HERO_STATS : [];
+  const showStats = stats.length > 0;
 
   const currentPageLabel =
     pathname
@@ -51,7 +68,7 @@ export const SubHero = ({ title, eyebrow, breadcrumb = false, stash = false, cla
 
   return (
     <HeroWrapper className={cn(' min-h-[350px] md:min-h-[600px]', className)} >
-      <Container className={cn(" flex-1 flex  items-center justify-center flex-col gap-y-12  ", stash ? "pt-36 " : "md:pt-10")}>
+      <Container className={cn(" flex-1 flex  items-center justify-center flex-col gap-y-12  ", showStats ? "pt-36 " : "md:pt-10")}>
         <div className="flex flex-col items-center text-center gap-2 md:gap-4 ">
           {eyebrow && <span className=' text-md md:text-2xl text-accent uppercase font-semibold'>{eyebrow}</span>}
           <h1 className="text-3xl  font-semibold md:text-6xl text-primary-foreground">
@@ -73,17 +90,17 @@ export const SubHero = ({ title, eyebrow, breadcrumb = false, stash = false, cla
 
         </div>
 
-        {
-          stash && <div
+        {showStats && (
+          <div
             className=" w-full grid grid-cols-2 gap-3  sm:grid-cols-2 lg:grid-cols-4 pb-4"
             role="list"
             aria-label="Impact highlights"
           >
-            {HERO_STATS.map((stat) => (
-              <StatsCard key={stat.id} {...stat} />
+            {stats.map((stat, index) => (
+              <StatsCard key={`${stat.label}-${index}`} number={stat.number} label={stat.label} />
             ))}
           </div>
-        }
+        )}
 
       </Container>
     </HeroWrapper>

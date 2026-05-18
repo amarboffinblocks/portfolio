@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import { SectionWrapper } from "../common/section-wrapper";
 
 const testimonials = [
     {
@@ -32,12 +33,11 @@ const testimonials = [
     },
 ];
 
-export function ContactSection() {
+export function ContactFormSection() {
     const [slide, setSlide] = useState(0);
 
     return (
-        <section
-            className="relative py-20 lg:py-28"
+        <SectionWrapper
             aria-labelledby="contact-section-heading"
         >
             <Container>
@@ -66,7 +66,7 @@ export function ContactSection() {
                                 </Link>
 
                                 <div className="space-y-4">
-                                   
+
                                     <h2
                                         id="contact-section-heading"
                                         className="font-heading text-3xl leading-tight tracking-tight text-white sm:text-4xl"
@@ -125,9 +125,9 @@ export function ContactSection() {
                                     >
                                         <Mail className="size-[18px] text-neutral-600" strokeWidth={2} />
                                     </div>
-                                        <h3 className="font-sans text-xl font-semibold tracking-tight text-neutral-950 sm:text-2xl">
-                                            Send us a message
-                                        </h3>
+                                    <h3 className="font-sans text-xl font-semibold tracking-tight text-neutral-950 sm:text-2xl">
+                                        Send us a message
+                                    </h3>
                                 </div>
                                 <p className="max-w-md text-sm leading-relaxed text-neutral-600">
                                     Use the form below for project inquiries and partnerships. For urgent matters, note it in your message
@@ -194,7 +194,7 @@ export function ContactSection() {
                                 <Button
                                     type="submit"
                                     size="lg"
-                                  
+
                                 >
                                     Submit inquiry
                                 </Button>
@@ -214,6 +214,6 @@ export function ContactSection() {
                     </div>
                 </div>
             </Container>
-        </section>
+        </SectionWrapper>
     );
 }
