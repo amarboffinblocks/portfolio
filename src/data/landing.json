@@ -205,35 +205,40 @@
             "id": "hero",
             "name": "Hero",
             "content": {
-                "title": "",
-                "description": "We design, build, and operate AI-powered workflows that remove manual bottlenecks so your team can focus on growth.",
-                "buttons": [
-                    {
-                        "label": "Explore Our Work",
-                        "href": "/projects",
-                        "variant": "secondary"
-                    }
-                ],
-                "stats": [
-                    {
-                        "number": "150+",
-                        "label": "Projects Delivered"
-                    },
-                    {
-                        "number": "98%",
-                        "label": "Client Satisfaction"
-                    },
-                    {
-                        "number": "24/7",
-                        "label": "AI Automation"
-                    },
-                    {
-                        "number": "10x",
-                        "label": "Business Efficiency"
-                    }
-                ]
+              "title": "Agentic AI & Automation Company for Modern Businesses",
+              "description": "We build AI agents, intelligent automations, and scalable workflow systems that streamline operations, eliminate repetitive work, and help businesses operate faster with AI-powered efficiency.",
+              "buttons": [
+                {
+                  "label": "Book a Strategy Call",
+                  "href": "/contact",
+                  "variant": "primary"
+                },
+                {
+                  "label": "Explore Our Work",
+                  "href": "/projects",
+                  "variant": "secondary"
+                }
+              ],
+              "stats": [
+                {
+                  "number": "24/7",
+                  "label": "AI-Powered Operations"
+                },
+                {
+                  "number": "10x",
+                  "label": "Workflow Efficiency"
+                },
+                {
+                  "number": "100+",
+                  "label": "Automated Processes"
+                },
+                {
+                  "number": "99%",
+                  "label": "System Reliability"
+                }
+              ]
             }
-        },
+          },
         {
             "id": "trust",
             "name": "Trust"
@@ -242,112 +247,122 @@
             "id": "services",
             "name": "Services",
             "content": {
-                "title": "Digital Services Designed for Business Growth",
-                "description": "We partner with startups, growing brands, and enterprises to deliver high-impact digital solutions that combine technology, design, and strategy. From product development and AI integration to branding and marketing, our services are crafted to accelerate innovation, optimize performance, and drive measurable business results.",
-                "cards": [
-                    {
-                        "number": "001",
-                        "title": "Web Development",
-                        "slug": "web-development",
-                        "icon": "code",
-                        "description": "We build websites and web applications."
-                    },
-                    {
-                        "number": "002",
-                        "title": "Mobile Development",
-                        "slug": "mobile-development",
-                        "icon": "mobile",
-                        "description": "We build mobile applications."
-                    },
-                    {
-                        "number": "003",
-                        "title": "AI Development",
-                        "slug": "ai-development",
-                        "icon": "ai",
-                        "description": "We build AI applications."
-                    },
-                    {
-                        "number": "004",
-                        "title": "Data Engineering",
-                        "icon": "data-engineering",
-                        "slug": "data-engineering",
-                        "description": "We build data pipelines and data warehouses."
-                    },
-                    {
-                        "number": "005",
-                        "title": "DevOps",
-                        "icon": "devops",
-                        "slug": "devops",
-                        "description": "We build CI/CD pipelines and infrastructure as code."
-                    },
-                    {
-                        "number": "006",
-                        "title": "SEO Optimization",
-                        "slug": "seo-optimization",
-                        "icon": "search",
-                        "description": "We optimize websites for search engines."
-                    },
-                    {
-                        "number": "007",
-                        "title": "UI/UX Design",
-                        "slug": "ui-ux-design",
-                        "icon": "palette",
-                        "description": "We design user interfaces and user experiences."
-                    },
-                    {
-                        "number": "008",
-                        "title": "Branding",
-                        "slug": "branding",
-                        "icon": "branding",
-                        "description": "We build brand systems and brand identities."
-                    },
-                    {
-                        "number": "009",
-                        "title": "Marketing",
-                        "icon": "marketing",
-                        "slug": "marketing",
-                        "description": "We build marketing campaigns and marketing strategies."
-                    },
-                    {
-                        "number": "010",
-                        "title": "Content Creation",
-                        "slug": "content-creation",
-                        "icon": "content",
-                        "description": "We create content for websites and social media."
-                    }
-                ]
+              "title": "Agentic AI & Automation Services for Modern Businesses",
+              "description": "We help businesses build intelligent AI systems, automate operations, and streamline workflows through custom AI development, automation engineering, and scalable digital infrastructure. Our services are designed to reduce manual work, improve operational efficiency, and accelerate business growth using modern AI technologies.",
+              "cards": [
+                {
+                  "number": "001",
+                  "title": "Agentic AI Development",
+                  "slug": "agentic-ai-development",
+                  "icon": "code",
+                  "description": "We build intelligent AI agents capable of reasoning, automation, task execution, and business workflow orchestration."
+                },
+                {
+                  "number": "002",
+                  "title": "AI Workflow Automation",
+                  "slug": "ai-workflow-automation",
+                  "icon": "mobile",
+                  "description": "We design AI-powered workflows that automate repetitive operations, approvals, notifications, and internal business processes."
+                },
+                {
+                  "number": "003",
+                  "title": "Custom AI Solutions",
+                  "slug": "ai-development",
+                  "icon": "ai",
+                  "description": "We develop tailored AI systems aligned with your operational workflows, data infrastructure, and business goals."
+                },
+                {
+                  "number": "004",
+                  "title": "AI Integrations",
+                  "slug": "data-engineering",
+                  "icon": "data-engineering",
+                  "description": "We integrate OpenAI, Claude, APIs, CRMs, databases, and third-party platforms into unified AI-powered systems."
+                },
+                {
+                  "number": "005",
+                  "title": "Business Process Automation",
+                  "slug": "devops",
+                  "icon": "devops",
+                  "description": "We automate manual operations using intelligent systems that improve scalability, efficiency, and operational consistency."
+                },
+                {
+                  "number": "006",
+                  "title": "AI Chatbots & Assistants",
+                  "slug": "ai-chatbots-assistants",
+                  "icon": "search",
+                  "description": "We create AI assistants and conversational systems trained on your business knowledge, workflows, and documentation."
+                },
+                {
+                  "number": "007",
+                  "title": "Web & Platform Development",
+                  "slug": "web-platform-development",
+                  "icon": "palette",
+                  "description": "We build scalable websites, dashboards, internal tools, and AI-enabled web applications for modern businesses."
+                },
+                {
+                  "number": "008",
+                  "title": "Data & AI Infrastructure",
+                  "slug": "data-ai-infrastructure",
+                  "icon": "branding",
+                  "description": "We build secure AI-ready infrastructure, databases, vector systems, and scalable backend architectures."
+                },
+                {
+                  "number": "009",
+                  "title": "SEO & AI Content Systems",
+                  "slug": "seo-ai-content-systems",
+                  "icon": "marketing",
+                  "description": "We create AI-assisted SEO content workflows, optimization systems, and search-focused content strategies."
+                },
+                {
+                  "number": "010",
+                  "title": "AI Consulting & Strategy",
+                  "slug": "ai-consulting-strategy",
+                  "icon": "content",
+                  "description": "We help businesses identify automation opportunities, design AI roadmaps, and implement scalable AI transformation strategies."
+                }
+              ]
             }
-        },
-        {
+          },
+          {
             "id": "choose",
-            "Name": "Why choose boffinblocks",
+            "name": "Why Choose Boffinblocks",
             "content": {
-                "title": "Why Teams Choose BoffinBlocks",
-                "description": "A modern AI product partner that combines business understanding with high-quality execution.",
-                "points": [
-                    {
-                        "title": "Business-first strategy",
-                        "icon": "BriefcaseBusiness",
-                        "description": "Every sprint is aligned to clear business outcomes, so progress stays measurable and meaningful."
-                    },
-                    {
-                        "title": "Scalable technical foundation",
-                        "icon": "Gauge",
-                        "description": "Solutions are built for maintainability, handover clarity, and long-term product growth."
-                    },
-                    {
-                        "title": "Transparent collaboration",
-                        "icon": "Workflow",
-                        "description": "Clear communication and proactive risk management keep your team confident at every phase."
-                    },
-                    {
-                        "title": "Fast, reliable execution",
-                        "icon": "ShieldCheck",
-                        "description": "We move quickly with strong engineering standards, testing discipline, and predictable delivery."
-                    }
-                ]
+              "title": "Why Businesses Choose Boffinblocks",
+              "description": "We combine agentic AI, automation engineering, and scalable development to help businesses streamline operations, reduce manual work, and deploy intelligent systems with confidence.",
+              "points": [
+                {
+                  "title": "Automation-First Approach",
+                  "icon": "Workflow",
+                  "description": "We design intelligent workflows and AI-powered systems that automate repetitive operations and improve business efficiency."
+                },
+                {
+                  "title": "Custom AI Systems",
+                  "icon": "Bot",
+                  "description": "Every AI solution is tailored to your workflows, business goals, infrastructure, and operational requirements."
+                },
+                {
+                  "title": "Scalable AI Infrastructure",
+                  "icon": "Gauge",
+                  "description": "Our systems are built for scalability, reliability, maintainability, and long-term business growth."
+                },
+                {
+                  "title": "Modern AI & Integration Stack",
+                  "icon": "Network",
+                  "description": "We integrate AI models, APIs, databases, CRMs, and automation platforms into unified intelligent systems."
+                },
+                {
+                  "title": "Fast & Reliable Execution",
+                  "icon": "ShieldCheck",
+                  "description": "We deliver production-ready AI and automation solutions with strong engineering practices and rapid deployment cycles."
+                },
+                {
+                  "title": "Business-Focused AI Strategy",
+                  "icon": "BriefcaseBusiness",
+                  "description": "We focus on measurable operational impact, helping businesses automate processes, optimize workflows, and scale efficiently."
+                }
+              ]
             }
-        },
+          },
         {
             "id": "featured",
             "name": "Featured",
@@ -389,32 +404,32 @@
             "id": "process",
             "name": "Work Process",
             "content": {
-                "title": "Our Work Process",
-                "description": "A structured, transparent approach that keeps momentum high and quality consistent from kickoff to scale.",
-                "steps": [
-                    {
-                        "title": "Discover",
-                        "icon": "Compass",
-                        "description": "We align on product goals, user needs, and technical constraints to define the right execution path."
-                    },
-                    {
-                        "title": "Design & Plan",
-                        "icon": "Layers3",
-                        "description": "We map architecture, UX flows, and delivery milestones so implementation stays fast and predictable."
-                    },
-                    {
-                        "title": "Build & Iterate",
-                        "icon": "Code2",
-                        "description": "We ship in focused cycles, validate quickly, and refine continuously based on feedback and performance."
-                    },
-                    {
-                        "title": "Launch & Scale",
-                        "icon": "Rocket",
-                        "description": "We deploy with confidence, monitor outcomes, and evolve the product for long-term growth."
-                    }
-                ]
+              "title": "Our AI Automation Process",
+              "description": "A streamlined process focused on building scalable AI systems, intelligent automations, and modern business workflows.",
+              "steps": [
+                {
+                  "title": "Discovery & Strategy",
+                  "icon": "Compass",
+                  "description": "We analyze your workflows, operational challenges, and business goals to identify high-impact AI automation opportunities."
+                },
+                {
+                  "title": "Architecture & Planning",
+                  "icon": "Layers3",
+                  "description": "We design the AI systems, integrations, workflows, and technical infrastructure required for scalable implementation."
+                },
+                {
+                  "title": "Development & Automation",
+                  "icon": "Code2",
+                  "description": "We build AI agents, automation workflows, integrations, dashboards, and intelligent systems tailored to your business."
+                },
+                {
+                  "title": "Deployment & Optimization",
+                  "icon": "Rocket",
+                  "description": "We deploy production-ready AI solutions, monitor performance, and continuously optimize workflows for long-term scalability."
+                }
+              ]
             }
-        },
+          },
         {
             "id": "testimonials",
             "name": "Testimonials",
@@ -449,59 +464,55 @@
             "id": "cta",
             "name": "CTA",
             "content": {
-                "title": "Ready to build something great?",
-                "description": "Let's talk about your project and see how we can help you.",
-                "button": {
-                    "label": "Get in touch",
-                    "href": "/contact"
-                }
+              "title": "Ready to Automate Your Business with AI?",
+              "description": "Let’s build intelligent AI systems, workflow automations, and scalable digital solutions tailored to your business operations and growth goals.",
+              "button": {
+                "label": "Book a Strategy Call",
+                "href": "/contact"
+              }
             }
-        },
+          },
         {
             "id": "faq",
             "name": "FAQ",
             "content": {
-                "title": "Frequently asked questions",
-                "description": "Everything you need to know before starting your product journey with BoffinBlocks.",
-                "questions": [
-                    {
-                        "question": "How quickly can we start a project with BoffinBlocks?",
-                        "answer": "Most projects can begin within 3-7 business days after a short discovery call. We finalize scope, timelines, and priorities first so execution starts with full clarity."
-                    },
-                    {
-                        "question": "Do you work as an external agency or an embedded team?",
-                        "answer": "We can do both. Depending on your needs, we either operate as a standalone delivery squad or integrate directly with your product, design, and engineering teams."
-                    },
-                    {
-                        "question": "Can you support us after launch?",
-                        "answer": "Yes. We provide post-launch support for performance, feature iterations, and reliability improvements so your product keeps evolving without losing quality."
-                    },
-                    {
-                        "question": "What industries do you usually work with?",
-                        "answer": "We work across SaaS, AI products, internal tools, and service businesses. Our process is flexible enough to adapt to both early-stage startups and growing teams."
-                    },
-                    {
-                        "question": "How do you handle communication and progress updates?",
-                        "answer": "You get a clear delivery rhythm with weekly progress updates, async checkpoints, and transparent task tracking. Risks and blockers are shared early, not late."
-                    },
-                    {
-                        "question": "How do you handle communication and progress updates?",
-                        "answer": "You get a clear delivery rhythm with weekly progress updates, async checkpoints, and transparent task tracking. Risks and blockers are shared early, not late."
-                    },
-                    {
-                        "question": "How do you handle communication and progress updates?",
-                        "answer": "You get a clear delivery rhythm with weekly progress updates, async checkpoints, and transparent task tracking. Risks and blockers are shared early, not late."
-                    },
-                    {
-                        "question": "How do you handle communication and progress updates?",
-                        "answer": "You get a clear delivery rhythm with weekly progress updates, async checkpoints, and transparent task tracking. Risks and blockers are shared early, not late."
-                    },
-                    {
-                        "question": "How do you handle communication and progress updates?",
-                        "answer": "You get a clear delivery rhythm with weekly progress updates, async checkpoints, and transparent task tracking. Risks and blockers are shared early, not late."
-                    }
-                ]
+              "title": "Frequently Asked Questions",
+              "description": "Answers to common questions about our AI automation services, development process, and workflow integrations.",
+              "questions": [
+                {
+                  "question": "What services does Boffinblocks provide?",
+                  "answer": "Boffinblocks specializes in agentic AI development, AI workflow automation, AI integrations, intelligent business systems, custom AI solutions, and scalable automation infrastructure."
+                },
+                {
+                  "question": "What is Agentic AI?",
+                  "answer": "Agentic AI refers to intelligent AI systems capable of reasoning, decision-making, task execution, and workflow automation with minimal human intervention."
+                },
+                {
+                  "question": "Can you automate our existing business workflows?",
+                  "answer": "Yes. We analyze your current operations and build AI-powered workflows that automate repetitive tasks, approvals, notifications, data processing, and business operations."
+                },
+                {
+                  "question": "Which AI models and technologies do you work with?",
+                  "answer": "We work with modern AI technologies including OpenAI, Claude, LangChain, vector databases, n8n, Supabase, APIs, and custom AI infrastructure."
+                },
+                {
+                  "question": "Do you build custom AI agents for businesses?",
+                  "answer": "Yes. We build custom AI agents tailored to your workflows, operational requirements, internal systems, and business objectives."
+                },
+                {
+                  "question": "Can your AI systems integrate with our existing tools?",
+                  "answer": "Absolutely. We integrate AI systems with CRMs, databases, APIs, internal dashboards, payment systems, communication platforms, and third-party business tools."
+                },
+                {
+                  "question": "Do you provide support after deployment?",
+                  "answer": "Yes. We provide ongoing optimization, monitoring, maintenance, workflow improvements, and scaling support after deployment."
+                },
+                {
+                  "question": "How long does an AI automation project usually take?",
+                  "answer": "Project timelines vary based on complexity, integrations, and workflow requirements. Most AI automation systems can be delivered within a few weeks after the discovery and planning phase."
+                }
+              ]
             }
-        }
+          }
     ]
 }
