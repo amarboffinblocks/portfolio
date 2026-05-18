@@ -1,21 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { buttonVariants } from '../ui/button';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { BlogItem } from '@/data/sections';
 
-interface BlogCardProps {
-    title: string;
-    summary: string;
-    publishedAt: string;
-    readTime: string;
-    image: string;
-    slug: string;
-}
-export const BlogCard = ({ title, summary, publishedAt, readTime, image, slug }: BlogCardProps) => {
+
+export const BlogCard = ({ title, slug, description, author, date, category, image }: BlogItem) => {
     return (
         <article
             key={slug}
-            className="group overflow-hidden rounded-2xl bg-primary p-2"
+            className="group overflow-hidden rounded-2xl bg-background p-3"
         >
             <div className="relative aspect-16/10 overflow-hidden rounded-2xl">
                 <Image
@@ -27,21 +21,21 @@ export const BlogCard = ({ title, summary, publishedAt, readTime, image, slug }:
                 />
             </div>
 
-            <div className=" p-4 glass-radial mt-2  rounded-2xl">
-                <h2 className="text-lg font-semibold leading-snug line-clamp-2 text-primary-foreground">{title}</h2>
-                <p className="mt-3 text-sm leading-relaxed text-muted/50 line-clamp-3">{summary}</p>
+            <div className=" p-4   rounded-2xl">
+                <h2 className="text-lg font-semibold leading-snug line-clamp-2 text-foreground">{title}</h2>
+                <p className="mt-3 text-sm leading-relaxed text-foreground-muted line-clamp-3">{description}</p>
 
                 <div className="mt-2 flex items-center justify-between ">
-                    <p className="text-sm font-medium text-primary-foreground/70">
-                        {publishedAt} - {readTime}
+                    <p className="text-xs  text-foreground-muted/50">
+                        {date}
                     </p>
                     <Link
                         href={`/blog/${slug}`}
-                        className={buttonVariants({ variant: "ghost" })}
+                        className={buttonVariants({ variant: "outline", size: "lg", className: "hover:bg-primary hover:text-primary-foreground" })}
                         aria-label={`Open article: ${title}`}
                     >
                         Read Article
-                        <ArrowUpRight className="h-4 w-4" />
+                        <ArrowRight className="h-4 w-4 group-hover:translate-x-1  transition-all duration-300" />
                     </Link>
                 </div>
             </div>

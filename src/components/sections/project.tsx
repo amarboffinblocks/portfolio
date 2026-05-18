@@ -1,7 +1,7 @@
 import React from 'react'
 import { SectionWrapper } from '@/components/common/section-wrapper'
 import { Container } from '@/components/common/container'
-import FeatureCard from '../cards/feature-card';
+import FeatureCard from '../cards/project-card';
 import { ProjectItem } from '@/data/sections';
 interface ProjectSectionProps {
     projects: ProjectItem[]

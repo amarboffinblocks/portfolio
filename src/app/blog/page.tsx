@@ -2,18 +2,15 @@ import { SubHero } from "@/components/common/sub-hero";
 import { BlogPageSection } from "@/components/sections/blog-page";
 import CtaSection from "@/components/sections/cta";
 import { TestimonialsSection } from "@/components/sections/testimonials";
-import blogPageData from "@/data/blog.json"
 import { blogs, testimonials } from "@/data/sections";
-import type { BlogPage } from "@/types/sections";
 
 
 
 export default function BlogPage() {
-  const { sections } = blogPageData as BlogPage;
   return (
     <main className="relative min-h-screen">
       <SubHero
-        eyebrow="Blog"
+        // eyebrow="Blog"
         title="Our Blog"
       />
       <BlogPageSection blogs={blogs} />

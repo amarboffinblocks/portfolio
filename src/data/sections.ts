@@ -61,49 +61,25 @@ export type ProjectItem = {
   slug: string;
 }
 export type BlogItem = {
-  slug: string;
-  category: string;
   title: string;
-  summary: string;
-  publishedAt: string;
-  readTime: string;
+  slug: string;
+  description: string;
   author: string;
+  date: string;
+  category: string;
   image: string;
-  company?: string;
-  iconKey?: string;
-  takeaways?: string[];
 };
 
 export const caseStudies: CaseStudy[] = [
   {
     title: "Automated customer onboarding with AI workflows",
-    company: "FinFlow",
-    category: "Product",
+    company: "boffinblocks",
+    category: "service business",
     summary:
       "Replaced manual verification steps with AI-assisted flows to speed approvals and reduce operational overhead.",
     impact: "42% faster onboarding cycle",
-    image: "/case-studies/finflow.svg",
-    slug: "/case-studies/finflow",
-  },
-  {
-    title: "Internal copilots for support and operations",
-    company: "OpsGrid",
-    category: "Product",
-    summary:
-      "Built role-specific assistants that handled repetitive internal requests and improved team response consistency.",
-    impact: "3.1x increase in weekly throughput",
-    image: "/case-studies/opsgrid.svg",
-    slug: "/case-studies/opsgrid",
-  },
-  {
-    title: "Realtime analytics platform modernization",
-    company: "MetricLane",
-    category: "Product",
-    summary:
-      "Migrated dashboards and APIs to a scalable architecture with clearer insights and lower latency.",
-    impact: "58% reduction in dashboard load time",
-    image: "/case-studies/metriclane.svg",
-    slug: "/case-studies/metriclane",
+    image: "/projects/boffinblocks/banner.png",
+    slug: "/projects/boffinblocks",
   },
 ];
 
@@ -267,56 +243,14 @@ export const stats: StatItem[] = [
 
 export const blogs: BlogItem[] = [
   {
-    slug: "ai-automation-roi-playbook",
-    category: "Strategy",
-    title: "How AI automation creates compounding growth for service businesses",
-    summary:
-      "A practical framework to identify automation opportunities, prioritize quick wins, and scale without operational friction.",
-    publishedAt: "May 2026",
-    readTime: "8 min read",
-    author: "BoffinBlocks Strategy Team",
-    image: "/case-studies/finflow.svg",
-    iconKey: "calendar",
-    takeaways: [
-      "Identify repetitive, low-variance workflows before automating.",
-      "Measure ROI in time saved, quality gains, and turnaround speed.",
-      "Keep human review in place for exceptions and compliance-sensitive steps.",
-    ],
-  },
-  {
-    slug: "ai-automation-roi-playbook-2",
-    category: "Strategy",
-    title: "How AI automation creates compounding growth for service businesses",
-    summary:
-      "A practical framework to identify automation opportunities, prioritize quick wins, and scale without operational friction.",
-    publishedAt: "May 2026",
-    readTime: "8 min read",
-    author: "BoffinBlocks Strategy Team",
-    image: "/case-studies/finflow.svg",
-    iconKey: "calendar",
-    takeaways: [
-      "Identify repetitive, low-variance workflows before automating.",
-      "Measure ROI in time saved, quality gains, and turnaround speed.",
-      "Keep human review in place for exceptions and compliance-sensitive steps.",
-    ],
-  },
-  {
-    slug: "ai-automation-roi-playbook-3",
-    category: "Strategy",
-    title: "How AI automation creates compounding growth for service businesses",
-    summary:
-      "A practical framework to identify automation opportunities, prioritize quick wins, and scale without operational friction.",
-    publishedAt: "May 2026",
-    readTime: "8 min read",
-    author: "BoffinBlocks Strategy Team",
-    image: "/case-studies/finflow.svg",
-    iconKey: "calendar",
-    takeaways: [
-      "Identify repetitive, low-variance workflows before automating.",
-      "Measure ROI in time saved, quality gains, and turnaround speed.",
-      "Keep human review in place for exceptions and compliance-sensitive steps.",
-    ],
-  },
+    title: "Top Ecommerce Trends in 2026",
+    slug: "top-ecommerce-trends-2026",
+    description: "Discover the latest ecommerce trends shaping online businesses in 2026.",
+    author: "Admin",
+    date: "2026-05-18",
+    category: "Ecommerce",
+    image: "/blogs/ecommerce/banner.jpeg"
+  }
 
 ];
 

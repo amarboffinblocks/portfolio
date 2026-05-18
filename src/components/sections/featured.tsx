@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/common/container";
 import { SectionHeading } from "@/components/common/section-heading";
 import { buttonVariants } from "../ui/button";
-import FeatureCard from "../cards/feature-card";
+import ProjectCard from "../cards/project-card";
 import { SectionWrapper } from "../common/section-wrapper";
 import { CaseStudy } from "@/data/sections";
 
@@ -39,7 +39,7 @@ export function FeaturedSection({ studies }: FeaturedSectionProps) {
           {studies?.map((study, index: number) => {
             const key = `${study.slug}-${index}`;
             return (
-              <FeatureCard key={key} study={study} />
+              <ProjectCard key={key} study={study} />
             );
           })}
         </div>
