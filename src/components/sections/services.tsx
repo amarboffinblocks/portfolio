@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Container } from "../common/container";
 import { SectionHeading } from "../common/section-heading";
@@ -27,8 +27,12 @@ export function ServicesSection({
   const galleryRef = useRef<HTMLDivElement>(null);
   const layoutProbeRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
   const [sectionHeight, setSectionHeight] = useState("100vh");
   const [trackInset, setTrackInset] = useState({ left: 0, right: 0 });
+  const [stickyTop, setStickyTop] = useState(128);
+  const [railMarginTop, setRailMarginTop] = useState(48);
+  const [cardHeight, setCardHeight] = useState(460);
   const rafRef = useRef<number | null>(null);
   const totalScrollDistanceRef = useRef(0);
 
@@ -42,9 +46,21 @@ export function ServicesSection({
   const calculateLayoutMetrics = useCallback(() => {
     if (!containerRef.current || !layoutProbeRef.current) return;
 
-    const containerWidth = containerRef.current.scrollWidth;
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
+    const nextStickyTop = viewportHeight < 860 ? 80 : 128;
+    const nextRailMarginTop = viewportHeight < 860 ? 32 : 48;
+    const headingHeight = headingRef.current?.offsetHeight ?? 0;
+    const nextCardHeight = Math.max(
+      320,
+      Math.min(460, viewportHeight - nextStickyTop - headingHeight - nextRailMarginTop - 24),
+    );
+
+    setStickyTop((prev) => (prev === nextStickyTop ? prev : nextStickyTop));
+    setRailMarginTop((prev) => (prev === nextRailMarginTop ? prev : nextRailMarginTop));
+    setCardHeight((prev) => (prev === nextCardHeight ? prev : nextCardHeight));
+
+    const containerWidth = containerRef.current.scrollWidth;
     const totalScrollDistance = Math.max(0, containerWidth - viewportWidth);
     totalScrollDistanceRef.current = totalScrollDistance;
 
@@ -77,6 +93,9 @@ export function ServicesSection({
     }
     if (layoutProbeRef.current) {
       resizeObserver.observe(layoutProbeRef.current);
+    }
+    if (headingRef.current) {
+      resizeObserver.observe(headingRef.current);
     }
     window.addEventListener("resize", calculateLayoutMetrics);
 
@@ -140,18 +159,26 @@ export function ServicesSection({
         />
 
         {/* Sticky container */}
-        <div className="sticky top-32 h-fit overflow-hidden">
+        <div
+          className="sticky h-fit overflow-hidden"
+          style={{ top: `${stickyTop}px` }}
+        >
           <div className="h-full">
             <Container>
-              <SectionHeading
-                align="center"
-                id="services-heading"
-                title={"Our Services"}
-                description={"We are here to support your business with our services."}
-              />
+              <div ref={headingRef}>
+                <SectionHeading
+                  align="center"
+                  id="services-heading"
+                  title={"Our Services"}
+                  description={"We are here to support your business with our services."}
+                />
+              </div>
             </Container>
             {/* Horizontal scrolling container */}
-            <div className="flex-1 flex items-center mt-12">
+            <div
+              className="flex flex-1 items-center"
+              style={{ marginTop: `${railMarginTop}px` }}
+            >
               <div
                 ref={containerRef}
                 className="flex gap-6"
@@ -170,7 +197,11 @@ export function ServicesSection({
               >
                 {cards?.map((service) => (
                   <Link key={service.number} href={`/services/${toSlug(service.title)}`} className="block">
-                    <ServiceCard service={service} className="w-[310px] sm:w-[330px]" />
+                    <ServiceCard
+                      service={service}
+                      className="w-[310px] sm:w-[330px]"
+                      style={{ height: `${cardHeight}px` }}
+                    />
                   </Link>
                 ))}
               </div>

@@ -11,24 +11,20 @@ import {
   BadgeCheck,
   Megaphone,
   FileText,
+  LayoutGrid,
   type LucideIcon,
   ArrowRight,
 } from "lucide-react";
+import type { CSSProperties } from "react";
 
 import { cn } from "@/lib/utils";
 import GridPattern from "../common/grid-pattern";
-
-export interface Service {
-  number: string;
-  title: string;
-  description: string;
-  icon: string;
-}
-
+import type { ServiceItem } from "@/data/sections";
 
 type ServiceCardProps = {
-  service: Service;
+  service: ServiceItem;
   className?: string;
+  style?: CSSProperties;
 };
 
 export const SERVICE_ICONS = {
@@ -42,17 +38,21 @@ export const SERVICE_ICONS = {
   branding: BadgeCheck,
   marketing: Megaphone,
   content: FileText,
+  default: LayoutGrid,
 } satisfies Record<string, LucideIcon>;
 
-export function ServiceCard({ service, className }: ServiceCardProps) {
-  const Icon = SERVICE_ICONS[service.icon as keyof typeof SERVICE_ICONS];
+export function ServiceCard({ service, className, style }: ServiceCardProps) {
+  const Icon =
+    SERVICE_ICONS[service.icon as keyof typeof SERVICE_ICONS] ??
+    SERVICE_ICONS.default;
 
   return (
     <article
       className={cn(
-        "group relative flex h-[460px] w-full min-w-[360px] flex-col justify-between overflow-hidden rounded-3xl bg-primary p-8 text-white transition-transform duration-300 ease-out will-change-transform hover:-translate-y-1",
+        "group relative flex min-h-[420px] w-full min-w-[320px] flex-col justify-between overflow-hidden rounded-3xl bg-primary p-6 text-white transition-transform duration-300 ease-out will-change-transform hover:-translate-y-1 md:min-h-0 lg:min-w-[340px] lg:p-7 xl:min-w-[360px] xl:p-8",
         className
       )}
+      style={style}
     >
       <div
         className={cn(
@@ -62,7 +62,7 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
       >
         <GridPattern size={40} />
         <div className="relative z-10 flex flex-col items-start text-left">
-          <span className="mb-8 inline-flex rounded-full glass-radial px-2.5 py-1 text-[11px] font-mono tracking-[0.16em] text-white/75">
+          <span className="mb-6 inline-flex rounded-full glass-radial px-2.5 py-1 text-[11px] font-mono tracking-[0.16em] text-white/75 lg:mb-8">
             ({service.number})
           </span>
           <span
@@ -78,16 +78,16 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
         </div>
 
         <div className="relative z-10 space-y-2.5">
-          <h3 className="text-md  font-semibold  uppercase leading-tight tracking-[0.045em] text-accent">
+          <h3 className="text-sm font-semibold uppercase leading-tight tracking-[0.045em] text-accent lg:text-base">
             {service.title}
           </h3>
-          <p className="text-sm leading-relaxed text-primary-foreground/70 line-clamp-2 ">{service.description}</p>
+          <p className="text-sm leading-relaxed text-primary-foreground/70 line-clamp-3">{service.description}</p>
         </div>
       </div>
 
 
       <ArrowRight
-        className="absolute right-10 top-10 h-14 w-14 -rotate-45 text-white transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-3 group-hover:-translate-y-3"
+        className="absolute right-6 top-6 h-12 w-12 -rotate-45 text-white transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-3 group-hover:-translate-y-3 lg:right-8 lg:top-8 lg:h-14 lg:w-14 xl:right-10 xl:top-10"
         aria-hidden
       />
 
