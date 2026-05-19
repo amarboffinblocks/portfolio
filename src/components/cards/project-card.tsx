@@ -7,8 +7,6 @@ import { Card, CardContent, CardFooter } from "../ui/card";
 import { CaseStudy } from "@/data/sections";
 import { normalizeProjectSlug } from "@/lib/project-content";
 
-
-
 const ProjectCard = ({ study }: { study: CaseStudy }) => {
     const slug = study.slug.startsWith("/")
         ? normalizeProjectSlug(study.slug)
