@@ -12,6 +12,7 @@ import { Container } from "@/components/common/container";
 import CtaSection from "@/components/sections/cta";
 import { SubHero } from "@/components/common/sub-hero";
 import { TestimonialsSection } from "@/components/sections/testimonials";
+import { BlogCard } from "@/components/cards/blog-card";
 import { buttonVariants } from "@/components/ui/button";
 import { blogs, testimonials } from "@/data/sections";
 import { getBlogMarkdownBySlug } from "@/lib/blog-content";
@@ -52,7 +53,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
         <Container>
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(320px,0.28fr)] lg:items-start">
             <article className="overflow-hidden ">
-              <div className="relative aspect-[16/8] overflow-hidden rounded-2xl">
+              <div className="relative aspect-16/8 overflow-hidden rounded-2xl">
                 <Image
                   src={post.image}
                   alt={post.title}
@@ -225,29 +226,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
 
             <div className="grid gap-5 md:grid-cols-2">
               {relatedPosts.map((item) => (
-                <article key={item.slug} className="overflow-hidden rounded-[1.75rem] bg-card p-2 shadow-soft ">
-                  <div className="relative aspect-[16/9] overflow-hidden rounded-[1.25rem]">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="p-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">{item.category}</p>
-                    <h3 className="mt-2 text-xl font-semibold tracking-tight text-foreground">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.description}</p>
-                    <div className="mt-5 flex items-center justify-between gap-4">
-                      <span className="text-sm text-muted-foreground">{item.date}</span>
-                      <Link href={`/blog/${item.slug}`} className={buttonVariants({ variant: "link" })}>
-                        Read article
-                        <ArrowUpRight className="h-4 w-4" />
-                      </Link>
-                    </div>
-                  </div>
-                </article>
+                <BlogCard key={item.slug} {...item} />
               ))}
             </div>
           </section>

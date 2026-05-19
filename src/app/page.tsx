@@ -6,7 +6,7 @@ import { ServicesSection } from "@/components/sections/services";
 import { TestimonialsSection } from "@/components/sections/testimonials";
 import { WhyBoffinBlocksSection } from "@/components/sections/why-boffinblocks";
 import { WorkProcessSection } from "@/components/sections/work-process";
-import { caseStudies, choosePoints, processPoints, questions, services, testimonials } from "@/data/sections";
+import { featured, choosePoints, processPoints, questions, services, testimonials } from "@/data/sections";
 
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
       <HeroSection />
       <ServicesSection cards={services} />
       <WhyBoffinBlocksSection points={choosePoints} />
-      <FeaturedSection studies={caseStudies} />
+      <FeaturedSection studies={featured} />
       <WorkProcessSection steps={processPoints} />
       <TestimonialsSection testimonials={testimonials} />
       <CtaSection />

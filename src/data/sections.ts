@@ -78,12 +78,122 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "Replaced manual verification steps with AI-assisted flows to speed approvals and reduce operational overhead.",
     impact: "42% faster onboarding cycle",
-    image: "/projects/boffinblocks/banner.png",
+    image: "https://picsum.photos/seed/boffinblocks-project/1400/900",
     slug: "/projects/boffinblocks",
+  },
+  {
+    title: "Lead qualification automation for inbound pipeline",
+    company: "Northlane Labs",
+    category: "automation",
+    summary:
+      "Built an AI-assisted qualification layer that scores inbound leads and routes priority accounts in real time.",
+    impact: "31% faster lead response time",
+    image: "https://picsum.photos/seed/lead-qualification-automation/1400/900",
+    slug: "/projects/lead-qualification-automation",
+  },
+  {
+    title: "Client onboarding portal with workflow orchestration",
+    company: "Vertex Advisers",
+    category: "platform",
+    summary:
+      "Designed a self-serve onboarding portal that reduced manual follow-ups and improved setup consistency.",
+    impact: "46% reduction in onboarding operations effort",
+    image: "https://picsum.photos/seed/client-onboarding-portal/1400/900",
+    slug: "/projects/client-onboarding-portal",
+  },
+  {
+    title: "AI-first knowledge base for support teams",
+    company: "Helix Support",
+    category: "product",
+    summary:
+      "Centralized fragmented documentation into an assistant-ready knowledge system for faster customer support.",
+    impact: "2.2x support resolution throughput",
+    image: "https://picsum.photos/seed/ai-knowledge-base-support/1400/900",
+    slug: "/projects/ai-knowledge-base-support",
+  },
+  {
+    title: "Revenue operations dashboard modernization",
+    company: "OrbitMetrics",
+    category: "analytics",
+    summary:
+      "Rebuilt reporting workflows and dashboard architecture for clearer KPI visibility and faster decisions.",
+    impact: "54% faster reporting turnaround",
+    image: "https://picsum.photos/seed/revops-dashboard-modernization/1400/900",
+    slug: "/projects/revops-dashboard-modernization",
+  },
+  {
+    title: "Multi-step approval automation for finance ops",
+    company: "FinPath",
+    category: "automation",
+    summary:
+      "Implemented policy-aware approval flows with exception handling and audit-ready event tracking.",
+    impact: "63% reduction in approval bottlenecks",
+    image: "https://picsum.photos/seed/finance-approval-automation/1400/900",
+    slug: "/projects/finance-approval-automation",
+  },
+  {
+    title: "Internal copilot rollout for delivery teams",
+    company: "SprintForge",
+    category: "ai systems",
+    summary:
+      "Launched role-based copilots to improve task execution quality and reduce repeat manual coordination.",
+    impact: "38% increase in team delivery velocity",
+    image: "https://picsum.photos/seed/internal-copilot-rollout/1400/900",
+    slug: "/projects/internal-copilot-rollout",
+  },
+  {
+    title: "Content operations system for multi-brand publishing",
+    company: "ScaleMedia",
+    category: "content",
+    summary:
+      "Built a reusable publishing workflow with review gates and distribution-ready metadata templates.",
+    impact: "3x increase in publishing cadence",
+    image: "https://picsum.photos/seed/content-ops-system/1400/900",
+    slug: "/projects/content-ops-system",
+  },
+  {
+    title: "Conversational assistant for sales enablement",
+    company: "QuotaWorks",
+    category: "sales",
+    summary:
+      "Delivered an AI assistant that surfaced pitch assets, objection handling, and context-aware responses.",
+    impact: "27% lift in demo-to-proposal conversion",
+    image: "https://picsum.photos/seed/sales-enablement-assistant/1400/900",
+    slug: "/projects/sales-enablement-assistant",
+  },
+  {
+    title: "Operational alerting and triage automation",
+    company: "PulseGrid",
+    category: "operations",
+    summary:
+      "Automated incident triage and team routing to reduce response delays across distributed operations teams.",
+    impact: "41% faster incident acknowledgment",
+    image: "https://picsum.photos/seed/alerting-triage-automation/1400/900",
+    slug: "/projects/alerting-triage-automation",
+  },
+  {
+    title: "Self-serve client reporting workspace",
+    company: "Blueframe Studio",
+    category: "platform",
+    summary:
+      "Created a client reporting workspace with export-ready summaries and configurable insight modules.",
+    impact: "52% decrease in manual report requests",
+    image: "https://picsum.photos/seed/client-reporting-workspace/1400/900",
+    slug: "/projects/client-reporting-workspace",
+  },
+  {
+    title: "Workflow intelligence layer for service delivery",
+    company: "Axis Collective",
+    category: "ai systems",
+    summary:
+      "Implemented workflow intelligence to detect blockers, recommend next actions, and improve SLA reliability.",
+    impact: "29% improvement in on-time delivery rate",
+    image: "https://picsum.photos/seed/workflow-intelligence-layer/1400/900",
+    slug: "/projects/workflow-intelligence-layer",
   },
 ];
 
-export const featured = caseStudies;
+export const featured = caseStudies.slice(0, 3);
 export const projects = caseStudies;
 
 export const services: ServiceItem[] = [
