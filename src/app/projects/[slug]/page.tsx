@@ -49,7 +49,7 @@ function ProjectMetaBar({ items, websiteHref }: ProjectMetaBarProps) {
             Visit Website
             <ArrowRight className="h-4 w-4" />
           </Link>
-        </div>
+        </div>  
       </div>
     </div>
   );

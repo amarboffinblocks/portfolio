@@ -250,9 +250,98 @@ export const blogs: BlogItem[] = [
     author: "Admin",
     date: "2026-05-18",
     category: "Ecommerce",
-    image: "/blogs/ecommerce/banner.jpeg"
+    image: "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=1400&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "AI Workflow Automation Playbook for Small Teams",
+    slug: "ai-workflow-automation-playbook",
+    description: "A practical guide to finding and automating repetitive workflows without overbuilding systems.",
+    author: "BoffinBlocks Team",
+    date: "2026-05-20",
+    category: "Automation",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "How Service Businesses Can Use Internal AI Copilots",
+    slug: "internal-ai-copilots-service-business",
+    description: "Design patterns for building role-based copilots that improve operational throughput.",
+    author: "BoffinBlocks Product Team",
+    date: "2026-05-24",
+    category: "Product",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1400&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Designing Better Client Dashboards for Decision Speed",
+    slug: "designing-client-dashboards-decision-speed",
+    description: "Key UX and data principles to make dashboards useful for day-to-day decision-making.",
+    author: "BoffinBlocks Design Team",
+    date: "2026-05-28",
+    category: "Design",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1400&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "From Manual Ops to Scalable Systems in 90 Days",
+    slug: "manual-ops-to-scalable-systems",
+    description: "A phased roadmap to replace fragile manual processes with scalable operating workflows.",
+    author: "BoffinBlocks Ops Team",
+    date: "2026-06-01",
+    category: "Operations",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Choosing the Right Stack for AI-Enabled Web Products",
+    slug: "right-stack-ai-enabled-web-products",
+    description: "How to select frameworks and infrastructure for maintainable AI-powered web applications.",
+    author: "BoffinBlocks Engineering",
+    date: "2026-06-04",
+    category: "Engineering",
+    image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1400&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Improving Team Adoption of New Internal Tools",
+    slug: "improving-team-adoption-internal-tools",
+    description: "Rollout and feedback loops that help teams adopt internal products faster.",
+    author: "BoffinBlocks Product Team",
+    date: "2026-06-08",
+    category: "Product",
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1400&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "How to Measure ROI of AI Features in Production",
+    slug: "measure-roi-ai-features-production",
+    description: "Metrics and instrumentation patterns to evaluate AI feature performance in real environments.",
+    author: "BoffinBlocks Strategy Team",
+    date: "2026-06-12",
+    category: "Strategy",
+    image: "/projects/boffinblocks/banner.png"
+  },
+  {
+    title: "Building Content Systems That Actually Scale",
+    slug: "building-content-systems-that-scale",
+    description: "A system-first approach to publishing, maintaining, and optimizing high-quality content.",
+    author: "BoffinBlocks Content Team",
+    date: "2026-06-15",
+    category: "Content",
+    image: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=1400&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Common Mistakes in Automation Projects (and Fixes)",
+    slug: "common-mistakes-automation-projects",
+    description: "Frequent delivery mistakes teams make in automation initiatives and how to avoid them.",
+    author: "BoffinBlocks Team",
+    date: "2026-06-19",
+    category: "Automation",
+    image: "https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?w=1400&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Shipping Faster Without Breaking Delivery Quality",
+    slug: "shipping-faster-without-breaking-quality",
+    description: "Execution habits that help teams increase speed while protecting product quality and trust.",
+    author: "BoffinBlocks Engineering",
+    date: "2026-06-22",
+    category: "Engineering",
+    image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=1400&auto=format&fit=crop&q=80"
   }
-
 ];
 
 export const testimonials: TestimonialItem[] = [
