@@ -1,3 +1,4 @@
+import BlogSection from "@/components/sections/blog";
 import CtaSection from "@/components/sections/cta";
 import { FaqSection } from "@/components/sections/faq-section";
 import { FeaturedSection } from "@/components/sections/featured";
@@ -17,6 +18,7 @@ export default function Home() {
       <WhyBoffinBlocksSection points={choosePoints} />
       <FeaturedSection studies={featured} />
       <WorkProcessSection steps={processPoints} />
+      <BlogSection />
       <TestimonialsSection testimonials={testimonials} />
       <CtaSection />
       <FaqSection questions={questions} />
