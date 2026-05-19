@@ -130,7 +130,7 @@ export function ServicesSection({
       <section
         id="services"
         ref={galleryRef}
-        className="relative  py-10 md:py-16  md:flex flex-col hidden   "
+        className="relative  py-10 md:py-16  md:flex flex-col hidden  "
         style={{ height: sectionHeight }}
       >
         <div
@@ -178,8 +178,9 @@ export function ServicesSection({
           </div>
         </div>
       </section>
-      <MobileSerivceSection services={cards} title={"Agentic AI & Automation Services for <span class='text-primary'>Modern Businesses</span>"}
-        description={"We help businesses build intelligent AI systems, automate operations, and streamline workflows through custom AI development, automation engineering, and scalable digital infrastructure. Our services are designed to reduce manual work, improve operational efficiency, and accelerate business growth using modern AI technologies."} />
+      <MobileSerivceSection services={cards} title={"Our Services"}
+        description={"We are here to support your business with our services."}
+      />
     </>
 
   );
