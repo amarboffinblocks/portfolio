@@ -22,8 +22,8 @@ export function FeaturedSection({ studies }: FeaturedSectionProps) {
             <SectionHeading
               id="case-studies-heading"
               align="left"
-              title={"Featured Case <span class='text-primary'>Studies</span>"}
-              description={"Selected work showing how focused product strategy and practical AI engineering deliver measurable business outcomes."}
+              title={"Featured  <span class='text-primary'>Works</span>"}
+            // description={"Selected work showing how focused product strategy and practical AI engineering deliver measurable business outcomes."}
             />
           </div>
           <Link

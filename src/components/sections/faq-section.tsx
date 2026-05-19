@@ -20,7 +20,7 @@ export function FaqSection({ questions }: FaqSectionProps) {
           id="faq-heading"
           align="center"
           title={"Frequently Asked <span class='text-primary'>Questions</span>"}
-          description={"Answers to common questions about our AI automation services, development process, and workflow integrations."}
+        // description={"Answers to common questions about our AI automation services, development process, and workflow integrations."}
         />
 
         <div className="mt-10">

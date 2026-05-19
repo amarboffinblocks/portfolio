@@ -146,8 +146,8 @@ export function ServicesSection({
               <SectionHeading
                 align="center"
                 id="services-heading"
-                title={"Agentic AI & Automation Services for <span class='text-primary'>Modern Businesses</span>"}
-                description={"We help businesses build intelligent AI systems, automate operations, and streamline workflows through custom AI development, automation engineering, and scalable digital infrastructure. Our services are designed to reduce manual work, improve operational efficiency, and accelerate business growth using modern AI technologies."}
+                title={"Our Services"}
+                description={"We are here to support your business with our services."}
               />
             </Container>
             {/* Horizontal scrolling container */}
