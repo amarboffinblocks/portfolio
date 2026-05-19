@@ -50,7 +50,7 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
   return (
     <article
       className={cn(
-        "group relative flex h-[460px] w-full min-w-[360px] flex-col justify-between overflow-hidden rounded-3xl bg-primary p-8 text-white transition-transform duration-300 ease-out will-change-transform hover:-translate-y-1",
+        "group relative flex h-[400px] xl:h-[460px] w-full min-w-[360px] flex-col justify-between overflow-hidden rounded-3xl bg-primary p-8 text-white transition-transform duration-300 ease-out will-change-transform hover:-translate-y-1",
         className
       )}
     >
