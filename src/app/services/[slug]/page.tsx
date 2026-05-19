@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 import { Container } from "@/components/common/container";
 import CtaSection from "@/components/sections/cta";
-import { PageHeroSection } from "@/components/common/sub-hero";
+import { SubHero } from "@/components/common/sub-hero";
 import { TestimonialsSection } from "@/components/sections/testimonials";
 import {
   Accordion,
@@ -13,7 +13,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { buttonVariants } from "@/components/ui/button";
-import { HOME_SERVICES } from "@/lib/data/services";
+import { services as HOME_SERVICES, testimonials, type ServiceItem } from "@/data/sections";
+import { FaqSection } from "@/components/sections/faq-section";
 
 const toSlug = (value: string) =>
   value
@@ -31,6 +32,49 @@ type ServicePageContent = {
   outcomes: string[];
   faq: { question: string; answer: string }[];
 };
+
+const fromServiceFallback = (service: ServiceItem): ServicePageContent => ({
+  intro: service.description,
+  whoItsFor: [
+    `Teams looking to implement ${service.title.toLowerCase()} with clear execution and measurable outcomes`,
+    "Founders and operators who need a practical delivery partner, not generic recommendations",
+    "Businesses that want a scalable setup built for long-term growth",
+  ],
+  problems: [
+    `Current processes around ${service.title.toLowerCase()} are manual or inconsistent`,
+    "Delivery quality varies because systems and workflows are not standardized",
+    "The team needs a faster path from planning to production outcomes",
+  ],
+  deliverables: [
+    `${service.title} strategy and implementation roadmap`,
+    "Production-ready build with quality and performance best practices",
+    "Documentation and handoff to support internal team adoption",
+    "Post-launch optimization plan based on measurable outcomes",
+  ],
+  process: [
+    "Discovery and requirement mapping",
+    "Scope definition and implementation planning",
+    "Execution in iterative milestones with feedback loops",
+    "QA, launch, and ongoing optimization support",
+  ],
+  outcomes: [
+    "Improved operational reliability and delivery speed",
+    "Stronger consistency across workflows and user experience",
+    "A maintainable system your team can confidently scale",
+  ],
+  faq: [
+    {
+      question: `Do you support ${service.title.toLowerCase()} projects end-to-end?`,
+      answer:
+        "Yes. We can support strategy, implementation, integration, and post-launch optimization depending on your requirements.",
+    },
+    {
+      question: "Can this work with our existing systems and tools?",
+      answer:
+        "Absolutely. We design solutions to integrate with your current stack wherever practical, so teams can adopt improvements without unnecessary disruption.",
+    },
+  ],
+});
 
 const SERVICE_CONTENT: Record<string, ServicePageContent> = {
   branding: {
@@ -390,28 +434,28 @@ export function generateStaticParams() {
 export default async function ServiceDetailPage({ params }: ServiceDetailPageProps) {
   const { slug } = await params;
   const service = HOME_SERVICES.find((item) => toSlug(item.title) === slug);
-  const content = SERVICE_CONTENT[slug];
 
-  if (!service || !content) {
+  if (!service) {
     notFound();
   }
+  const content = SERVICE_CONTENT[slug] ?? fromServiceFallback(service);
 
   return (
     <main className="relative min-h-screen">
-      <PageHeroSection eyebrow="SERVICE DETAIL" title={service.title} breadcrumb stash />
+      <SubHero eyebrow="SERVICE DETAIL" title={service.title} breadcrumb stash />
 
       <section className="relative py-14 lg:py-20">
         <Container>
           <Link
             href="/#services"
-            className={buttonVariants({ variant: "outline", className: "h-10 rounded-full px-4" })}
+            className={buttonVariants({ variant: "ghost", size: "lg", className: "hover:bg-primary hover:text-primary-foreground" })}
           >
             <ArrowLeft className="h-4 w-4" />
             Back to services
           </Link>
 
-          <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
-            <article className="rounded-3xl bg-card p-6 shadow-soft lg:col-span-7 lg:p-8">
+          <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10 ">
+            <article className="rounded-3xl   lg:col-span-7 ">
               <p className="text-sm leading-8 text-muted-foreground sm:text-base">{content.intro}</p>
 
               <div className="mt-8 grid gap-6 sm:grid-cols-2">
@@ -499,7 +543,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
                 </div>
               </div>
 
-              <div className="rounded-3xl bg-card p-6 shadow-soft lg:p-8">
+              <div className="rounded-3xl bg-background p-6  lg:p-8">
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">Why BoffinBlocks</p>
                 <h2 className="mt-3 text-2xl font-semibold tracking-tight">A delivery partner built for momentum</h2>
                 <ul className="mt-5 space-y-3">
@@ -520,35 +564,9 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
           </div>
         </Container>
       </section>
-
-      <section className="py-8 lg:py-12">
-        <Container>
-          <div className="rounded-[2rem] bg-card p-6 shadow-soft lg:p-8">
-            <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">Frequently asked questions</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight">Things clients usually ask before we begin</h2>
-            </div>
-
-            <div className="mt-8">
-              <Accordion type="single" collapsible className="w-full">
-                {content.faq.map((item, index) => (
-                  <AccordionItem key={item.question} value={`service-faq-${index + 1}`} className="border-b border-border/70">
-                    <AccordionTrigger className="py-5 text-left font-mono text-base hover:no-underline">
-                      {item.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="pb-5 text-sm leading-7 text-muted-foreground">
-                      {item.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
-          </div>
-        </Container>
-      </section>
-
+      <FaqSection questions={content.faq} />
       <CtaSection />
-      <TestimonialsSection />
+      <TestimonialsSection testimonials={testimonials} />
     </main>
   );
 }

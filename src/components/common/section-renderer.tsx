@@ -7,8 +7,6 @@ import { WorkProcessSection } from "@/components/sections/work-process";
 import { FaqSection } from "@/components/sections/faq-section";
 import { TestimonialsSection } from "@/components/sections/testimonials";
 import CtaSection from "@/components/sections/cta";
-import { HOME_SERVICES } from "@/lib/data/services";
-import type { PageSection } from "@/types/sections";
 import { SubHero } from "./sub-hero";
 import { WhoWEAreSection } from "../sections/who-we-are";
 import { CoreValuesSection } from "../sections/core-values";
@@ -16,7 +14,10 @@ import { BlogPageSection } from "../sections/blog-page";
 import { ContactFormSection } from "../sections/contact-form";
 
 type SectionRendererProps = {
-  section: PageSection;
+  section: {
+    id: string;
+    content?: any;
+  };
 };
 
 export function SectionRenderer({ section }: SectionRendererProps) {
