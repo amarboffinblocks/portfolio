@@ -23,8 +23,7 @@ export function HeroSection() {
             <p className=" max-w-2xl text-base text-primary-foreground/80 sm:text-lg">
               We build AI agents, intelligent automations, and scalable workflow systems that streamline operations, eliminate repetitive work, and help businesses operate faster with AI-powered efficiency.
             </p>
-            <div className="flex items-center gap-4 mt-4">
-
+            <div className="flex flex-col md:flex-row items-center gap-4 mt-4">
               <Link href="/contact" className={buttonVariants({ variant: "secondary", size: "lg", className: "group  " })} >
                 Book a Strategy Call
                 <ArrowRight className="size-4 group-hover:translate-x-1 transition-all duration-500" />
