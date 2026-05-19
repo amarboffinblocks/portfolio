@@ -48,7 +48,7 @@ const BlogSection = () => {
           <SectionHeading
             id="blog-heading"
             align="left"
-            title="Latest from our <span class='text-primary'>Blog</span>"
+            title="Blogs"
           />
           <Link
             href="/blog"
