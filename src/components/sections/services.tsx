@@ -140,7 +140,7 @@ export function ServicesSection({
         />
 
         {/* Sticky container */}
-        <div className="sticky top-24 xl:top-32 h-fit overflow-hidden">
+        <div className="sticky top-32 h-fit overflow-hidden">
           <div className="h-full">
             <Container>
               <SectionHeading
@@ -151,7 +151,7 @@ export function ServicesSection({
               />
             </Container>
             {/* Horizontal scrolling container */}
-            <div className="flex-1 flex items-center mt-8 xl:mt-12">
+            <div className="flex-1 flex items-center mt-12">
               <div
                 ref={containerRef}
                 className="flex gap-6"
