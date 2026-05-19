@@ -27,7 +27,7 @@ export function FeaturedSection({ studies }: FeaturedSectionProps) {
             />
           </div>
           <Link
-            href="/case-studies"
+            href="/projects"
             className={buttonVariants({ variant: "default" })}
           >
             Explore Case Studies
