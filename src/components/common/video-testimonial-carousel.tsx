@@ -207,7 +207,7 @@ function CarouselCard({ item, layout, onSelect }: CarouselCardProps) {
           : `Show testimonial from ${item.clientName}`
       }
       className={cn(
-        "absolute left-1/2 top-1/2 cursor-pointer overflow-hidden rounded-2xl  outline-none",
+        "absolute left-1/2 top-1/2 cursor-pointer overflow-hidden rounded-2xl  outline-none ",
         "focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
       )}
       initial={false}
@@ -277,7 +277,7 @@ function CenterOverlay({ item }: { item: VideoTestimonialCarouselItem }) {
     >
       <div className="flex flex-1 items-center justify-center  relative ">
         <motion.div
-          className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-[0_10px_30px_rgba(0,0,0,0.25)]"
+          className="flex h-16 w-16 items-center justify-center rounded-full bg-white  shadow-[0_10px_30px_rgba(0,0,0,0.25)]"
           initial={{ scale: 0.85, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.08, type: "spring", stiffness: 280, damping: 22 }}
@@ -345,7 +345,7 @@ function CarouselPagination({
 }: CarouselPaginationProps) {
   if (total <= 1) return null;
   return (
-    <div className="relative z-10 flex items-center justify-center gap-2">
+    <div className="relative z-10 flex items-center justify-center gap-2 ">
       {Array.from({ length: total }).map((_, i) => {
         const isActive = i === activeIndex;
         return (
@@ -359,7 +359,7 @@ function CarouselPagination({
             <motion.span
               className={cn(
                 "block rounded-full",
-                isActive ? "bg-foreground/80" : "bg-foreground/30"
+                isActive ? "bg-primary" : "bg-foreground/30"
               )}
               animate={{
                 width: isActive ? 22 : 6,

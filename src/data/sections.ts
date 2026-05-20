@@ -561,6 +561,96 @@ export const videoTestimonials: VideoTestimonialItem[] = [
     quote:
       "Adoption was the easy part. The team picked up the tools without any internal change-management effort.",
   },
+  {
+    thumbnail:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&auto=format&fit=crop&q=80",
+    videoUrl: "https://www.youtube.com/watch?v=L_jWHffIx5E",
+    title: "Scaling revenue ops with intelligent automation",
+    clientName: "Priya",
+    clientRole: "VP Revenue, OrbitMetrics",
+    quote:
+      "Pipeline visibility and forecasting that used to take days now happens automatically every morning.",
+  },
+  {
+    thumbnail:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&auto=format&fit=crop&q=80",
+    videoUrl: "https://www.youtube.com/watch?v=9bZkp7q19f0",
+    title: "Finance approvals that finally make sense",
+    clientName: "Arjun",
+    clientRole: "CFO, FinPath",
+    quote:
+      "Policy-aware approval flows removed an entire layer of manual coordination from our finance team.",
+  },
+  {
+    thumbnail:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200&auto=format&fit=crop&q=80",
+    videoUrl: "https://www.youtube.com/watch?v=fJ9rUzIMcZQ",
+    title: "Content operations at 3x publishing speed",
+    clientName: "Maya",
+    clientRole: "Editorial Lead, ScaleMedia",
+    quote:
+      "We went from publishing weekly to publishing daily without adding a single person to the team.",
+  },
+  {
+    thumbnail:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1200&auto=format&fit=crop&q=80",
+    videoUrl: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+    title: "AI agents that understand our domain",
+    clientName: "Daniel",
+    clientRole: "CTO, SprintForge",
+    quote:
+      "The agents shipped feel native to our product. They understand context the way our senior engineers do.",
+  },
+  {
+    thumbnail:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=1200&auto=format&fit=crop&q=80",
+    videoUrl: "https://www.youtube.com/watch?v=RgKAFK5djSk",
+    title: "From prototype to production in weeks",
+    clientName: "Sofia",
+    clientRole: "Head of Product, QuotaWorks",
+    quote:
+      "BoffinBlocks helped us cross the chasm from a clever prototype to a system our sales org now relies on daily.",
+  },
+  {
+    thumbnail:
+      "https://images.unsplash.com/photo-1488161628813-04466f872be2?w=1200&auto=format&fit=crop&q=80",
+    videoUrl: "https://www.youtube.com/watch?v=OPf0YbXqDm0",
+    title: "Operational alerts that route themselves",
+    clientName: "Marcus",
+    clientRole: "Director of Engineering, PulseGrid",
+    quote:
+      "Incident triage time dropped by nearly half. The team trusts the routing because the signals are clean.",
+  },
+  {
+    thumbnail:
+      "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=1200&auto=format&fit=crop&q=80",
+    videoUrl: "https://www.youtube.com/watch?v=YQHsXMglC9A",
+    title: "A self-serve reporting workspace for clients",
+    clientName: "Eva",
+    clientRole: "Founder, Blueframe Studio",
+    quote:
+      "Our clients now answer their own reporting questions and we spend that time on strategy instead.",
+  },
+  {
+    thumbnail:
+      "https://images.unsplash.com/photo-1463453091185-61582044d556?w=1200&auto=format&fit=crop&q=80",
+    videoUrl: "https://www.youtube.com/watch?v=CevxZvSJLk8",
+    title: "Workflow intelligence for service delivery",
+    clientName: "Ishaan",
+    clientRole: "COO, Axis Collective",
+    quote:
+      "We can finally see blockers before they slip SLA. The intelligence layer pays for itself every week.",
+  },
+  {
+    thumbnail:
+      "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?w=1200&auto=format&fit=crop&q=80",
+    videoUrl: "https://www.youtube.com/watch?v=hT_nvWreIhg",
+    title: "Knowledge that scales with our support team",
+    clientName: "Hannah",
+    clientRole: "Head of Support, Helix Support",
+    quote:
+      "Onboarding new support reps is twice as fast because the assistant carries our institutional knowledge.",
+  },
 ];
 
 export const questions: FaqItem[] = [
