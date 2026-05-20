@@ -22,7 +22,7 @@ const alignClasses: Record<
 > = {
   center: {
     container: "text-left md:mx-auto",
-    text: "text-left md:text-center",
+    text: "text-center",
     description: "mx-auto",
   },
   left: {
@@ -93,7 +93,7 @@ export function SectionHeading({
       {description ? (
         <p
           className={cn(
-            "mt-4  text-balance",
+            "mx-auto mt-3 max-w-xl text-sm leading-7 text-muted-foreground md:text-base",
             alignment.description,
             colors.description
           )}

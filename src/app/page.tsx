@@ -5,15 +5,17 @@ import { FeaturedSection } from "@/components/sections/featured";
 import { HeroSection } from "@/components/sections/hero";
 import { ServicesSection } from "@/components/sections/services";
 import { TestimonialsSection } from "@/components/sections/testimonials";
+import { VideoTestimonialsSection } from "@/components/sections/video-testimonials";
 import { WhyBoffinBlocksSection } from "@/components/sections/why-boffinblocks";
 import { WorkProcessSection } from "@/components/sections/work-process";
-import { featured, choosePoints, processPoints, questions, services, testimonials } from "@/data/sections";
+import { featured, choosePoints, processPoints, questions, services, testimonials, videoTestimonials } from "@/data/sections";
 
 
 export default function Home() {
   return (
     <main className="relative min-h-screen">
       <HeroSection />
+      <VideoTestimonialsSection testimonials={videoTestimonials} />
       <ServicesSection cards={services} />
       <WhyBoffinBlocksSection points={choosePoints} />
       <FeaturedSection studies={featured} />

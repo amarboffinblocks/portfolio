@@ -46,6 +46,15 @@ export type TestimonialItem = {
   handle: string;
 };
 
+export type VideoTestimonialItem = {
+  thumbnail: string;
+  videoUrl: string;
+  title: string;
+  clientName: string;
+  clientRole: string;
+  quote: string;
+};
+
 export type FaqItem = {
   question: string;
   answer: string;
@@ -478,6 +487,79 @@ export const testimonials: TestimonialItem[] = [
       "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60",
     name: "Avery Johnson",
     handle: "@averywrites",
+  },
+];
+
+export const videoTestimonials: VideoTestimonialItem[] = [
+  {
+    thumbnail:
+      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=1200&auto=format&fit=crop&q=80",
+    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    title: "From manual ops to automated delivery",
+    clientName: "Mike",
+    clientRole: "Founder, GrowthAxis",
+    quote:
+      "BoffinBlocks helped us automate repetitive team workflows and cut turnaround time in half.",
+  },
+  {
+    thumbnail:
+      "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=1200&auto=format&fit=crop&q=80",
+    videoUrl: "https://www.youtube.com/watch?v=ysz5S6PUM-U",
+    title: "Launching an AI assistant in six weeks",
+    clientName: "Samite",
+    clientRole: "COO, Northlane Labs",
+    quote:
+      "They translated our business processes into a practical AI system the whole team now depends on.",
+  },
+  {
+    thumbnail:
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=1200&auto=format&fit=crop&q=80",
+    videoUrl: "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+    title: "An AI copilot that scaled our support",
+    clientName: "Lauren",
+    clientRole: "Head of CX, Helix Support",
+    quote:
+      "The copilot felt natural to our team from day one and reduced our backlog significantly.",
+  },
+  {
+    thumbnail:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=1200&auto=format&fit=crop&q=80",
+    videoUrl: "https://www.youtube.com/watch?v=2vjPBrBU-TM",
+    title: "A cleaner dashboard that improved decisions",
+    clientName: "Kaity",
+    clientRole: "Fashion Director, Atelier 9",
+    quote:
+      "The new product experience gave leadership instant clarity and reduced reporting bottlenecks.",
+  },
+  {
+    thumbnail:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=1200&auto=format&fit=crop&q=80",
+    videoUrl: "https://www.youtube.com/watch?v=hY7m5jjJ9mM",
+    title: "From spreadsheet chaos to clean systems",
+    clientName: "Oakes",
+    clientRole: "Director of Ops, Vertex Advisers",
+    quote:
+      "BoffinBlocks turned a tangled set of spreadsheets into a clean, observable operating system.",
+  },
+  {
+    thumbnail:
+      "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=1200&auto=format&fit=crop&q=80",
+    videoUrl: "https://www.youtube.com/watch?v=Zi_XLOBDo_Y",
+    title: "Building intelligent client onboarding",
+    clientName: "Ryan",
+    clientRole: "CEO, Axis Collective",
+    quote:
+      "Onboarding new clients went from a multi-week burden to a focused, mostly-automated flow.",
+  },
+  {
+    thumbnail:
+      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=1200&auto=format&fit=crop&q=80",
+    videoUrl: "https://www.youtube.com/watch?v=tgbNymZ7vqY",
+    title: "Internal tools the team actually loves",
+    clientName: "Ritika",
+    clientRole: "Head of Ops, Blueframe Studio",
+    quote:
+      "Adoption was the easy part. The team picked up the tools without any internal change-management effort.",
   },
 ];
 
