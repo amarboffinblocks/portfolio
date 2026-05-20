@@ -8,7 +8,7 @@ import { TestimonialsSection } from "@/components/sections/testimonials";
 import { VideoTestimonialsSection } from "@/components/sections/video-testimonials";
 import { WhyBoffinBlocksSection } from "@/components/sections/why-boffinblocks";
 import { WorkProcessSection } from "@/components/sections/work-process";
-import { featured, choosePoints, processPoints, questions, services, testimonials, videoTestimonials } from "@/data/sections";
+import { featured, choosePoints, processPoints, questions, services, techStack, testimonials, videoTestimonials } from "@/data/sections";
 
 
 export default function Home() {

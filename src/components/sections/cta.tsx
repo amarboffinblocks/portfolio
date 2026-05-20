@@ -69,7 +69,7 @@ export default function CtaSection() {
 
           {/* Right side: Orbit animation cropped to 1/4 */}
           <div className="relative z-10 w-full lg:w-1/2  lg:h-full flex items-end justify-center lg:items-center lg:justify-start overflow-hidden">
-            <div className="relative w-full h-[22rem] translate-y-[50%] lg:w-[50rem] lg:h-[50rem] lg:translate-x-[50%] lg:translate-y-0 flex items-center justify-center">
+            <div className="relative w-full h-[22rem] translate-y-[50%]  lg:w-[50rem] lg:h-[50rem] lg:translate-x-[50%] lg:translate-y-0 flex items-center justify-center">
               {/* Center Circle */}
               <div className="w-24 h-24 rounded-full bg-gray-50 dark:bg-gray-800 shadow-lg flex items-center justify-center">
                 <FaReact className="w-12 h-12 text-blue-400" />

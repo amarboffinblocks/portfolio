@@ -44,7 +44,7 @@ const BlogSection = () => {
   return (
     <SectionWrapper id="blogs" aria-labelledby="blog-heading">
       <Container>
-        <div className="mb-8 flex flex-col gap-5 md:mb-10 md:flex-row md:items-end md:justify-between">
+        <div className="mb-8 flex flex-col gap-5 md:mb-10 md:flex-row md:items-end items-center md:justify-between">
           <SectionHeading
             id="blog-heading"
             align="left"
@@ -55,7 +55,7 @@ const BlogSection = () => {
             className={buttonVariants({
               variant: "outline",
               size: "lg",
-              className: "rounded-full group hover:bg-primary hover:text-primary-foreground",
+              className: "rounded-full group hover:bg-primary hover:text-primary-foreground w-full md:w-auto",
             })}
           >
             View All Articles

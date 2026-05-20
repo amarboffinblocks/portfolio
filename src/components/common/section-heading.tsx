@@ -27,7 +27,7 @@ const alignClasses: Record<
   },
   left: {
     container: "",
-    text: "text-left",
+    text: "md:text-left text-center",
     description: "mx-0",
   },
   right: {

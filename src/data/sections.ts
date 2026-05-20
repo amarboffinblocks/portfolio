@@ -23,6 +23,11 @@ export type ServiceItem = {
   description: string;
 };
 
+export type TechStackItem = {
+  name: string;
+  category: "AI" | "Automation" | "Frontend" | "Backend" | "Database" | "Infrastructure";
+};
+
 export type ProcessPoint = {
   title: string;
   icon: string;
@@ -286,6 +291,25 @@ export const services: ServiceItem[] = [
     description:
       "We help businesses identify automation opportunities, design AI roadmaps, and implement scalable AI transformation strategies.",
   },
+];
+
+export const techStack: TechStackItem[] = [
+  { name: "OpenAI", category: "AI" },
+  { name: "Claude", category: "AI" },
+  { name: "LangChain", category: "AI" },
+  { name: "n8n", category: "Automation" },
+  { name: "Zapier", category: "Automation" },
+  { name: "Next.js", category: "Frontend" },
+  { name: "React", category: "Frontend" },
+  { name: "TypeScript", category: "Frontend" },
+  { name: "Node.js", category: "Backend" },
+  { name: "Python", category: "Backend" },
+  { name: "Supabase", category: "Database" },
+  { name: "PostgreSQL", category: "Database" },
+  { name: "Redis", category: "Database" },
+  { name: "Vercel", category: "Infrastructure" },
+  { name: "Docker", category: "Infrastructure" },
+  { name: "GitHub Actions", category: "Infrastructure" },
 ];
 
 export const processPoints: ProcessPoint[] = [

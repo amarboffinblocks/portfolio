@@ -12,7 +12,7 @@ export function HeroSection() {
     <HeroWrapper className="min-h-screen" >
       <Container className=" flex-1 flex  items-center justify-center flex-col gap-y-12 pt-28 md:pt-20 ">
         <div className="relative">
-          <div className="flex flex-col   items-center text-start md:text-center gap-4">
+          <div className="flex flex-col   items-center text-center gap-4">
             <h1
               id="hero-heading"
               className="text-balance text-3xl  leading-tight font-semibold md:text-5xl text-primary-foreground "

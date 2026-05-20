@@ -17,7 +17,7 @@ export function FeaturedSection({ studies }: FeaturedSectionProps) {
     >
 
       <Container>
-        <div className=" mb-12 w-full   flex flex-col md:flex-row gap-y-6 justify-between md:items-end">
+        <div className=" mb-12 w-full   flex flex-col md:flex-row gap-y-6 items-center md:justify-between md:items-end">
           <div>
             <SectionHeading
               id="case-studies-heading"
@@ -28,7 +28,7 @@ export function FeaturedSection({ studies }: FeaturedSectionProps) {
           </div>
           <Link
             href="/projects"
-            className={buttonVariants({ variant: "outline", size: "lg", className: "hover:bg-primary hover:text-primary-foreground" })}
+            className={buttonVariants({ variant: "outline", size: "lg", className: "hover:bg-primary hover:text-primary-foreground w-full md:w-auto" })}
           >
             Explore Case Studies
             <ArrowUpRight className="h-4 w-4" />
