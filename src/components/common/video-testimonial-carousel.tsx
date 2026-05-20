@@ -17,19 +17,58 @@ export type VideoTestimonialCarouselItem = {
 type Breakpoint = "sm" | "md" | "lg";
 
 type SizeConfig = {
+  /** Center card width/height — unchanged regardless of side scaling. */
   centerW: number;
   centerH: number;
-  sideW: number;
-  sideH: number;
+  /** Gap between two adjacent card visual edges. */
   gap: number;
+  /** Maximum number of side cards rendered per side. */
   sides: number;
+  /**
+   * Exponential decay base for side cards, 0 < decay < 1.
+   * The nth side card from the center has visual size = center * decay^n.
+   * Closer cards are slightly smaller than the center, each subsequent card
+   * shrinks geometrically — producing a clear pyramid / depth effect.
+   */
+  decay: number;
+  /**
+   * Per-step opacity falloff base. nth side card opacity = opacityDecay^(n - 1).
+   */
+  opacityDecay: number;
 };
 
 const SIZE_CONFIGS: Record<Breakpoint, SizeConfig> = {
-  sm: { centerW: 240, centerH: 320, sideW: 52, sideH: 270, gap: 8, sides: 1 },
-  md: { centerW: 320, centerH: 420, sideW: 70, sideH: 350, gap: 12, sides: 2 },
-  lg: { centerW: 380, centerH: 480, sideW: 84, sideH: 420, gap: 14, sides: 3 },
+  sm: { centerW: 240, centerH: 320, gap: 8, sides: 2, decay: 0.55, opacityDecay: 0.78 },
+  md: { centerW: 320, centerH: 420, gap: 10, sides: 2, decay: 0.58, opacityDecay: 0.8 },
+  lg: { centerW: 380, centerH: 480, gap: 12, sides: 3, decay: 0.58, opacityDecay: 0.82 },
 };
+
+/** Visual size factor of the nth side card relative to the center card. */
+function sideFactor(n: number, cfg: SizeConfig): number {
+  return Math.pow(cfg.decay, n);
+}
+
+/**
+ * Distance from carousel center to the visual center of the nth side card.
+ * Cumulative because every preceding card has a different (geometric) width.
+ */
+function cumulativeSideCenter(n: number, cfg: SizeConfig): number {
+  if (n <= 0) return 0;
+  let pos = cfg.centerW / 2 + cfg.gap;
+  for (let i = 1; i < n; i++) {
+    pos += cfg.centerW * sideFactor(i, cfg) + cfg.gap;
+  }
+  pos += (cfg.centerW * sideFactor(n, cfg)) / 2;
+  return pos;
+}
+
+/** Total stage width that fully contains the center + all visible side cards. */
+function computeStageWidth(cfg: SizeConfig): number {
+  if (cfg.sides === 0) return cfg.centerW;
+  const farCenter = cumulativeSideCenter(cfg.sides, cfg);
+  const farHalfWidth = (cfg.centerW * sideFactor(cfg.sides, cfg)) / 2;
+  return 2 * (farCenter + farHalfWidth);
+}
 
 const SPRING: Transition = {
   type: "spring",
@@ -79,15 +118,22 @@ type CardLayout = {
 };
 
 function getCardLayout(offset: number, cfg: SizeConfig): CardLayout {
+  // Every card uses the SAME layout box (center dimensions). All visual
+  // sizing is done via the `scale` transform, which keeps animations on the
+  // GPU and lets a side card morph into the center (and vice versa) by
+  // animating scale + x only.
+  const baseW = cfg.centerW;
+  const baseH = cfg.centerH;
+
   if (offset === 0) {
     return {
-      x: -cfg.centerW / 2,
-      y: -cfg.centerH / 2,
-      width: cfg.centerW,
-      height: cfg.centerH,
+      x: -baseW / 2,
+      y: -baseH / 2,
+      width: baseW,
+      height: baseH,
       scale: 1,
       opacity: 1,
-      zIndex: 30,
+      zIndex: 40,
       isCenter: true,
       isVisible: true,
     };
@@ -95,18 +141,30 @@ function getCardLayout(offset: number, cfg: SizeConfig): CardLayout {
 
   const sign = offset > 0 ? 1 : -1;
   const abs = Math.abs(offset);
-  const distance =
-    cfg.centerW / 2 + cfg.gap + cfg.sideW / 2 + (abs - 1) * (cfg.sideW + cfg.gap);
   const isVisible = abs <= cfg.sides;
 
+  // Exponential size falloff: nth side card visual size = center * decay^n.
+  const scale = sideFactor(abs, cfg);
+
+  // Cumulative visual center for this card; collapses to a no-op when hidden.
+  const centerDistance = cumulativeSideCenter(
+    Math.min(abs, cfg.sides),
+    cfg
+  );
+  // Off-stage cards continue along the same vector so they animate gracefully
+  // when they re-enter, but with zero opacity.
+  const overflowDistance = isVisible
+    ? 0
+    : (abs - cfg.sides) * (cfg.centerW * sideFactor(cfg.sides, cfg) + cfg.gap);
+
   return {
-    x: sign * distance - cfg.sideW / 2,
-    y: -cfg.sideH / 2,
-    width: cfg.sideW,
-    height: cfg.sideH,
-    scale: isVisible ? 1 - (abs - 1) * 0.03 : 0.75,
-    opacity: isVisible ? 1 - (abs - 1) * 0.12 : 0,
-    zIndex: 10 - abs,
+    x: sign * (centerDistance + overflowDistance) - baseW / 2,
+    y: -baseH / 2,
+    width: baseW,
+    height: baseH,
+    scale,
+    opacity: isVisible ? Math.max(0.4, Math.pow(cfg.opacityDecay, abs - 1)) : 0,
+    zIndex: 30 - abs,
     isCenter: false,
     isVisible,
   };
@@ -136,8 +194,7 @@ export function VideoTestimonialCarousel({
     return { ...base, sides: Math.min(base.sides, maxSides) };
   }, [bp, total]);
 
-  const stageWidth =
-    cfg.centerW + 2 * (cfg.sides * (cfg.sideW + cfg.gap)) + 2 * cfg.gap;
+  const stageWidth = computeStageWidth(cfg);
   const stageHeight = cfg.centerH + 40;
 
   if (total === 0) return null;
@@ -155,7 +212,7 @@ export function VideoTestimonialCarousel({
       // style={{ height: stageHeight + 60 }}
       >
         <div
-          className="relative"
+          className="relative "
           style={{ width: stageWidth, height: stageHeight }}
         >
           {testimonials.map((item, i) => {
@@ -224,9 +281,13 @@ function CarouselCard({ item, layout, onSelect }: CarouselCardProps) {
       whileHover={
         isCenter
           ? { scale: 1.01 }
-          : { scale: layout.scale * 1.05, y: layout.y - 6 }
+          : {
+            scale: layout.scale * 1.05,
+            y: layout.y - 18,
+            zIndex: 35,
+          }
       }
-      whileTap={{ scale: layout.scale * 0.98 }}
+      whileTap={{ scale: layout.scale * 0.97 }}
       style={{
         pointerEvents: isVisible ? "auto" : "none",
         transformOrigin: "center center",
@@ -238,7 +299,7 @@ function CarouselCard({ item, layout, onSelect }: CarouselCardProps) {
         fill
         sizes={isCenter ? "(min-width: 1024px) 400px, 60vw" : "120px"}
         className={cn(
-          "object-cover transition-[filter] duration-500",
+          "object-cover transition-[filter] duration-500 ",
           !isCenter && "brightness-90 saturate-[1.05]"
         )}
         priority={isCenter}
@@ -320,7 +381,7 @@ function SideOverlay({ name }: { name: string }) {
       transition={{ duration: 0.25 }}
     >
       <span
-        className="select-none font-mono text-[11px] font-semibold tracking-[0.45em] text-white/95"
+        className="select-none font-mono text-2xl font-semibold tracking-[0.3em] text-white/95"
         style={{
           writingMode: "vertical-rl",
           textOrientation: "upright",
