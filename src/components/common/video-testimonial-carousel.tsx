@@ -10,7 +10,7 @@ import {
 } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, type Transition } from "motion/react";
-import { Play } from "lucide-react";
+import { Play, X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -67,6 +67,58 @@ function cumulativeSideCenter(n: number, cfg: SizeConfig): number {
   }
   pos += (cfg.centerW * sideFactor(n, cfg)) / 2;
   return pos;
+}
+
+/**
+ * Returns true when the URL points to a third-party embed provider that
+ * must be played through an iframe (YouTube / Vimeo). Direct media files
+ * return false and are played via the native HTML5 `<video>` element.
+ */
+function isEmbedProvider(url: string | undefined): boolean {
+  if (!url) return false;
+  try {
+    const u = new URL(url);
+    return (
+      u.hostname.includes("youtube.com") ||
+      u.hostname.includes("youtu.be") ||
+      u.hostname.includes("vimeo.com")
+    );
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Convert a user-facing video URL into an embeddable URL with autoplay on.
+ * Supports YouTube (`watch?v=`, `youtu.be/<id>`) and Vimeo. Any other URL is
+ * passed through unchanged on the assumption it is already embed-compatible.
+ */
+function getEmbedUrl(url: string | undefined): string | null {
+  if (!url) return null;
+  try {
+    const u = new URL(url);
+    if (u.hostname.includes("youtube.com")) {
+      const id = u.searchParams.get("v");
+      if (id) {
+        return `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+      }
+    }
+    if (u.hostname.includes("youtu.be")) {
+      const id = u.pathname.replace(/^\//, "");
+      if (id) {
+        return `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+      }
+    }
+    if (u.hostname.includes("vimeo.com")) {
+      const id = u.pathname.replace(/^\//, "");
+      if (id) {
+        return `https://player.vimeo.com/video/${id}?autoplay=1`;
+      }
+    }
+    return url;
+  } catch {
+    return null;
+  }
 }
 
 /** Total stage width that fully contains the center + all visible side cards. */
@@ -245,11 +297,15 @@ export function VideoTestimonialCarousel({
   const stageHeight = cfg.centerH + 40;
 
   // Autoplay pause sources — any one of these going true stops autoplay.
-  // All three must clear for it to resume.
+  // All four must clear for it to resume.
   const [isHovered, setIsHovered] = useState(false);
   const [isPointerActive, setIsPointerActive] = useState(false);
   const [isKeyboardFocused, setIsKeyboardFocused] = useState(false);
-  const isPaused = isHovered || isPointerActive || isKeyboardFocused;
+  // Inline playback flips on when the user starts the center card's video.
+  // It also pauses autoplay so the user can watch uninterrupted.
+  const [isPlaying, setIsPlaying] = useState(false);
+  const isPaused =
+    isHovered || isPointerActive || isKeyboardFocused || isPlaying;
 
   const advance = useCallback(() => {
     setActiveIndex((current) => (current + 1) % total);
@@ -303,6 +359,24 @@ export function VideoTestimonialCarousel({
     []
   );
 
+  const startPlayback = useCallback(
+    (item: VideoTestimonialCarouselItem, index: number) => {
+      if (!item.videoUrl) return;
+      setIsPlaying(true);
+      onPlay?.(item, index);
+    },
+    [onPlay]
+  );
+
+  const stopPlayback = useCallback(() => setIsPlaying(false), []);
+
+  // Switch to a specific testimonial — always stops any in-progress playback
+  // so the new center card opens to its thumbnail state.
+  const goTo = useCallback((index: number) => {
+    setActiveIndex(index);
+    setIsPlaying(false);
+  }, []);
+
   if (total === 0) return null;
 
   return (
@@ -331,18 +405,21 @@ export function VideoTestimonialCarousel({
           {testimonials.map((item, i) => {
             const offset = getRelativeOffset(i, activeIndex, total);
             const layout = getCardLayout(offset, cfg);
+            const isThisPlaying = isPlaying && layout.isCenter;
             return (
               <CarouselCard
                 key={i}
                 item={item}
                 layout={layout}
+                isPlaying={isThisPlaying}
                 onSelect={() => {
                   if (layout.isCenter) {
-                    onPlay?.(item, i);
+                    startPlayback(item, i);
                   } else {
-                    setActiveIndex(i);
+                    goTo(i);
                   }
                 }}
+                onStop={stopPlayback}
               />
             );
           })}
@@ -352,7 +429,7 @@ export function VideoTestimonialCarousel({
       <CarouselPagination
         total={total}
         activeIndex={activeIndex}
-        onSelect={setActiveIndex}
+        onSelect={goTo}
       />
     </div>
   );
@@ -361,23 +438,50 @@ export function VideoTestimonialCarousel({
 interface CarouselCardProps {
   item: VideoTestimonialCarouselItem;
   layout: CardLayout;
+  isPlaying: boolean;
   onSelect: () => void;
+  onStop: () => void;
 }
 
-function CarouselCard({ item, layout, onSelect }: CarouselCardProps) {
+function CarouselCard({
+  item,
+  layout,
+  isPlaying,
+  onSelect,
+  onStop,
+}: CarouselCardProps) {
   const { isCenter, isVisible } = layout;
+  // While the video is playing inside the center card, the outer wrapper
+  // becomes inert — the native video controls own all interaction inside.
+  const interactive = isVisible && !isPlaying;
+
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (!interactive) return;
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        onSelect();
+      }
+    },
+    [interactive, onSelect]
+  );
 
   return (
-    <motion.button
-      type="button"
-      onClick={onSelect}
+    <motion.div
+      role="button"
+      tabIndex={interactive ? 0 : -1}
       aria-label={
         isCenter
-          ? `Play video testimonial from ${item.clientName}`
+          ? isPlaying
+            ? `Playing video testimonial from ${item.clientName}`
+            : `Play video testimonial from ${item.clientName}`
           : `Show testimonial from ${item.clientName}`
       }
+      onClick={interactive ? onSelect : undefined}
+      onKeyDown={handleKeyDown}
       className={cn(
-        "absolute left-1/2 top-1/2 cursor-pointer overflow-hidden rounded-2xl  outline-none ",
+        "absolute left-1/2 top-1/2 overflow-hidden rounded-2xl outline-none",
+        interactive && "cursor-pointer",
         "focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
       )}
       initial={false}
@@ -392,14 +496,13 @@ function CarouselCard({ item, layout, onSelect }: CarouselCardProps) {
       }}
       transition={SPRING}
       whileHover={
-        isCenter
-          ? { scale: 1.01 }
-          : {
-            scale: layout.scale * 1.04,
-            zIndex: 35,
-          }
+        !interactive
+          ? undefined
+          : isCenter
+            ? { scale: 1.01 }
+            : { scale: layout.scale * 1.04, zIndex: 35 }
       }
-      whileTap={{ scale: layout.scale * 0.97 }}
+      whileTap={!interactive ? undefined : { scale: layout.scale * 0.97 }}
       style={{
         pointerEvents: isVisible ? "auto" : "none",
         transformOrigin: "center center",
@@ -411,46 +514,94 @@ function CarouselCard({ item, layout, onSelect }: CarouselCardProps) {
         fill
         sizes={isCenter ? "(min-width: 1024px) 400px, 60vw" : "120px"}
         className={cn(
-          "object-cover transition-[filter] duration-500 ",
+          "object-cover transition-[filter] duration-500",
           !isCenter && "brightness-90 saturate-[1.05]"
         )}
         priority={isCenter}
         draggable={false}
       />
 
-      <div
-        aria-hidden
-        className={cn(
-          "absolute inset-0",
-          isCenter
-            ? "bg-gradient-to-t from-black/65 via-black/5 to-black/20"
-            : "bg-gradient-to-b from-black/40 via-black/15 to-black/55"
-        )}
-      />
+      {!isPlaying ? (
+        <div
+          aria-hidden
+          className={cn(
+            "absolute inset-0",
+            isCenter
+              ? "bg-linear-to-t from-black/65 via-black/5 to-black/20"
+              : "bg-linear-to-b from-black/40 via-black/15 to-black/55"
+          )}
+        />
+      ) : null}
 
       <AnimatePresence mode="wait" initial={false}>
         {isCenter ? (
-          <CenterOverlay key="center" item={item} />
+          <CenterOverlay
+            key="center"
+            item={item}
+            isPlaying={isPlaying}
+            onStop={onStop}
+          />
         ) : (
           <SideOverlay key="side" name={item.clientName} />
         )}
       </AnimatePresence>
-    </motion.button>
+    </motion.div>
   );
 }
 
-function CenterOverlay({ item }: { item: VideoTestimonialCarouselItem }) {
+interface CenterOverlayProps {
+  item: VideoTestimonialCarouselItem;
+  isPlaying: boolean;
+  onStop: () => void;
+}
+
+function CenterOverlay({ item, isPlaying, onStop }: CenterOverlayProps) {
+  if (isPlaying && item.videoUrl) {
+    return (
+      <motion.div
+        key="player"
+        className="absolute inset-0 bg-black"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        <InlineVideoPlayer
+          src={item.videoUrl}
+          poster={item.thumbnail}
+          title={`${item.clientName} — ${item.clientRole}`}
+        />
+        <button
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            onStop();
+          }}
+          aria-label="Stop video"
+          className={cn(
+            "absolute right-2 top-2 z-20 flex h-8 w-8 items-center justify-center rounded-full",
+            "bg-black/55 text-white backdrop-blur-sm transition-colors",
+            "hover:bg-black/75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+          )}
+        >
+          <X className="h-4 w-4" />
+        </button>
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
+      key="poster"
       className="absolute inset-0 flex flex-col"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.25 }}
     >
-      <div className="flex flex-1 items-center justify-center  relative ">
+      <div className="relative flex flex-1 items-center justify-center">
         <motion.div
-          className="flex h-16 w-16 items-center justify-center rounded-full bg-white  shadow-[0_10px_30px_rgba(0,0,0,0.25)]"
+          className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-[0_10px_30px_rgba(0,0,0,0.25)]"
           initial={{ scale: 0.85, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.08, type: "spring", stiffness: 280, damping: 22 }}
@@ -463,13 +614,13 @@ function CenterOverlay({ item }: { item: VideoTestimonialCarouselItem }) {
           <Play className="h-5 w-5 translate-x-[1.5px] fill-current text-neutral-900" />
         </motion.div>
         <motion.div
-          className="p-6 text-left  absolute bottom-0 w-full "
+          className="absolute bottom-0 w-full p-6 text-left"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 8 }}
           transition={{ delay: 0.14, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="text-base font-bold uppercase tracking-[0.18em] text-white ">
+          <div className="text-base font-bold uppercase tracking-[0.18em] text-white">
             {item.clientName}
           </div>
           <div className="mt-1 text-[10.5px] font-medium uppercase tracking-[0.32em] text-white/75">
@@ -477,9 +628,54 @@ function CenterOverlay({ item }: { item: VideoTestimonialCarouselItem }) {
           </div>
         </motion.div>
       </div>
-
-
     </motion.div>
+  );
+}
+
+interface InlineVideoPlayerProps {
+  src: string;
+  title: string;
+  poster?: string;
+}
+
+/**
+ * Picks the right player primitive for the source URL:
+ *  - YouTube / Vimeo -> iframe with autoplay query param
+ *  - Anything else (local files, signed URLs, CDN-hosted mp4/webm) -> native
+ *    HTML5 `<video controls autoPlay>`.
+ *
+ * Adding more providers later only requires extending `isEmbedProvider` and
+ * `getEmbedUrl` — no consumer changes.
+ */
+function InlineVideoPlayer({ src, title, poster }: InlineVideoPlayerProps) {
+  const isEmbed = isEmbedProvider(src);
+  const embedUrl = isEmbed ? getEmbedUrl(src) : null;
+
+  if (isEmbed && embedUrl) {
+    return (
+      <iframe
+        key={embedUrl}
+        src={embedUrl}
+        title={title}
+        className="absolute inset-0 h-full w-full"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+      />
+    );
+  }
+
+  return (
+    <video
+      key={src}
+      src={src}
+      poster={poster}
+      title={title}
+      controls
+      autoPlay
+      playsInline
+      controlsList="nodownload"
+      className="absolute inset-0 h-full w-full object-contain bg-black"
+    />
   );
 }
 
@@ -546,5 +742,4 @@ function CarouselPagination({
     </div>
   );
 }
-
 
