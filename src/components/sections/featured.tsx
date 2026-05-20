@@ -28,7 +28,7 @@ export function FeaturedSection({ studies }: FeaturedSectionProps) {
           </div>
           <Link
             href="/projects"
-            className={buttonVariants({ variant: "default" })}
+            className={buttonVariants({ variant: "outline", size: "lg", className: "hover:bg-primary hover:text-primary-foreground" })}
           >
             Explore Case Studies
             <ArrowUpRight className="h-4 w-4" />

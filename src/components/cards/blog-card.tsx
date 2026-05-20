@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { buttonVariants } from '../ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { BlogItem } from '@/data/sections';
 import { Card, CardContent, CardFooter } from '../ui/card';
 
@@ -41,14 +41,14 @@ export const BlogCard = ({ title, slug, description, author, date, category, ima
                 <Link
                     href={`/blog/${slug}`}
                     className={buttonVariants({
-                        variant: "ghost",
-                        size: "lg",
-                        className: "group/button text-primary hover:bg-primary  hover:text-primary-foreground",
+                        variant: "link",
+                        // size: "lg",
+                        // className: "group/button text-primary hover:bg-primary  hover:text-primary-foreground",
                     })}
                     aria-label={`Open article: ${title}`}
                 >
                     Read More
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1" />
+                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 " />
                 </Link>
             </CardFooter>
         </Card>

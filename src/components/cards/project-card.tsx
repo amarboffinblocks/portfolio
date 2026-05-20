@@ -45,9 +45,8 @@ const ProjectCard = ({ study }: { study: CaseStudy }) => {
                     href={`/projects/${slug}`}
                     aria-label={`Read ${study.company} case study`}
                     className={buttonVariants({
-                        variant: "ghost",
+                        variant: "link",
                         size: "lg",
-                        className: "group/button rounded-full hover:bg-primary hover:text-primary-foreground",
                     })}
                 >
                     View Case Study

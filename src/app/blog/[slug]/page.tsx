@@ -51,6 +51,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
 
       <section className="pb-10">
         <Container>
+
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(320px,0.28fr)] lg:items-start">
             <article className="overflow-hidden ">
               <div className="relative aspect-16/8 overflow-hidden rounded-2xl">
@@ -150,7 +151,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
             </article>
 
             <aside className="space-y-6 lg:sticky lg:top-32">
-              <div className="rounded-2xl bg-background p-6 border border-primary ">
+              <div className="rounded-2xl bg-background p-6  ">
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">In this article</p>
                 <div className="mt-4 space-y-2">
                   {sections.map((section, index) => (
@@ -166,7 +167,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
               </div>
 
               <div className="rounded-2xl bg-primary p-6 text-primary-foreground">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary-foreground/70">
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-accent">
                   About BoffinBlocks
                 </p>
                 <p className="mt-4 text-sm leading-7 text-primary-foreground/85">
@@ -180,27 +181,10 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
                   Talk to our team
                 </Link>
               </div>
-
-              <div className="rounded-[1.75rem] border border-primary p-6 bg-background">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">More from the blog</p>
-                <div className="mt-4 space-y-4">
-                  {relatedPosts.map((item) => (
-                    <Link
-                      key={item.slug}
-                      href={`/blog/${item.slug}`}
-                      className="block rounded-2xl border border-border/70 p-4 transition-colors hover:bg-secondary/60"
-                    >
-                      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">{item.category}</p>
-                      <h3 className="mt-2 text-base font-semibold leading-6 text-foreground">{item.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.date}</p>
-                    </Link>
-                  ))}
-                </div>
-              </div>
             </aside>
           </div>
 
-          <div className="mt-8">
+          <div className="py-4 ">
             <Link
               href="/blog"
               className={buttonVariants({ variant: "outline", className: "rounded-full px-5 hover:bg-primary hover:text-primary-foreground" })}
@@ -210,7 +194,8 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
             </Link>
           </div>
 
-          <section className="mt-16">
+          <section className="mt-10">
+
             <div className="mb-8 flex items-end justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">Related insights</p>

@@ -1,5 +1,9 @@
 'use client'
 
+import { Fragment } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
 import HeroWrapper from './hero-wrapper'
 import {
   Breadcrumb,
@@ -9,7 +13,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { usePathname } from 'next/navigation'
 import StatsCard from '../cards/stats-card'
 import { cn } from '@/lib/utils'
 import { Container } from './container'
@@ -56,15 +59,20 @@ export const SubHero = ({
   const stats = Array.isArray(stash) ? stash : stash ? HERO_STATS : [];
   const showStats = stats.length > 0;
 
-  const currentPageLabel =
-    pathname
-      ?.split('?')[0]
-      ?.split('#')[0]
-      ?.split('/')
-      ?.filter(Boolean)
-      ?.slice(-1)[0]
-      ?.replace(/[-_]+/g, ' ')
-      ?.replace(/\b\w/g, (c) => c.toUpperCase()) ?? 'Home'
+  const normalizeSegment = (segment: string) =>
+    decodeURIComponent(segment)
+      .replace(/[-_]+/g, ' ')
+      .replace(/\b\w/g, (char) => char.toUpperCase())
+
+  const cleanedPathname = pathname?.split('?')[0]?.split('#')[0] ?? '/'
+  const segments = cleanedPathname.split('/').filter(Boolean)
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    ...segments.map((segment, index) => ({
+      label: normalizeSegment(segment),
+      href: `/${segments.slice(0, index + 1).join('/')}`,
+    })),
+  ]
 
   return (
     <HeroWrapper className={cn(' min-h-[350px] md:min-h-[600px]', className)} >
@@ -74,17 +82,30 @@ export const SubHero = ({
           <h1 className="text-3xl  font-semibold md:text-6xl text-primary-foreground">
             {title}
           </h1>
-          {breadcrumb && <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem className='text-primary-foreground/60 '>
-                <BreadcrumbLink href="#">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator className='text-primary-foreground' />
-              <BreadcrumbItem >
-                <BreadcrumbPage className='text-primary-foreground'>{currentPageLabel}</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>}
+          {breadcrumb && (
+            <Breadcrumb>
+              <BreadcrumbList>
+                {breadcrumbItems.map((item, index) => {
+                  const isLast = index === breadcrumbItems.length - 1
+
+                  return (
+                    <Fragment key={item.href}>
+                      {index > 0 && <BreadcrumbSeparator className="text-primary-foreground" />}
+                      <BreadcrumbItem className={isLast ? undefined : 'text-primary-foreground/60'}>
+                        {isLast ? (
+                          <BreadcrumbPage className="text-primary-foreground">{item.label}</BreadcrumbPage>
+                        ) : (
+                          <BreadcrumbLink asChild>
+                            <Link href={item.href}>{item.label}</Link>
+                          </BreadcrumbLink>
+                        )}
+                      </BreadcrumbItem>
+                    </Fragment>
+                  )
+                })}
+              </BreadcrumbList>
+            </Breadcrumb>
+          )}
         </div>
 
         {showStats && (
