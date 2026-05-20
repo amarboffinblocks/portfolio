@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, type FocusEvent } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, type Transition } from "motion/react";
 import { Play } from "lucide-react";
@@ -175,6 +175,10 @@ interface VideoTestimonialCarouselProps {
   initialIndex?: number;
   className?: string;
   onPlay?: (item: VideoTestimonialCarouselItem, index: number) => void;
+  /** Auto-advance to the next testimonial after `autoPlayInterval` ms. */
+  autoPlay?: boolean;
+  /** Delay between auto-advances in milliseconds. */
+  autoPlayInterval?: number;
 }
 
 export function VideoTestimonialCarousel({
@@ -182,6 +186,8 @@ export function VideoTestimonialCarousel({
   initialIndex = 0,
   className,
   onPlay,
+  autoPlay = true,
+  autoPlayInterval = 2000,
 }: VideoTestimonialCarouselProps) {
   const total = testimonials.length;
   const safeInitial = Math.min(Math.max(0, initialIndex), Math.max(0, total - 1));
@@ -197,6 +203,36 @@ export function VideoTestimonialCarousel({
   const stageWidth = computeStageWidth(cfg);
   const stageHeight = cfg.centerH + 40;
 
+  // Autoplay state — paused while the user is hovering, holding a pointer
+  // down on, or keyboard-focused inside the carousel. Restarts cleanly the
+  // moment all three flags are false again.
+  const [isHovered, setIsHovered] = useState(false);
+  const [isPointerActive, setIsPointerActive] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const isPaused = isHovered || isPointerActive || isFocused;
+  const canAutoplay = autoPlay && total > 1;
+
+  useEffect(() => {
+    if (!canAutoplay || isPaused) return;
+    const id = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % total);
+    }, autoPlayInterval);
+    return () => window.clearInterval(id);
+    // Re-running on `activeIndex` guarantees the user gets a full interval
+    // after any manual selection (clicking a side card or pagination dot).
+  }, [canAutoplay, isPaused, autoPlayInterval, total, activeIndex]);
+
+  const handleFocusCapture = useCallback(() => setIsFocused(true), []);
+  const handleBlurCapture = useCallback(
+    (event: FocusEvent<HTMLDivElement>) => {
+      const next = event.relatedTarget as Node | null;
+      if (!next || !event.currentTarget.contains(next)) {
+        setIsFocused(false);
+      }
+    },
+    []
+  );
+
   if (total === 0) return null;
 
   return (
@@ -205,6 +241,13 @@ export function VideoTestimonialCarousel({
         "relative isolate w-full overflow-hidden mt-4 ",
         className
       )}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onPointerDown={() => setIsPointerActive(true)}
+      onPointerUp={() => setIsPointerActive(false)}
+      onPointerCancel={() => setIsPointerActive(false)}
+      onFocusCapture={handleFocusCapture}
+      onBlurCapture={handleBlurCapture}
     >
 
       <div
