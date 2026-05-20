@@ -282,8 +282,7 @@ function CarouselCard({ item, layout, onSelect }: CarouselCardProps) {
         isCenter
           ? { scale: 1.01 }
           : {
-            scale: layout.scale * 1.05,
-            y: layout.y - 18,
+            scale: layout.scale * 1.04,
             zIndex: 35,
           }
       }
