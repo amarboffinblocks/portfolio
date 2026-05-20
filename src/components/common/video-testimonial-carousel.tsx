@@ -1,6 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState, type FocusEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type FocusEvent,
+} from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, type Transition } from "motion/react";
 import { Play } from "lucide-react";
@@ -170,6 +177,40 @@ function getCardLayout(offset: number, cfg: SizeConfig): CardLayout {
   };
 }
 
+/**
+ * Reusable autoplay loop. Holds the latest `onTick` in a ref so the timer
+ * survives prop/identity churn, and restarts cleanly whenever `resetKey`
+ * changes (so a manual selection guarantees a full fresh interval).
+ */
+function useAutoplay({
+  enabled,
+  interval,
+  paused,
+  count,
+  resetKey,
+  onTick,
+}: {
+  enabled: boolean;
+  interval: number;
+  paused: boolean;
+  count: number;
+  resetKey: unknown;
+  onTick: () => void;
+}) {
+  const onTickRef = useRef(onTick);
+  useEffect(() => {
+    onTickRef.current = onTick;
+  }, [onTick]);
+
+  useEffect(() => {
+    if (!enabled || paused || count <= 1) return;
+    const id = window.setInterval(() => {
+      onTickRef.current();
+    }, interval);
+    return () => window.clearInterval(id);
+  }, [enabled, paused, interval, count, resetKey]);
+}
+
 interface VideoTestimonialCarouselProps {
   testimonials: VideoTestimonialCarouselItem[];
   initialIndex?: number;
@@ -203,31 +244,60 @@ export function VideoTestimonialCarousel({
   const stageWidth = computeStageWidth(cfg);
   const stageHeight = cfg.centerH + 40;
 
-  // Autoplay state — paused while the user is hovering, holding a pointer
-  // down on, or keyboard-focused inside the carousel. Restarts cleanly the
-  // moment all three flags are false again.
+  // Autoplay pause sources — any one of these going true stops autoplay.
+  // All three must clear for it to resume.
   const [isHovered, setIsHovered] = useState(false);
   const [isPointerActive, setIsPointerActive] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
-  const isPaused = isHovered || isPointerActive || isFocused;
-  const canAutoplay = autoPlay && total > 1;
+  const [isKeyboardFocused, setIsKeyboardFocused] = useState(false);
+  const isPaused = isHovered || isPointerActive || isKeyboardFocused;
 
+  const advance = useCallback(() => {
+    setActiveIndex((current) => (current + 1) % total);
+  }, [total]);
+
+  useAutoplay({
+    enabled: autoPlay,
+    interval: autoPlayInterval,
+    paused: isPaused,
+    count: total,
+    resetKey: activeIndex,
+    onTick: advance,
+  });
+
+  // Global pointerup/cancel safety net: if the user presses inside the
+  // carousel and releases outside (e.g. drags away), the local onPointerUp
+  // would never fire. This guarantees the flag clears.
   useEffect(() => {
-    if (!canAutoplay || isPaused) return;
-    const id = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % total);
-    }, autoPlayInterval);
-    return () => window.clearInterval(id);
-    // Re-running on `activeIndex` guarantees the user gets a full interval
-    // after any manual selection (clicking a side card or pagination dot).
-  }, [canAutoplay, isPaused, autoPlayInterval, total, activeIndex]);
+    if (!isPointerActive) return;
+    const reset = () => setIsPointerActive(false);
+    window.addEventListener("pointerup", reset);
+    window.addEventListener("pointercancel", reset);
+    return () => {
+      window.removeEventListener("pointerup", reset);
+      window.removeEventListener("pointercancel", reset);
+    };
+  }, [isPointerActive]);
 
-  const handleFocusCapture = useCallback(() => setIsFocused(true), []);
+  const handleFocusCapture = useCallback((event: FocusEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLElement | null;
+    if (!target) return;
+    // Only count *keyboard* focus as a pause source. `:focus-visible` is
+    // false for click / touch focus, so tapping a card no longer keeps
+    // autoplay paused after the cursor leaves the carousel.
+    try {
+      if (target.matches(":focus-visible")) {
+        setIsKeyboardFocused(true);
+      }
+    } catch {
+      // `:focus-visible` not supported in this engine — skip the pause.
+    }
+  }, []);
+
   const handleBlurCapture = useCallback(
     (event: FocusEvent<HTMLDivElement>) => {
       const next = event.relatedTarget as Node | null;
       if (!next || !event.currentTarget.contains(next)) {
-        setIsFocused(false);
+        setIsKeyboardFocused(false);
       }
     },
     []
@@ -448,7 +518,7 @@ function CarouselPagination({
 }: CarouselPaginationProps) {
   if (total <= 1) return null;
   return (
-    <div className="relative z-10 flex items-center justify-center gap-2 ">
+    <div className="relative z-10 flex items-center justify-center gap-2 py-2 ">
       {Array.from({ length: total }).map((_, i) => {
         const isActive = i === activeIndex;
         return (
