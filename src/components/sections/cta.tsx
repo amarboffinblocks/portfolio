@@ -14,7 +14,7 @@ import { SectionHeading } from "../common/section-heading";
 import { Container } from "../common/container";
 import GridPattern from "../common/grid-pattern";
 import { SectionWrapper } from "../common/section-wrapper";
-import { CtaSectionContent } from "@/types/sections";
+
 
 const fallbackUrls = [
   "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
